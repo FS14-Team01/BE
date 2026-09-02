@@ -5,3 +5,202 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id           BigInt       @id @default(autoincrement())
+  email        String       @unique
+  passwordHash String?
+  nickname     String       @unique
+  points       Int          @default(0)
+  provider     AuthProvider @default(EMAIL)
+  providerId   String?
+  createdAt    DateTime     @default(now())
+
+  createdPhotoCards PhotoCard[]
+
+  ownerships Ownership[]
+
+  saleListings      SaleListing[]
+  purchases         Purchase[]
+  exchanges         Exchange[]
+  notifications     Notification[]
+  randomPointDraws  RandomPointDraw[]
+  pointTransactions PointTransaction[]
+
+  @@unique([provider, providerId])
+}
+
+model PhotoCard {
+  id          BigInt       @id @default(autoincrement())
+  creatorId   BigInt
+  name        String
+  imageUrl    String
+  grade       CardGrade
+  category    CardCategory
+  description String?
+  totalSupply Int
+  createdAt   DateTime     @default(now())
+
+  creator User @relation(fields: [creatorId], references: [id])
+
+  ownerships   Ownership[]
+  saleListings SaleListing[]
+  exchanges    Exchange[]
+}
+
+model Ownership {
+  id          BigInt   @id @default(autoincrement())
+  ownerId     BigInt
+  photoCardId BigInt
+  quantity    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner     User      @relation(fields: [ownerId], references: [id])
+  photoCard PhotoCard @relation(fields: [photoCardId], references: [id])
+
+  @@unique([ownerId, photoCardId])
+}
+
+model SaleListing {
+  id                 BigInt            @id @default(autoincrement())
+  sellerId           BigInt
+  photoCardId        BigInt
+  initialQuantity    Int
+  remainingQuantity  Int
+  price              Int
+  desiredGrade       CardGrade?
+  desiredCategory    CardCategory?
+  desiredDescription String?
+  status             SaleListingStatus @default(ON_SALE)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  seller    User      @relation(fields: [sellerId], references: [id])
+  photoCard PhotoCard @relation(fields: [photoCardId], references: [id])
+
+  purchases     Purchase[]
+  exchanges     Exchange[]
+  notifications Notification[]
+}
+
+model Purchase {
+  id            BigInt   @id @default(autoincrement())
+  saleListingId BigInt
+  buyerId       BigInt
+  quantity      Int
+  pricePerCard  Int
+  totalPrice    Int
+  createdAt     DateTime @default(now())
+
+  saleListing   SaleListing    @relation(fields: [saleListingId], references: [id])
+  buyer         User           @relation(fields: [buyerId], references: [id])
+  notifications Notification[]
+}
+
+model Exchange {
+  id            BigInt         @id @default(autoincrement())
+  saleListingId BigInt
+  requesterId   BigInt
+  offeredCardId BigInt
+  status        ExchangeStatus @default(PENDING)
+  createdAt     DateTime       @default(now())
+  resolvedAt    DateTime?
+
+  saleListing SaleListing @relation(fields: [saleListingId], references: [id])
+  requester   User        @relation(fields: [requesterId], references: [id])
+  offeredCard PhotoCard   @relation(fields: [offeredCardId], references: [id])
+
+  notifications Notification[]
+}
+
+model Notification {
+  id                   BigInt           @id @default(autoincrement())
+  userId               BigInt
+  type                 NotificationType
+  relatedSaleListingId BigInt?
+  relatedExchangeId    BigInt?
+  relatedPurchaseId    BigInt?
+  isRead               Boolean          @default(false)
+  createdAt            DateTime         @default(now())
+
+  user               User         @relation(fields: [userId], references: [id])
+  relatedSaleListing SaleListing? @relation(fields: [relatedSaleListingId], references: [id])
+  relatedExchange    Exchange?    @relation(fields: [relatedExchangeId], references: [id])
+  relatedPurchase    Purchase?    @relation(fields: [relatedPurchaseId], references: [id])
+}
+
+model RandomPointDraw {
+  id        BigInt           @id @default(autoincrement())
+  userId    BigInt
+  drawDate  DateTime
+  period    RandomDrawPeriod
+  amount    Int
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, drawDate, period]) // 한 사용자가 같은 날짜의 오전/오후 랜덤 포인트를 각각 한 번만 받을 수 있도록 제한.
+}
+
+model PointTransaction {
+  id        BigInt               @id @default(autoincrement())
+  userId    BigInt
+  type      PointTransactionType
+  amount    Int
+  createdAt DateTime             @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+}
+
+enum CardGrade {
+  COMMON
+  RARE
+  SUPER_RARE
+  LEGENDARY
+}
+
+enum CardCategory {
+  POKEMON
+  SUPER_MARIO
+  HELLO_KITTY
+  DIGIMON
+}
+
+enum SaleListingStatus {
+  ON_SALE
+  SOLD_OUT
+  CANCELLED
+}
+
+enum ExchangeStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+enum NotificationType {
+  EXCHANGE_OFFER_RECEIVED
+  EXCHANGE_ACCEPTED
+  EXCHANGE_REJECTED
+  CARD_PURCHASED
+  CARD_SOLD
+  CARD_SOLD_OUT
+}
+
+enum PointTransactionType {
+  PURCHASE
+  SALE
+  RANDOM_BOX
+}
+
+enum RandomDrawPeriod {
+  MORNING
+  AFTERNOON
+}
