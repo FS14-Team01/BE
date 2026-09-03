@@ -48,7 +48,6 @@
     {
       "id": 1,
       "email": "mock-user-01@example.com",
-      "passwordHash": null,
       "nickname": "카드수집가",
       "points": 2313,
       "provider": "EMAIL",
@@ -58,7 +57,6 @@
     {
       "id": 2,
       "email": "mock-user-02@example.com",
-      "passwordHash": null,
       "nickname": "피카츄러버",
       "points": 4135,
       "provider": "EMAIL",
@@ -68,7 +66,6 @@
     {
       "id": 3,
       "email": "mock-user-03@example.com",
-      "passwordHash": null,
       "nickname": "버섯왕국주민",
       "points": 2756,
       "provider": "EMAIL",
@@ -78,7 +75,6 @@
     {
       "id": 4,
       "email": "mock-user-04@example.com",
-      "passwordHash": null,
       "nickname": "리본컬렉터",
       "points": 2097,
       "provider": "GOOGLE",
@@ -88,7 +84,6 @@
     {
       "id": 5,
       "email": "mock-user-05@example.com",
-      "passwordHash": null,
       "nickname": "디지털테이머",
       "points": 2198,
       "provider": "EMAIL",
@@ -98,7 +93,6 @@
     {
       "id": 6,
       "email": "mock-user-06@example.com",
-      "passwordHash": null,
       "nickname": "별빛트레이더",
       "points": 2939,
       "provider": "EMAIL",
@@ -108,7 +102,6 @@
     {
       "id": 7,
       "email": "mock-user-07@example.com",
-      "passwordHash": null,
       "nickname": "레어헌터",
       "points": 2620,
       "provider": "EMAIL",
@@ -118,7 +111,6 @@
     {
       "id": 8,
       "email": "mock-user-08@example.com",
-      "passwordHash": null,
       "nickname": "포토카드장인",
       "points": 1632,
       "provider": "GOOGLE",
@@ -128,7 +120,6 @@
     {
       "id": 9,
       "email": "mock-user-09@example.com",
-      "passwordHash": null,
       "nickname": "구름위시나몬",
       "points": 2313,
       "provider": "EMAIL",
@@ -138,7 +129,6 @@
     {
       "id": 10,
       "email": "mock-user-10@example.com",
-      "passwordHash": null,
       "nickname": "마리오점퍼",
       "points": 3685,
       "provider": "EMAIL",
@@ -148,7 +138,6 @@
     {
       "id": 11,
       "email": "mock-user-11@example.com",
-      "passwordHash": null,
       "nickname": "전설의교환가",
       "points": 2456,
       "provider": "EMAIL",
@@ -158,7 +147,6 @@
     {
       "id": 12,
       "email": "mock-user-12@example.com",
-      "passwordHash": null,
       "nickname": "키티프렌즈",
       "points": 3058,
       "provider": "GOOGLE",
@@ -168,7 +156,6 @@
     {
       "id": 13,
       "email": "mock-user-13@example.com",
-      "passwordHash": null,
       "nickname": "몬스터도감",
       "points": 3859,
       "provider": "EMAIL",
@@ -178,7 +165,6 @@
     {
       "id": 14,
       "email": "mock-user-14@example.com",
-      "passwordHash": null,
       "nickname": "카드보관소",
       "points": 1900,
       "provider": "EMAIL",
@@ -188,7 +174,6 @@
     {
       "id": 15,
       "email": "mock-user-15@example.com",
-      "passwordHash": null,
       "nickname": "슈퍼레어픽",
       "points": 3941,
       "provider": "EMAIL",
@@ -198,7 +183,6 @@
     {
       "id": 16,
       "email": "mock-user-16@example.com",
-      "passwordHash": null,
       "nickname": "코인마스터",
       "points": 1892,
       "provider": "GOOGLE",
@@ -208,7 +192,6 @@
     {
       "id": 17,
       "email": "mock-user-17@example.com",
-      "passwordHash": null,
       "nickname": "교환신청중",
       "points": 3294,
       "provider": "EMAIL",
@@ -218,7 +201,6 @@
     {
       "id": 18,
       "email": "mock-user-18@example.com",
-      "passwordHash": null,
       "nickname": "민트컬렉션",
       "points": 1965,
       "provider": "EMAIL",
@@ -228,7 +210,6 @@
     {
       "id": 19,
       "email": "mock-user-19@example.com",
-      "passwordHash": null,
       "nickname": "오늘의뽑기",
       "points": 1697,
       "provider": "EMAIL",
@@ -238,7 +219,6 @@
     {
       "id": 20,
       "email": "mock-user-20@example.com",
-      "passwordHash": null,
       "nickname": "앨범완성가",
       "points": 3358,
       "provider": "GOOGLE",
