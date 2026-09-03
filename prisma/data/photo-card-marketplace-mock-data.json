@@ -235,7 +235,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "먼 하늘 구름 위에서 태어난 하얀 강아지 소년. 카페 시나몬에 함께 살며, 시나몬롤처럼 말린 꼬리에서 이름을 얻었다.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-01T09:00:00.000Z"
     },
     {
@@ -246,7 +246,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "중국에서 태어난 반어인. 사람을 웃기는 데 능하지만 외로움을 타는 로맨티스트이며, 문어 사유리와 단짝이다.",
-      "totalSupply": 10,
+      "totalSupply": 5,
       "createdAt": "2026-07-01T10:00:00.000Z"
     },
     {
@@ -257,7 +257,7 @@
       "grade": "RARE",
       "category": "HELLO_KITTY",
       "description": "솔직하고 밝으며 남동생을 아끼는 소녀. 할머니가 만들어 준 두건을 보물로 여기고 엄마와 쿠키 굽기를 좋아한다.",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-01T11:00:00.000Z"
     },
     {
@@ -268,7 +268,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "삶아도, 구워도, 날로 먹어도 되는 달걀이지만 늘 축 늘어져 의욕이 없다.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-01T12:00:00.000Z"
     },
     {
@@ -279,7 +279,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "호기심 많고 덤벙대며 조금 참견하기 좋아하는 강아지 소년. 이곳저곳 들르며 산책하는 것을 좋아한다.",
-      "totalSupply": 10,
+      "totalSupply": 5,
       "createdAt": "2026-07-01T13:00:00.000Z"
     },
     {
@@ -290,7 +290,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "파리 교외에서 태어난 토끼 소녀. 과자 만들기와 손재주가 좋고 멋쟁이며, 늘 밝고 긍정적이다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-02T09:00:00.000Z"
     },
     {
@@ -301,7 +301,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "스스로 마이멜로디의 라이벌이라 부른다. 거칠어 보이지만 소녀 감성이 풍부하며, 검은 두건과 분홍 해골이 특징이다.",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-02T10:00:00.000Z"
     },
     {
@@ -312,7 +312,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "남극 턱시도 아일랜드에서 온 멋쟁이 펭귄 소년. 먹는 것을 좋아하고 조금 덤벙대며 나비넥타이를 365개나 가지고 있다.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-02T11:00:00.000Z"
     },
     {
@@ -323,7 +323,7 @@
       "grade": "LEGENDARY",
       "category": "HELLO_KITTY",
       "description": "밀가루 요정인 소녀. 주먹밥이 되고 싶어 하지만 그것이 무엇인지는 모르며, 작은 충격에도 흩어질 만큼 여리다.",
-      "totalSupply": 4,
+      "totalSupply": 3,
       "createdAt": "2026-07-02T12:00:00.000Z"
     },
     {
@@ -334,7 +334,7 @@
       "grade": "LEGENDARY",
       "category": "HELLO_KITTY",
       "description": "본명은 키티 화이트. 영국 런던 교외에서 태어났으며, 키는 사과 5개, 몸무게는 사과 3개만 한 밝고 상냥한 소녀다.",
-      "totalSupply": 5,
+      "totalSupply": 3,
       "createdAt": "2026-07-02T13:00:00.000Z"
     },
     {
@@ -345,7 +345,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "모험을 좋아하는 씩씩한 개구리 소년. 도넛 연못의 인기 스타로, 개구리헤엄은 서툴지만 자유형과 노래에 능하다.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-03T09:00:00.000Z"
     },
     {
@@ -356,7 +356,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "오늘도 열심히 한 사람에게 칭찬의 하나마루를 건네는 신비한 유령. 몰래 나타나 매일의 노력과 수고를 다정히 칭찬해 준다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-03T10:00:00.000Z"
     },
     {
@@ -367,7 +367,7 @@
       "grade": "RARE",
       "category": "HELLO_KITTY",
       "description": "짙은 갈색 베레모가 특징인 골든리트리버 소년. 느긋한 성격으로 외출을 좋아하고 혼자 집 지키기는 싫어하며 신발 모으기가 취미다.",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-03T11:00:00.000Z"
     },
     {
@@ -378,7 +378,7 @@
       "grade": "RARE",
       "category": "HELLO_KITTY",
       "description": "꿈 성운의 배려별에서 태어난 쌍둥이 별 키키와 라라. 누나 라라는 겁이 많고 눈물이 많으며, 남동생 키키는 호기심 많은 장난꾸러기다.",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-03T12:00:00.000Z"
     },
     {
@@ -389,7 +389,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "마음씨 좋은 오리 소년. 수영은 서툴지만 노래와 춤을 좋아하며 탭댄스를 배우고 있다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-03T13:00:00.000Z"
     },
     {
@@ -400,7 +400,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "프랑스에서 온 토끼 소녀. 엉뚱한 면이 있지만 순수하고 다정하며, 무지개빛 꼬리가 특징이다. 메르시힐즈에서 우편 배달을 돕는다.",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-04T09:00:00.000Z"
     },
     {
@@ -411,7 +411,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "장난과 반항을 좋아하는 펭귄 소년. 장래희망은 사장이 되는 것이며, 심술궂어 보여도 사실은 좋은 친구일지 모른다.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-04T10:00:00.000Z"
     },
     {
@@ -422,7 +422,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "헬로키티가 아빠에게 생일 선물로 받은 페르시안 고양이 소녀. 무척 매력적이라 챠미라는 이름이 붙었다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-04T11:00:00.000Z"
     },
     {
@@ -433,7 +433,7 @@
       "grade": "LEGENDARY",
       "category": "HELLO_KITTY",
       "description": "마이멜로디의 친구인 양 소녀. 다정하고 응석받이이며, 베이비 핑크빛의 폭신한 머리카락이 특징이고 머랭 쿠키를 좋아한다.",
-      "totalSupply": 5,
+      "totalSupply": 4,
       "createdAt": "2026-07-04T12:00:00.000Z"
     },
     {
@@ -444,7 +444,7 @@
       "grade": "RARE",
       "category": "HELLO_KITTY",
       "description": "늘 아끼는 담요를 두르고 집에서 지내기를 좋아하는 북극곰 소년. 담요를 끌고 다니는 모습이 대걸레처럼 보이는 것이 특징이다.",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-04T13:00:00.000Z"
     },
     {
@@ -455,7 +455,7 @@
       "grade": "COMMON",
       "category": "HELLO_KITTY",
       "description": "활기차지만 조금 덤벙대는 검은 고양이 소년. 수염 안테나로 여러 정보를 감지한다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-05T09:00:00.000Z"
     },
     {
@@ -466,7 +466,7 @@
       "grade": "LEGENDARY",
       "category": "HELLO_KITTY",
       "description": "한 회사의 경리부에서 일하는 레서판다 직장인. 무리한 업무를 떠넘기는 상사와 제멋대로인 동료에게 시달린다.",
-      "totalSupply": 5,
+      "totalSupply": 3,
       "createdAt": "2026-07-05T10:00:00.000Z"
     },
     {
@@ -477,7 +477,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "생선 토막이 되는 순간 맛있게 먹히고 싶다는 마음으로 태어난 캐릭터. 친구들과 식탁 곁에서 기다리며 어묵짱과 아주 친하다.",
-      "totalSupply": 10,
+      "totalSupply": 5,
       "createdAt": "2026-07-05T11:00:00.000Z"
     },
     {
@@ -488,7 +488,7 @@
       "grade": "RARE",
       "category": "HELLO_KITTY",
       "description": "여름을 좋아하는 활기찬 토끼 소녀. 살짝 휜 긴 귀와 동그란 파란 눈이 특징이며, 키는 튤립 세 송이만 하다.",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-05T12:00:00.000Z"
     },
     {
@@ -499,7 +499,7 @@
       "grade": "SUPER_RARE",
       "category": "HELLO_KITTY",
       "description": "조금 소심하지만 호기심 많은 골든햄스터 소년. 꽃 모자가 특징이며, 사쿠라와의 사이에 일곱 쌍둥이가 있다.",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-05T13:00:00.000Z"
     },
     {
@@ -510,7 +510,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "피치공주가 등장하는 캐릭터 카드.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-06T09:00:00.000Z"
     },
     {
@@ -521,7 +521,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "쿠파주니어가 등장하는 캐릭터 카드.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-06T10:00:00.000Z"
     },
     {
@@ -532,7 +532,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "베이비루이지가 등장하는 클로즈업 카드.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-06T11:00:00.000Z"
     },
     {
@@ -543,7 +543,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "핑크요시가 등장하는 요시, 키노피오 & 키노피코 카드.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-06T12:00:00.000Z"
     },
     {
@@ -554,7 +554,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "키노피코가 등장하는 요시, 키노피오 & 키노피코 카드.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-06T13:00:00.000Z"
     },
     {
@@ -565,7 +565,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "가봉이 등장하는 적 캐릭터 카드.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-07T09:00:00.000Z"
     },
     {
@@ -576,7 +576,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "가시돌이가 등장하는 적 캐릭터 카드.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-07T10:00:00.000Z"
     },
     {
@@ -587,7 +587,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "불뚝복어가 등장하는 적 캐릭터 카드.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-07T11:00:00.000Z"
     },
     {
@@ -598,7 +598,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "메카쿠파가 등장하는 적 캐릭터 카드.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-07T12:00:00.000Z"
     },
     {
@@ -609,7 +609,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "동키콩과 디디콩이 등장하는 그룹 카드.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-07T13:00:00.000Z"
     },
     {
@@ -620,7 +620,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "징오징오패밀리가 등장하는 그룹 카드.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-08T09:00:00.000Z"
     },
     {
@@ -631,7 +631,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "?블록이 등장하는 아이템 카드.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-08T10:00:00.000Z"
     },
     {
@@ -642,7 +642,7 @@
       "grade": "LEGENDARY",
       "category": "SUPER_MARIO",
       "description": "요시가 등장하는 골드 카드.",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-08T11:00:00.000Z"
     },
     {
@@ -653,7 +653,7 @@
       "grade": "LEGENDARY",
       "category": "SUPER_MARIO",
       "description": "부끄부끄가 등장하는 골드 카드.",
-      "totalSupply": 4,
+      "totalSupply": 2,
       "createdAt": "2026-07-08T12:00:00.000Z"
     },
     {
@@ -664,7 +664,7 @@
       "grade": "SUPER_RARE",
       "category": "SUPER_MARIO",
       "description": "쿠파주니어가 등장하는 실버 카드.",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-08T13:00:00.000Z"
     },
     {
@@ -675,7 +675,7 @@
       "grade": "RARE",
       "category": "SUPER_MARIO",
       "description": "동키콩이 골프를 하는 모습의 스포츠 카드.",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-09T09:00:00.000Z"
     },
     {
@@ -686,7 +686,7 @@
       "grade": "RARE",
       "category": "SUPER_MARIO",
       "description": "쿠파가 야구를 하는 모습의 스포츠 카드.",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-09T10:00:00.000Z"
     },
     {
@@ -697,7 +697,7 @@
       "grade": "RARE",
       "category": "SUPER_MARIO",
       "description": "키노피코가 테니스를 하는 모습의 스포츠 카드.",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-09T11:00:00.000Z"
     },
     {
@@ -708,7 +708,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "마리오가 등장하는 선화 카드.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-09T12:00:00.000Z"
     },
     {
@@ -719,7 +719,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "와루이지가 등장하는 선화 카드.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-09T13:00:00.000Z"
     },
     {
@@ -730,7 +730,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "마리오, 피치공주, 키노피오, 쿠파가 쿠파크라운을 타고 있는 모습의 선화 카드.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-10T09:00:00.000Z"
     },
     {
@@ -741,7 +741,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "9장을 모두 모으면 하나의 완성된 그림이 되는 퍼즐 카드 중 한 장.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-10T10:00:00.000Z"
     },
     {
@@ -752,7 +752,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "9장을 모두 모으면 하나의 완성된 그림이 되는 퍼즐 카드 중 한 장.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-10T11:00:00.000Z"
     },
     {
@@ -763,7 +763,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "9장을 모두 모으면 하나의 완성된 그림이 되는 퍼즐 카드 중 한 장.",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-10T12:00:00.000Z"
     },
     {
@@ -774,7 +774,7 @@
       "grade": "COMMON",
       "category": "SUPER_MARIO",
       "description": "9장을 모두 모으면 하나의 완성된 그림이 되는 퍼즐 카드 중 한 장.",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-10T13:00:00.000Z"
     },
     {
@@ -785,7 +785,7 @@
       "grade": "SUPER_RARE",
       "category": "POKEMON",
       "description": "번개 타입 포켓몬, HP 70, 기본 포켓몬. 기술: 전기쇼크(10), 번개펀치(30+).",
-      "totalSupply": 8,
+      "totalSupply": 3,
       "createdAt": "2026-07-11T09:00:00.000Z"
     },
     {
@@ -796,7 +796,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "무색 타입 포켓몬, HP 50, 기본 포켓몬. 기술: 꼬리 흔들기, 전광석화(10+).",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-11T10:00:00.000Z"
     },
     {
@@ -807,7 +807,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "격투 타입 포켓몬, HP 50, 기본 포켓몬. 기술: 돌 난사(10×).",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-11T11:00:00.000Z"
     },
     {
@@ -818,7 +818,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "트레이너 카드. 동전을 1번 던져서 앞면이 나오면 트래쉬의 카드 1장을 덱 맨 위에 놓는다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-11T12:00:00.000Z"
     },
     {
@@ -829,7 +829,7 @@
       "grade": "RARE",
       "category": "POKEMON",
       "description": "초 타입 포켓몬, HP 70, 기본 포켓몬. 기술: 연속뺨치기(10×), 명상(20+).",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-11T13:00:00.000Z"
     },
     {
@@ -840,7 +840,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 40, 기본 포켓몬. 기술: 저리가루(10), 흡혈(10).",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-12T09:00:00.000Z"
     },
     {
@@ -851,7 +851,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 50, 기본 포켓몬. 기술: 저리가루(10), 싹틔우기.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-12T10:00:00.000Z"
     },
     {
@@ -862,7 +862,7 @@
       "grade": "SUPER_RARE",
       "category": "POKEMON",
       "description": "격투 타입 포켓몬, HP 60, 2진화 포켓몬. 기술: 날카로운 낫(30), 흡수(40).",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-12T11:00:00.000Z"
     },
     {
@@ -873,7 +873,7 @@
       "grade": "RARE",
       "category": "POKEMON",
       "description": "무색 타입 포켓몬, HP 60, 기본 포켓몬. 기술: 짓밟기(20), 난동부리기(20+).",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-12T12:00:00.000Z"
     },
     {
@@ -884,7 +884,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 100, 2진화 포켓몬. 포켓몬 파워: 에너지 이동. 기술: 솔라빔(60).",
-      "totalSupply": 4,
+      "totalSupply": 2,
       "createdAt": "2026-07-12T13:00:00.000Z"
     },
     {
@@ -895,7 +895,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "물 타입 포켓몬, HP 80, 기본 포켓몬. 기술: 물대포(10+), 혼란빔(10).",
-      "totalSupply": 5,
+      "totalSupply": 3,
       "createdAt": "2026-07-13T09:00:00.000Z"
     },
     {
@@ -906,7 +906,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "초 타입 포켓몬, HP 80, 2진화 포켓몬. 포켓몬 파워: 저주. 기술: 다크마인드(30).",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-13T10:00:00.000Z"
     },
     {
@@ -917,7 +917,7 @@
       "grade": "RARE",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 60, 1진화 포켓몬. 기술: 두 번 차기(30×), 뿔드릴(50).",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-13T11:00:00.000Z"
     },
     {
@@ -928,7 +928,7 @@
       "grade": "SUPER_RARE",
       "category": "POKEMON",
       "description": "무색 타입 포켓몬, HP 100, 2진화 포켓몬. 포켓몬 파워: 스텝인. 기술: 힘껏치기(40×).",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-13T12:00:00.000Z"
     },
     {
@@ -939,7 +939,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "격투 타입 포켓몬, HP 60, 2진화 포켓몬. 기술: 날카로운 낫(30), 흡수(40).",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-13T13:00:00.000Z"
     },
     {
@@ -950,7 +950,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "트레이너 카드. 자신의 벤치 포켓몬 1마리와 배틀 포켓몬을 교체한다.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-14T09:00:00.000Z"
     },
     {
@@ -961,7 +961,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "격투 타입 포켓몬, HP 100, 2진화 포켓몬. 포켓몬 파워: 반격. 기술: 지구던지기(60).",
-      "totalSupply": 5,
+      "totalSupply": 4,
       "createdAt": "2026-07-14T10:00:00.000Z"
     },
     {
@@ -972,7 +972,7 @@
       "grade": "LEGENDARY",
       "category": "POKEMON",
       "description": "불 타입 포켓몬, HP 80, 1진화 포켓몬. 기술: 유인, 불대문자(80).",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-14T11:00:00.000Z"
     },
     {
@@ -983,7 +983,7 @@
       "grade": "SUPER_RARE",
       "category": "POKEMON",
       "description": "트레이너 카드. 서로의 패를 공개하고, 양쪽 플레이어는 자신의 패에 있는 모든 트레이너 카드를 각각 덱으로 되돌려 섞는다.",
-      "totalSupply": 8,
+      "totalSupply": 3,
       "createdAt": "2026-07-14T12:00:00.000Z"
     },
     {
@@ -994,7 +994,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 50, 기본 포켓몬. 기술: 조이기(20), 독가루(20).",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-14T13:00:00.000Z"
     },
     {
@@ -1005,7 +1005,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 40, 기본 포켓몬. 기술: 실뿜기(10).",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-15T09:00:00.000Z"
     },
     {
@@ -1016,7 +1016,7 @@
       "grade": "SUPER_RARE",
       "category": "POKEMON",
       "description": "번개 타입 포켓몬, HP 80, 1진화 포켓몬. 포켓몬 파워: 버자프. 기술: 전기쇼크(50).",
-      "totalSupply": 8,
+      "totalSupply": 3,
       "createdAt": "2026-07-15T10:00:00.000Z"
     },
     {
@@ -1027,7 +1027,7 @@
       "grade": "RARE",
       "category": "POKEMON",
       "description": "무색 타입 포켓몬, HP 70, 1진화 포켓몬. 기술: 고속이동(20), 드릴부리(40).",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-15T11:00:00.000Z"
     },
     {
@@ -1038,7 +1038,7 @@
       "grade": "RARE",
       "category": "POKEMON",
       "description": "격투 타입 포켓몬, HP 80, 2진화 포켓몬. 기술: 눈사태(60), 자폭(100).",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-15T12:00:00.000Z"
     },
     {
@@ -1049,7 +1049,7 @@
       "grade": "COMMON",
       "category": "POKEMON",
       "description": "풀 타입 포켓몬, HP 40, 기본 포켓몬. 기술: 덩굴채찍(10), 가족을 불러모으기.",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-15T13:00:00.000Z"
     },
     {
@@ -1060,7 +1060,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "황색 디지몬 Lv.3; 성장기; 성수형/글로잉 던/비트브레이크. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-16T09:00:00.000Z"
     },
     {
@@ -1071,7 +1071,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "적색 디지몬 Lv.3; 스탠다드/어플몬; 롤플레잉/세븐 코드. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-16T10:00:00.000Z"
     },
     {
@@ -1082,7 +1082,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "자색/황색 디지몬/테이머 Lv.5; 완전체; 머신형/글로잉 던/비트브레이크. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 4,
+      "totalSupply": 3,
       "createdAt": "2026-07-16T11:00:00.000Z"
     },
     {
@@ -1093,7 +1093,7 @@
       "grade": "SUPER_RARE",
       "category": "DIGIMON",
       "description": "자색/적색 디지몬 Lv.5; 완전체; 신인형/일리아스/TS. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-16T12:00:00.000Z"
     },
     {
@@ -1104,7 +1104,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "녹색 디지몬 Lv.4; 슈퍼/어플몬; 기후/세븐 코드. 어플 합체: 웨더몬, 로켓몬, 뉴스몬. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-16T13:00:00.000Z"
     },
     {
@@ -1115,7 +1115,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "흑색 디지몬 Lv.3; 스탠다드/어플몬; 쓰레기통/세븐 코드. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-17T09:00:00.000Z"
     },
     {
@@ -1126,7 +1126,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "적색 디지타마 Lv.2; 유년기; 알뿌리형/일리아스/TS. 턴에 1회, 효과로 덱에 카드가 추가되었을 때 패의 「크로노몬」이 기술되어 있는 카드로 진화 비용을 1 줄여 진화할 수 있다. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-17T10:00:00.000Z"
     },
     {
@@ -1137,7 +1137,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "백색 디지몬 Lv.7; 불명/어플몬; 개방. 《속공》, 《재기동》, 《블로커》, 《링크 +6》을 가진다. 수록 팩: 부스터 팩 타임리스 본즈 [BT-26].",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-17T11:00:00.000Z"
     },
     {
@@ -1148,7 +1148,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "적색/황색 디지몬/옵션 Lv.6; 궁극체; 광룡형/VB. 「감마몬」이 기술되어 있거나 특징으로 「VB」를 가진 Lv.5에서 진화 비용 3으로 진화한다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 4,
+      "totalSupply": 3,
       "createdAt": "2026-07-17T12:00:00.000Z"
     },
     {
@@ -1159,7 +1159,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "백색 옵션; 샴발라/SW/TB. 「샴발라」 특징과 관련된 사용 조건 및 「샴발라」 특징 디지몬의 어택을 지원하는 시큐리티 효과를 가진다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-17T13:00:00.000Z"
     },
     {
@@ -1170,7 +1170,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "황색/적색 디지몬 Lv.6; 궁극체; 신인형/삼명신/천제팔무중/샴발라/TB. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 6,
+      "totalSupply": 3,
       "createdAt": "2026-07-18T09:00:00.000Z"
     },
     {
@@ -1181,7 +1181,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "황색 옵션; VB. 「VB」 특징과 관련된 사용 조건 및 Lv.4 이상의 「VB」 특징 디지몬이 어택했을 때 발동하는 시큐리티 효과를 가진다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-18T10:00:00.000Z"
     },
     {
@@ -1192,7 +1192,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "청색 디지몬 Lv.3; 성장기; 연체형/샴발라/TB. 특징으로 「샴발라」를 가진 Lv.2에서 진화 비용 0으로 진화한다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-18T11:00:00.000Z"
     },
     {
@@ -1203,7 +1203,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "자색 디지타마 Lv.2; 유년기; 고스트형/샴발라/TB. 【자신의 턴】특징으로 「TB」를 가진 이 디지몬은 《에그제큐트》를 얻는다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 16,
+      "totalSupply": 7,
       "createdAt": "2026-07-18T12:00:00.000Z"
     },
     {
@@ -1214,7 +1214,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "황색 디지몬 Lv.3; 성장기; 짐승형/샴발라/SW. 특징으로 「샴발라」를 가진 Lv.2에서 진화 비용 0으로 진화한다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 24,
+      "totalSupply": 8,
       "createdAt": "2026-07-18T13:00:00.000Z"
     },
     {
@@ -1225,7 +1225,7 @@
       "grade": "SUPER_RARE",
       "category": "DIGIMON",
       "description": "적색 디지몬 Lv.3; 성장기; 퍼펫형/ME. 특징으로 「ME」를 가진 Lv.2에서 진화 비용 0으로 진화한다. 수록 팩: 엑스트라 부스터 디지털 월드 샴발라 [EX-12].",
-      "totalSupply": 9,
+      "totalSupply": 4,
       "createdAt": "2026-07-19T09:00:00.000Z"
     },
     {
@@ -1236,7 +1236,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "적색 디지몬 Lv.4; 성숙기; 짐승형/일리아스/TS. 특징으로 「TS」를 가진 Lv.3에서 진화 비용 2로 진화한다. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 26,
+      "totalSupply": 10,
       "createdAt": "2026-07-19T10:00:00.000Z"
     },
     {
@@ -1247,7 +1247,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "황색 디지몬 Lv.4; 성숙기; 신인형/일리아스/TS. 특징으로 「TS」를 가진 Lv.3에서 진화 비용 2로 진화한다. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-19T11:00:00.000Z"
     },
     {
@@ -1258,7 +1258,7 @@
       "grade": "COMMON",
       "category": "DIGIMON",
       "description": "황색 디지몬 Lv.3; 성장기; 성수형/글로잉 던/비트브레이크. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 25,
+      "totalSupply": 9,
       "createdAt": "2026-07-19T12:00:00.000Z"
     },
     {
@@ -1269,7 +1269,7 @@
       "grade": "SUPER_RARE",
       "category": "DIGIMON",
       "description": "녹색 테이머; 글로잉 던/비트브레이크. 【자신의 턴 개시 시】메모리가 2 이하라면 3으로 한다. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 10,
+      "totalSupply": 5,
       "createdAt": "2026-07-19T13:00:00.000Z"
     },
     {
@@ -1280,7 +1280,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "녹색/백색 디지몬 Lv.6; 신/어플몬; 재부팅. 어플 합체: 부트몬과 셧몬. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 4,
+      "totalSupply": 3,
       "createdAt": "2026-07-20T09:00:00.000Z"
     },
     {
@@ -1291,7 +1291,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "흑색/적색 옵션; 일리아스/TS. 【시큐리티】흑색 또는 적색인 「TS」 특징 디지몬은 《블로커》를 얻는다. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 15,
+      "totalSupply": 6,
       "createdAt": "2026-07-20T10:00:00.000Z"
     },
     {
@@ -1302,7 +1302,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "녹색/흑색 디지몬/옵션 Lv.5; 완전체; 사이보그형/글로잉 던/비트브레이크. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25]. 에라타 카드로 표시되어 있다.",
-      "totalSupply": 6,
+      "totalSupply": 4,
       "createdAt": "2026-07-20T11:00:00.000Z"
     },
     {
@@ -1313,7 +1313,7 @@
       "grade": "RARE",
       "category": "DIGIMON",
       "description": "황색/자색 옵션; 일리아스/TS. 【시큐리티】황색 또는 자색인 「TS」 특징 디지몬은 《연계》를 얻는다. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 14,
+      "totalSupply": 5,
       "createdAt": "2026-07-20T12:00:00.000Z"
     },
     {
@@ -1324,7 +1324,7 @@
       "grade": "LEGENDARY",
       "category": "DIGIMON",
       "description": "자색 테이머; TS. 【자신의 메인 페이즈 개시 시】패에서 조건에 맞는 카드 1장을 파기하는 것으로, 《1 드로우》하고 메모리 +1. 수록 팩: 부스터 팩 듀얼 레볼루션 [BT-25].",
-      "totalSupply": 5,
+      "totalSupply": 3,
       "createdAt": "2026-07-20T13:00:00.000Z"
     }
   ],
@@ -1341,7 +1341,7 @@
       "id": 2,
       "ownerId": 1,
       "photoCardId": 15,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-05T13:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -1349,7 +1349,7 @@
       "id": 3,
       "ownerId": 1,
       "photoCardId": 17,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-08T10:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -1373,7 +1373,7 @@
       "id": 6,
       "ownerId": 1,
       "photoCardId": 34,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-08T12:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -1381,7 +1381,7 @@
       "id": 7,
       "ownerId": 1,
       "photoCardId": 42,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-13T10:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -1389,7 +1389,7 @@
       "id": 8,
       "ownerId": 1,
       "photoCardId": 44,
-      "quantity": 12,
+      "quantity": 5,
       "createdAt": "2026-07-10T12:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -1413,7 +1413,7 @@
       "id": 11,
       "ownerId": 1,
       "photoCardId": 75,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-17T13:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -1421,7 +1421,7 @@
       "id": 12,
       "ownerId": 1,
       "photoCardId": 80,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-18T13:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -1429,7 +1429,7 @@
       "id": 13,
       "ownerId": 1,
       "photoCardId": 81,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-20T09:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -1437,7 +1437,7 @@
       "id": 14,
       "ownerId": 1,
       "photoCardId": 88,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-23T11:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -1445,7 +1445,7 @@
       "id": 15,
       "ownerId": 1,
       "photoCardId": 95,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-21T13:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -1461,7 +1461,7 @@
       "id": 17,
       "ownerId": 2,
       "photoCardId": 5,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-04T13:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -1485,7 +1485,7 @@
       "id": 20,
       "ownerId": 2,
       "photoCardId": 18,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-05T11:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -1493,7 +1493,7 @@
       "id": 21,
       "ownerId": 2,
       "photoCardId": 19,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-06T12:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -1501,7 +1501,7 @@
       "id": 22,
       "ownerId": 2,
       "photoCardId": 27,
-      "quantity": 10,
+      "quantity": 3,
       "createdAt": "2026-07-11T10:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -1509,7 +1509,7 @@
       "id": 23,
       "ownerId": 2,
       "photoCardId": 29,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-08T12:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -1517,7 +1517,7 @@
       "id": 24,
       "ownerId": 2,
       "photoCardId": 38,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-09T11:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -1525,7 +1525,7 @@
       "id": 25,
       "ownerId": 2,
       "photoCardId": 41,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-13T09:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -1533,7 +1533,7 @@
       "id": 26,
       "ownerId": 2,
       "photoCardId": 43,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-10T11:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -1541,7 +1541,7 @@
       "id": 27,
       "ownerId": 2,
       "photoCardId": 44,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-11T12:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -1549,7 +1549,7 @@
       "id": 28,
       "ownerId": 2,
       "photoCardId": 55,
-      "quantity": 8,
+      "quantity": 3,
       "createdAt": "2026-07-14T13:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -1565,7 +1565,7 @@
       "id": 30,
       "ownerId": 2,
       "photoCardId": 62,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-18T10:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -1573,7 +1573,7 @@
       "id": 31,
       "ownerId": 2,
       "photoCardId": 63,
-      "quantity": 5,
+      "quantity": 1,
       "createdAt": "2026-07-14T11:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -1581,7 +1581,7 @@
       "id": 32,
       "ownerId": 2,
       "photoCardId": 65,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-16T13:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -1589,7 +1589,7 @@
       "id": 33,
       "ownerId": 2,
       "photoCardId": 71,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-19T09:00:00.000Z",
       "updatedAt": "2026-09-01T01:00:00.000Z"
     },
@@ -1597,7 +1597,7 @@
       "id": 34,
       "ownerId": 2,
       "photoCardId": 77,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-21T10:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -1605,7 +1605,7 @@
       "id": 35,
       "ownerId": 2,
       "photoCardId": 79,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-18T12:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -1613,7 +1613,7 @@
       "id": 36,
       "ownerId": 2,
       "photoCardId": 82,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-22T10:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -1621,7 +1621,7 @@
       "id": 37,
       "ownerId": 2,
       "photoCardId": 86,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-22T09:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -1637,7 +1637,7 @@
       "id": 39,
       "ownerId": 2,
       "photoCardId": 100,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-23T13:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -1645,7 +1645,7 @@
       "id": 40,
       "ownerId": 3,
       "photoCardId": 3,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-03T11:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -1653,7 +1653,7 @@
       "id": 41,
       "ownerId": 3,
       "photoCardId": 4,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-04T12:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -1661,7 +1661,7 @@
       "id": 42,
       "ownerId": 3,
       "photoCardId": 7,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-03T10:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -1669,7 +1669,7 @@
       "id": 43,
       "ownerId": 3,
       "photoCardId": 11,
-      "quantity": 13,
+      "quantity": 5,
       "createdAt": "2026-07-08T09:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -1701,7 +1701,7 @@
       "id": 47,
       "ownerId": 3,
       "photoCardId": 25,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-09T13:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -1717,7 +1717,7 @@
       "id": 49,
       "ownerId": 3,
       "photoCardId": 32,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-08T10:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -1725,7 +1725,7 @@
       "id": 50,
       "ownerId": 3,
       "photoCardId": 34,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-10T12:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -1733,7 +1733,7 @@
       "id": 51,
       "ownerId": 3,
       "photoCardId": 35,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-11T13:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -1741,7 +1741,7 @@
       "id": 52,
       "ownerId": 3,
       "photoCardId": 49,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-13T12:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -1749,7 +1749,7 @@
       "id": 53,
       "ownerId": 3,
       "photoCardId": 51,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-16T09:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -1757,7 +1757,7 @@
       "id": 54,
       "ownerId": 3,
       "photoCardId": 58,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-14T11:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -1765,7 +1765,7 @@
       "id": 55,
       "ownerId": 3,
       "photoCardId": 72,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-16T10:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -1773,7 +1773,7 @@
       "id": 56,
       "ownerId": 3,
       "photoCardId": 89,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-21T12:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -1781,7 +1781,7 @@
       "id": 57,
       "ownerId": 3,
       "photoCardId": 97,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-21T10:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -1789,7 +1789,7 @@
       "id": 58,
       "ownerId": 4,
       "photoCardId": 2,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-03T10:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -1805,7 +1805,7 @@
       "id": 60,
       "ownerId": 4,
       "photoCardId": 7,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-04T10:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -1813,7 +1813,7 @@
       "id": 61,
       "ownerId": 4,
       "photoCardId": 8,
-      "quantity": 13,
+      "quantity": 5,
       "createdAt": "2026-07-05T11:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -1821,7 +1821,7 @@
       "id": 62,
       "ownerId": 4,
       "photoCardId": 10,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-07T13:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -1829,7 +1829,7 @@
       "id": 63,
       "ownerId": 4,
       "photoCardId": 23,
-      "quantity": 5,
+      "quantity": 2,
       "createdAt": "2026-07-08T11:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -1845,7 +1845,7 @@
       "id": 65,
       "ownerId": 4,
       "photoCardId": 37,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-10T10:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -1853,7 +1853,7 @@
       "id": 66,
       "ownerId": 4,
       "photoCardId": 46,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-11T09:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -1861,7 +1861,7 @@
       "id": 67,
       "ownerId": 4,
       "photoCardId": 54,
-      "quantity": 10,
+      "quantity": 3,
       "createdAt": "2026-07-15T12:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -1869,7 +1869,7 @@
       "id": 68,
       "ownerId": 4,
       "photoCardId": 56,
-      "quantity": 12,
+      "quantity": 5,
       "createdAt": "2026-07-13T09:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -1877,7 +1877,7 @@
       "id": 69,
       "ownerId": 4,
       "photoCardId": 59,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-16T12:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -1893,7 +1893,7 @@
       "id": 71,
       "ownerId": 4,
       "photoCardId": 70,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-19T13:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -1901,7 +1901,7 @@
       "id": 72,
       "ownerId": 4,
       "photoCardId": 73,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-18T11:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -1909,7 +1909,7 @@
       "id": 73,
       "ownerId": 4,
       "photoCardId": 76,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-17T09:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -1925,7 +1925,7 @@
       "id": 75,
       "ownerId": 4,
       "photoCardId": 83,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-20T11:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -1933,7 +1933,7 @@
       "id": 76,
       "ownerId": 4,
       "photoCardId": 85,
-      "quantity": 6,
+      "quantity": 3,
       "createdAt": "2026-07-22T13:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -1949,7 +1949,7 @@
       "id": 78,
       "ownerId": 4,
       "photoCardId": 91,
-      "quantity": 5,
+      "quantity": 2,
       "createdAt": "2026-07-20T09:00:00.000Z",
       "updatedAt": "2026-09-01T23:00:00.000Z"
     },
@@ -1957,7 +1957,7 @@
       "id": 79,
       "ownerId": 4,
       "photoCardId": 99,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-24T12:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -1965,7 +1965,7 @@
       "id": 80,
       "ownerId": 5,
       "photoCardId": 1,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-03T09:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -1981,7 +1981,7 @@
       "id": 82,
       "ownerId": 5,
       "photoCardId": 6,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-04T09:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -1989,7 +1989,7 @@
       "id": 83,
       "ownerId": 5,
       "photoCardId": 12,
-      "quantity": 12,
+      "quantity": 3,
       "createdAt": "2026-07-06T10:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -1997,7 +1997,7 @@
       "id": 84,
       "ownerId": 5,
       "photoCardId": 14,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-08T12:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -2021,7 +2021,7 @@
       "id": 87,
       "ownerId": 5,
       "photoCardId": 24,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-10T12:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2029,7 +2029,7 @@
       "id": 88,
       "ownerId": 5,
       "photoCardId": 25,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-06T13:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -2053,7 +2053,7 @@
       "id": 91,
       "ownerId": 5,
       "photoCardId": 52,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-14T10:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -2069,7 +2069,7 @@
       "id": 93,
       "ownerId": 5,
       "photoCardId": 69,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T12:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -2077,7 +2077,7 @@
       "id": 94,
       "ownerId": 5,
       "photoCardId": 73,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T11:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -2109,7 +2109,7 @@
       "id": 98,
       "ownerId": 6,
       "photoCardId": 21,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-08T09:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -2117,7 +2117,7 @@
       "id": 99,
       "ownerId": 6,
       "photoCardId": 22,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-09T10:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2125,7 +2125,7 @@
       "id": 100,
       "ownerId": 6,
       "photoCardId": 32,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-11T10:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -2133,7 +2133,7 @@
       "id": 101,
       "ownerId": 6,
       "photoCardId": 37,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-12T10:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -2141,7 +2141,7 @@
       "id": 102,
       "ownerId": 6,
       "photoCardId": 47,
-      "quantity": 12,
+      "quantity": 5,
       "createdAt": "2026-07-14T10:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2149,7 +2149,7 @@
       "id": 103,
       "ownerId": 6,
       "photoCardId": 57,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-16T10:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -2165,7 +2165,7 @@
       "id": 105,
       "ownerId": 6,
       "photoCardId": 71,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-18T09:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2197,7 +2197,7 @@
       "id": 109,
       "ownerId": 7,
       "photoCardId": 36,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-12T09:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -2221,7 +2221,7 @@
       "id": 112,
       "ownerId": 7,
       "photoCardId": 50,
-      "quantity": 14,
+      "quantity": 5,
       "createdAt": "2026-07-13T13:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -2229,7 +2229,7 @@
       "id": 113,
       "ownerId": 7,
       "photoCardId": 51,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-15T09:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -2237,7 +2237,7 @@
       "id": 114,
       "ownerId": 7,
       "photoCardId": 53,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-12T11:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -2245,7 +2245,7 @@
       "id": 115,
       "ownerId": 7,
       "photoCardId": 63,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-14T11:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -2261,7 +2261,7 @@
       "id": 117,
       "ownerId": 7,
       "photoCardId": 70,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-17T13:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2269,7 +2269,7 @@
       "id": 118,
       "ownerId": 7,
       "photoCardId": 78,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-17T11:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -2277,7 +2277,7 @@
       "id": 119,
       "ownerId": 7,
       "photoCardId": 89,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-20T12:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -2285,7 +2285,7 @@
       "id": 120,
       "ownerId": 7,
       "photoCardId": 93,
-      "quantity": 7,
+      "quantity": 2,
       "createdAt": "2026-07-20T11:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2293,7 +2293,7 @@
       "id": 121,
       "ownerId": 7,
       "photoCardId": 94,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-21T12:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2309,7 +2309,7 @@
       "id": 123,
       "ownerId": 8,
       "photoCardId": 17,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-05T10:00:00.000Z",
       "updatedAt": "2026-09-01T01:00:00.000Z"
     },
@@ -2317,7 +2317,7 @@
       "id": 124,
       "ownerId": 8,
       "photoCardId": 30,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-10T13:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -2325,7 +2325,7 @@
       "id": 125,
       "ownerId": 8,
       "photoCardId": 40,
-      "quantity": 5,
+      "quantity": 2,
       "createdAt": "2026-07-12T13:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -2333,7 +2333,7 @@
       "id": 126,
       "ownerId": 8,
       "photoCardId": 42,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-10T10:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -2341,7 +2341,7 @@
       "id": 127,
       "ownerId": 8,
       "photoCardId": 45,
-      "quantity": 13,
+      "quantity": 4,
       "createdAt": "2026-07-13T13:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2349,7 +2349,7 @@
       "id": 128,
       "ownerId": 8,
       "photoCardId": 46,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-15T09:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -2373,7 +2373,7 @@
       "id": 131,
       "ownerId": 8,
       "photoCardId": 58,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-14T11:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -2381,7 +2381,7 @@
       "id": 132,
       "ownerId": 8,
       "photoCardId": 60,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-16T13:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -2389,7 +2389,7 @@
       "id": 133,
       "ownerId": 8,
       "photoCardId": 62,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-14T10:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -2397,7 +2397,7 @@
       "id": 134,
       "ownerId": 8,
       "photoCardId": 67,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-15T10:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -2405,7 +2405,7 @@
       "id": 135,
       "ownerId": 8,
       "photoCardId": 68,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-16T11:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2413,7 +2413,7 @@
       "id": 136,
       "ownerId": 8,
       "photoCardId": 75,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-19T13:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2421,7 +2421,7 @@
       "id": 137,
       "ownerId": 8,
       "photoCardId": 81,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-22T09:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -2429,7 +2429,7 @@
       "id": 138,
       "ownerId": 8,
       "photoCardId": 82,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-18T10:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -2437,7 +2437,7 @@
       "id": 139,
       "ownerId": 8,
       "photoCardId": 88,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-20T11:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -2445,7 +2445,7 @@
       "id": 140,
       "ownerId": 9,
       "photoCardId": 1,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-02T09:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -2453,7 +2453,7 @@
       "id": 141,
       "ownerId": 9,
       "photoCardId": 15,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-08T13:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -2461,7 +2461,7 @@
       "id": 142,
       "ownerId": 9,
       "photoCardId": 17,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-06T10:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -2477,7 +2477,7 @@
       "id": 144,
       "ownerId": 9,
       "photoCardId": 26,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-07T09:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2485,7 +2485,7 @@
       "id": 145,
       "ownerId": 9,
       "photoCardId": 29,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-10T12:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -2493,7 +2493,7 @@
       "id": 146,
       "ownerId": 9,
       "photoCardId": 43,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-12T11:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2501,7 +2501,7 @@
       "id": 147,
       "ownerId": 9,
       "photoCardId": 48,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-13T11:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -2517,7 +2517,7 @@
       "id": 149,
       "ownerId": 9,
       "photoCardId": 55,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-16T13:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -2525,7 +2525,7 @@
       "id": 150,
       "ownerId": 9,
       "photoCardId": 60,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-17T13:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -2533,7 +2533,7 @@
       "id": 151,
       "ownerId": 9,
       "photoCardId": 65,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-18T13:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -2541,7 +2541,7 @@
       "id": 152,
       "ownerId": 9,
       "photoCardId": 71,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-16T09:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -2549,7 +2549,7 @@
       "id": 153,
       "ownerId": 9,
       "photoCardId": 74,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T12:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2557,7 +2557,7 @@
       "id": 154,
       "ownerId": 9,
       "photoCardId": 79,
-      "quantity": 4,
+      "quantity": 1,
       "createdAt": "2026-07-20T12:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -2573,7 +2573,7 @@
       "id": 156,
       "ownerId": 9,
       "photoCardId": 86,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T09:00:00.000Z",
       "updatedAt": "2026-09-01T23:00:00.000Z"
     },
@@ -2581,7 +2581,7 @@
       "id": 157,
       "ownerId": 9,
       "photoCardId": 95,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-24T13:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -2589,7 +2589,7 @@
       "id": 158,
       "ownerId": 9,
       "photoCardId": 98,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-23T11:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2597,7 +2597,7 @@
       "id": 159,
       "ownerId": 10,
       "photoCardId": 3,
-      "quantity": 5,
+      "quantity": 1,
       "createdAt": "2026-07-05T11:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -2613,7 +2613,7 @@
       "id": 161,
       "ownerId": 10,
       "photoCardId": 11,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-05T09:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -2629,7 +2629,7 @@
       "id": 163,
       "ownerId": 10,
       "photoCardId": 21,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-07T09:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -2637,7 +2637,7 @@
       "id": 164,
       "ownerId": 10,
       "photoCardId": 31,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-09T09:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -2645,7 +2645,7 @@
       "id": 165,
       "ownerId": 10,
       "photoCardId": 34,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-12T12:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -2653,7 +2653,7 @@
       "id": 166,
       "ownerId": 10,
       "photoCardId": 51,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-13T09:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -2661,7 +2661,7 @@
       "id": 167,
       "ownerId": 10,
       "photoCardId": 72,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-18T10:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -2669,7 +2669,7 @@
       "id": 168,
       "ownerId": 10,
       "photoCardId": 87,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-21T10:00:00.000Z",
       "updatedAt": "2026-09-01T01:00:00.000Z"
     },
@@ -2677,7 +2677,7 @@
       "id": 169,
       "ownerId": 10,
       "photoCardId": 90,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-19T13:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2685,7 +2685,7 @@
       "id": 170,
       "ownerId": 10,
       "photoCardId": 97,
-      "quantity": 7,
+      "quantity": 2,
       "createdAt": "2026-07-23T10:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2693,7 +2693,7 @@
       "id": 171,
       "ownerId": 11,
       "photoCardId": 8,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-07T11:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -2709,7 +2709,7 @@
       "id": 173,
       "ownerId": 11,
       "photoCardId": 16,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-07T09:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -2717,7 +2717,7 @@
       "id": 174,
       "ownerId": 11,
       "photoCardId": 20,
-      "quantity": 9,
+      "quantity": 3,
       "createdAt": "2026-07-06T13:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -2733,7 +2733,7 @@
       "id": 176,
       "ownerId": 11,
       "photoCardId": 23,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-10T11:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -2749,7 +2749,7 @@
       "id": 178,
       "ownerId": 11,
       "photoCardId": 28,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-11T11:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -2773,7 +2773,7 @@
       "id": 181,
       "ownerId": 11,
       "photoCardId": 46,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-13T09:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -2781,7 +2781,7 @@
       "id": 182,
       "ownerId": 11,
       "photoCardId": 56,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-15T09:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -2789,7 +2789,7 @@
       "id": 183,
       "ownerId": 11,
       "photoCardId": 72,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T10:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -2797,7 +2797,7 @@
       "id": 184,
       "ownerId": 11,
       "photoCardId": 73,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-20T11:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -2805,7 +2805,7 @@
       "id": 185,
       "ownerId": 11,
       "photoCardId": 74,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-16T12:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -2813,7 +2813,7 @@
       "id": 186,
       "ownerId": 11,
       "photoCardId": 76,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-19T09:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -2821,7 +2821,7 @@
       "id": 187,
       "ownerId": 11,
       "photoCardId": 92,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-23T10:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -2829,7 +2829,7 @@
       "id": 188,
       "ownerId": 11,
       "photoCardId": 99,
-      "quantity": 5,
+      "quantity": 1,
       "createdAt": "2026-07-21T12:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -2837,7 +2837,7 @@
       "id": 189,
       "ownerId": 12,
       "photoCardId": 1,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-05T09:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -2853,7 +2853,7 @@
       "id": 191,
       "ownerId": 12,
       "photoCardId": 6,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-06T09:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -2861,7 +2861,7 @@
       "id": 192,
       "ownerId": 12,
       "photoCardId": 13,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-04T11:00:00.000Z",
       "updatedAt": "2026-09-01T01:00:00.000Z"
     },
@@ -2869,7 +2869,7 @@
       "id": 193,
       "ownerId": 12,
       "photoCardId": 14,
-      "quantity": 7,
+      "quantity": 2,
       "createdAt": "2026-07-05T12:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -2877,7 +2877,7 @@
       "id": 194,
       "ownerId": 12,
       "photoCardId": 24,
-      "quantity": 6,
+      "quantity": 1,
       "createdAt": "2026-07-07T12:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -2885,7 +2885,7 @@
       "id": 195,
       "ownerId": 12,
       "photoCardId": 33,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-08T11:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -2909,7 +2909,7 @@
       "id": 198,
       "ownerId": 12,
       "photoCardId": 52,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-16T10:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -2933,7 +2933,7 @@
       "id": 201,
       "ownerId": 13,
       "photoCardId": 21,
-      "quantity": 9,
+      "quantity": 2,
       "createdAt": "2026-07-10T09:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -2957,7 +2957,7 @@
       "id": 204,
       "ownerId": 13,
       "photoCardId": 33,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-09T11:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -2965,7 +2965,7 @@
       "id": 205,
       "ownerId": 13,
       "photoCardId": 39,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-11T12:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -2981,7 +2981,7 @@
       "id": 207,
       "ownerId": 13,
       "photoCardId": 64,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-16T12:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -2989,7 +2989,7 @@
       "id": 208,
       "ownerId": 13,
       "photoCardId": 66,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-19T09:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -3005,7 +3005,7 @@
       "id": 210,
       "ownerId": 13,
       "photoCardId": 88,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-20T11:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -3029,7 +3029,7 @@
       "id": 213,
       "ownerId": 14,
       "photoCardId": 15,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-08T13:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -3037,7 +3037,7 @@
       "id": 214,
       "ownerId": 14,
       "photoCardId": 27,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-08T10:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -3053,7 +3053,7 @@
       "id": 216,
       "ownerId": 14,
       "photoCardId": 36,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-09T09:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -3061,7 +3061,7 @@
       "id": 217,
       "ownerId": 14,
       "photoCardId": 43,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-12T11:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -3069,7 +3069,7 @@
       "id": 218,
       "ownerId": 14,
       "photoCardId": 44,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-13T12:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -3077,7 +3077,7 @@
       "id": 219,
       "ownerId": 14,
       "photoCardId": 50,
-      "quantity": 12,
+      "quantity": 5,
       "createdAt": "2026-07-15T13:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -3085,7 +3085,7 @@
       "id": 220,
       "ownerId": 14,
       "photoCardId": 53,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-14T11:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -3093,7 +3093,7 @@
       "id": 221,
       "ownerId": 14,
       "photoCardId": 69,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-18T12:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -3109,7 +3109,7 @@
       "id": 223,
       "ownerId": 14,
       "photoCardId": 80,
-      "quantity": 9,
+      "quantity": 4,
       "createdAt": "2026-07-21T13:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -3125,7 +3125,7 @@
       "id": 225,
       "ownerId": 14,
       "photoCardId": 89,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-22T12:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -3133,7 +3133,7 @@
       "id": 226,
       "ownerId": 14,
       "photoCardId": 93,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-22T11:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -3141,7 +3141,7 @@
       "id": 227,
       "ownerId": 14,
       "photoCardId": 95,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-24T13:00:00.000Z",
       "updatedAt": "2026-09-01T13:00:00.000Z"
     },
@@ -3157,7 +3157,7 @@
       "id": 229,
       "ownerId": 15,
       "photoCardId": 3,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-05T11:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3165,7 +3165,7 @@
       "id": 230,
       "ownerId": 15,
       "photoCardId": 5,
-      "quantity": 5,
+      "quantity": 2,
       "createdAt": "2026-07-02T13:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -3173,7 +3173,7 @@
       "id": 231,
       "ownerId": 15,
       "photoCardId": 18,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-08T11:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -3181,7 +3181,7 @@
       "id": 232,
       "ownerId": 15,
       "photoCardId": 27,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-09T10:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3189,7 +3189,7 @@
       "id": 233,
       "ownerId": 15,
       "photoCardId": 30,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-07T13:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -3197,7 +3197,7 @@
       "id": 234,
       "ownerId": 15,
       "photoCardId": 38,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-12T11:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -3205,7 +3205,7 @@
       "id": 235,
       "ownerId": 15,
       "photoCardId": 40,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-09T13:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -3213,7 +3213,7 @@
       "id": 236,
       "ownerId": 15,
       "photoCardId": 41,
-      "quantity": 8,
+      "quantity": 3,
       "createdAt": "2026-07-11T09:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -3221,7 +3221,7 @@
       "id": 237,
       "ownerId": 15,
       "photoCardId": 42,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-12T10:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -3229,7 +3229,7 @@
       "id": 238,
       "ownerId": 15,
       "photoCardId": 45,
-      "quantity": 10,
+      "quantity": 3,
       "createdAt": "2026-07-10T13:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -3237,7 +3237,7 @@
       "id": 239,
       "ownerId": 15,
       "photoCardId": 54,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-16T12:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -3245,7 +3245,7 @@
       "id": 240,
       "ownerId": 15,
       "photoCardId": 61,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-15T09:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -3261,7 +3261,7 @@
       "id": 242,
       "ownerId": 15,
       "photoCardId": 63,
-      "quantity": 6,
+      "quantity": 2,
       "createdAt": "2026-07-17T11:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -3269,7 +3269,7 @@
       "id": 243,
       "ownerId": 15,
       "photoCardId": 66,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-16T09:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -3285,7 +3285,7 @@
       "id": 245,
       "ownerId": 15,
       "photoCardId": 68,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-18T11:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -3293,7 +3293,7 @@
       "id": 246,
       "ownerId": 15,
       "photoCardId": 77,
-      "quantity": 13,
+      "quantity": 5,
       "createdAt": "2026-07-19T10:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -3301,7 +3301,7 @@
       "id": 247,
       "ownerId": 15,
       "photoCardId": 82,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-20T10:00:00.000Z",
       "updatedAt": "2026-09-01T01:00:00.000Z"
     },
@@ -3309,7 +3309,7 @@
       "id": 248,
       "ownerId": 15,
       "photoCardId": 98,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-24T11:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -3317,7 +3317,7 @@
       "id": 249,
       "ownerId": 15,
       "photoCardId": 100,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-21T13:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -3325,7 +3325,7 @@
       "id": 250,
       "ownerId": 16,
       "photoCardId": 4,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-02T12:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -3333,7 +3333,7 @@
       "id": 251,
       "ownerId": 16,
       "photoCardId": 7,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-06T10:00:00.000Z",
       "updatedAt": "2026-09-01T23:00:00.000Z"
     },
@@ -3357,7 +3357,7 @@
       "id": 254,
       "ownerId": 16,
       "photoCardId": 26,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-09T09:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3365,7 +3365,7 @@
       "id": 255,
       "ownerId": 16,
       "photoCardId": 29,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-07T12:00:00.000Z",
       "updatedAt": "2026-09-01T21:00:00.000Z"
     },
@@ -3373,7 +3373,7 @@
       "id": 256,
       "ownerId": 16,
       "photoCardId": 35,
-      "quantity": 13,
+      "quantity": 5,
       "createdAt": "2026-07-09T13:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -3381,7 +3381,7 @@
       "id": 257,
       "ownerId": 16,
       "photoCardId": 48,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-15T11:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -3389,7 +3389,7 @@
       "id": 258,
       "ownerId": 16,
       "photoCardId": 49,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-11T12:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -3397,7 +3397,7 @@
       "id": 259,
       "ownerId": 16,
       "photoCardId": 56,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-15T09:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -3405,7 +3405,7 @@
       "id": 260,
       "ownerId": 16,
       "photoCardId": 58,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-17T11:00:00.000Z",
       "updatedAt": "2026-09-01T02:00:00.000Z"
     },
@@ -3421,7 +3421,7 @@
       "id": 262,
       "ownerId": 16,
       "photoCardId": 75,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-17T13:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -3445,7 +3445,7 @@
       "id": 265,
       "ownerId": 17,
       "photoCardId": 2,
-      "quantity": 5,
+      "quantity": 2,
       "createdAt": "2026-07-06T10:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -3453,7 +3453,7 @@
       "id": 266,
       "ownerId": 17,
       "photoCardId": 31,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-11T09:00:00.000Z",
       "updatedAt": "2026-09-01T00:00:00.000Z"
     },
@@ -3461,7 +3461,7 @@
       "id": 267,
       "ownerId": 17,
       "photoCardId": 37,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-13T10:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -3477,7 +3477,7 @@
       "id": 269,
       "ownerId": 17,
       "photoCardId": 54,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-13T12:00:00.000Z",
       "updatedAt": "2026-09-01T23:00:00.000Z"
     },
@@ -3485,7 +3485,7 @@
       "id": 270,
       "ownerId": 17,
       "photoCardId": 59,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-14T12:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -3493,7 +3493,7 @@
       "id": 271,
       "ownerId": 17,
       "photoCardId": 70,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-17T13:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -3501,7 +3501,7 @@
       "id": 272,
       "ownerId": 17,
       "photoCardId": 83,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-18T11:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -3509,7 +3509,7 @@
       "id": 273,
       "ownerId": 17,
       "photoCardId": 85,
-      "quantity": 9,
+      "quantity": 3,
       "createdAt": "2026-07-20T13:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -3517,7 +3517,7 @@
       "id": 274,
       "ownerId": 17,
       "photoCardId": 87,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-23T10:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -3525,7 +3525,7 @@
       "id": 275,
       "ownerId": 17,
       "photoCardId": 90,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-21T13:00:00.000Z",
       "updatedAt": "2026-09-01T11:00:00.000Z"
     },
@@ -3533,7 +3533,7 @@
       "id": 276,
       "ownerId": 17,
       "photoCardId": 91,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-23T09:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -3541,7 +3541,7 @@
       "id": 277,
       "ownerId": 18,
       "photoCardId": 12,
-      "quantity": 10,
+      "quantity": 3,
       "createdAt": "2026-07-04T10:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -3549,7 +3549,7 @@
       "id": 278,
       "ownerId": 18,
       "photoCardId": 16,
-      "quantity": 4,
+      "quantity": 1,
       "createdAt": "2026-07-09T09:00:00.000Z",
       "updatedAt": "2026-09-01T10:00:00.000Z"
     },
@@ -3565,7 +3565,7 @@
       "id": 280,
       "ownerId": 18,
       "photoCardId": 20,
-      "quantity": 6,
+      "quantity": 3,
       "createdAt": "2026-07-08T13:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -3573,7 +3573,7 @@
       "id": 281,
       "ownerId": 18,
       "photoCardId": 22,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-06T10:00:00.000Z",
       "updatedAt": "2026-09-01T16:00:00.000Z"
     },
@@ -3581,7 +3581,7 @@
       "id": 282,
       "ownerId": 18,
       "photoCardId": 25,
-      "quantity": 4,
+      "quantity": 2,
       "createdAt": "2026-07-09T13:00:00.000Z",
       "updatedAt": "2026-09-01T19:00:00.000Z"
     },
@@ -3589,7 +3589,7 @@
       "id": 283,
       "ownerId": 18,
       "photoCardId": 28,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-08T11:00:00.000Z",
       "updatedAt": "2026-09-01T22:00:00.000Z"
     },
@@ -3605,7 +3605,7 @@
       "id": 285,
       "ownerId": 18,
       "photoCardId": 47,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-11T10:00:00.000Z",
       "updatedAt": "2026-09-01T17:00:00.000Z"
     },
@@ -3621,7 +3621,7 @@
       "id": 287,
       "ownerId": 18,
       "photoCardId": 69,
-      "quantity": 3,
+      "quantity": 1,
       "createdAt": "2026-07-17T12:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -3629,7 +3629,7 @@
       "id": 288,
       "ownerId": 18,
       "photoCardId": 74,
-      "quantity": 7,
+      "quantity": 3,
       "createdAt": "2026-07-18T12:00:00.000Z",
       "updatedAt": "2026-09-01T20:00:00.000Z"
     },
@@ -3653,7 +3653,7 @@
       "id": 291,
       "ownerId": 18,
       "photoCardId": 84,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-20T12:00:00.000Z",
       "updatedAt": "2026-09-01T06:00:00.000Z"
     },
@@ -3661,7 +3661,7 @@
       "id": 292,
       "ownerId": 18,
       "photoCardId": 87,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-19T10:00:00.000Z",
       "updatedAt": "2026-09-01T09:00:00.000Z"
     },
@@ -3669,7 +3669,7 @@
       "id": 293,
       "ownerId": 18,
       "photoCardId": 92,
-      "quantity": 11,
+      "quantity": 4,
       "createdAt": "2026-07-20T10:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -3685,7 +3685,7 @@
       "id": 295,
       "ownerId": 18,
       "photoCardId": 96,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-25T09:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3693,7 +3693,7 @@
       "id": 296,
       "ownerId": 19,
       "photoCardId": 13,
-      "quantity": 7,
+      "quantity": 2,
       "createdAt": "2026-07-06T11:00:00.000Z",
       "updatedAt": "2026-09-01T08:00:00.000Z"
     },
@@ -3701,7 +3701,7 @@
       "id": 297,
       "ownerId": 19,
       "photoCardId": 32,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-09T10:00:00.000Z",
       "updatedAt": "2026-09-01T03:00:00.000Z"
     },
@@ -3709,7 +3709,7 @@
       "id": 298,
       "ownerId": 19,
       "photoCardId": 33,
-      "quantity": 10,
+      "quantity": 3,
       "createdAt": "2026-07-10T11:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -3733,7 +3733,7 @@
       "id": 301,
       "ownerId": 19,
       "photoCardId": 47,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-12T10:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3749,7 +3749,7 @@
       "id": 303,
       "ownerId": 19,
       "photoCardId": 57,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-14T10:00:00.000Z",
       "updatedAt": "2026-09-01T04:00:00.000Z"
     },
@@ -3757,7 +3757,7 @@
       "id": 304,
       "ownerId": 19,
       "photoCardId": 92,
-      "quantity": 3,
+      "quantity": 2,
       "createdAt": "2026-07-21T10:00:00.000Z",
       "updatedAt": "2026-09-01T15:00:00.000Z"
     },
@@ -3789,7 +3789,7 @@
       "id": 308,
       "ownerId": 20,
       "photoCardId": 9,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-07T12:00:00.000Z",
       "updatedAt": "2026-09-01T05:00:00.000Z"
     },
@@ -3797,7 +3797,7 @@
       "id": 309,
       "ownerId": 20,
       "photoCardId": 59,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-17T12:00:00.000Z",
       "updatedAt": "2026-09-01T07:00:00.000Z"
     },
@@ -3805,7 +3805,7 @@
       "id": 310,
       "ownerId": 20,
       "photoCardId": 64,
-      "quantity": 4,
+      "quantity": 1,
       "createdAt": "2026-07-18T12:00:00.000Z",
       "updatedAt": "2026-09-01T12:00:00.000Z"
     },
@@ -3813,7 +3813,7 @@
       "id": 311,
       "ownerId": 20,
       "photoCardId": 66,
-      "quantity": 11,
+      "quantity": 3,
       "createdAt": "2026-07-16T09:00:00.000Z",
       "updatedAt": "2026-09-01T14:00:00.000Z"
     },
@@ -3837,7 +3837,7 @@
       "id": 314,
       "ownerId": 20,
       "photoCardId": 94,
-      "quantity": 12,
+      "quantity": 4,
       "createdAt": "2026-07-24T12:00:00.000Z",
       "updatedAt": "2026-09-01T18:00:00.000Z"
     },
@@ -3845,7 +3845,7 @@
       "id": 315,
       "ownerId": 20,
       "photoCardId": 99,
-      "quantity": 2,
+      "quantity": 1,
       "createdAt": "2026-07-25T12:00:00.000Z",
       "updatedAt": "2026-09-01T23:00:00.000Z"
     }
