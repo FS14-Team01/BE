@@ -26,8 +26,4 @@ async function createUser({ email, nickname, passwordHash }) {
   });
 }
 
-export default {
-  findUserByEmail,
-  findUserByNickname,
-  createUser,
-};
+export { findUserByEmail, findUserByNickname, createUser };
