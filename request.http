@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:3001
+@saleId = 1
+
+### 판매 상세 정상 조회
+GET {{baseUrl}}/sales/{{saleId}}
+Accept: application/json
+
+### 잘못된 판매글 ID 조회 - 400
+GET {{baseUrl}}/sales/invalid-id
+Accept: application/json
+
+### 존재하지 않는 판매글 조회 - 404
+GET {{baseUrl}}/sales/999999999999999999
+Accept: application/json
