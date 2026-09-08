@@ -129,4 +129,43 @@ async function signUp(input) {
   };
 }
 
-export { signUp };
+// 로그인
+// 회원가입과 동일한 검증 진행
+async function login(input) {
+  if (
+    input === null ||
+    input === undefined ||
+    typeof input !== "object" ||
+    Array.isArray(input)
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const { email, password } = input;
+  if (typeof email !== "string" || typeof password !== "string") {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+  if (normalizedEmail.length < 1 || normalizedEmail.length > 254) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+  if (EMAIL_PATTERN.test(normalizedEmail) === false) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  // 유저 이메일 존재하는지 검증
+  const user = await findUserByEmail(normalizedEmail);
+
+  if (!user || !user.provider == "EMAIL" || !user.passwordHash === "") {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
+  }
+
+  const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash);
+
+  if (!isPasswordCorrect) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
+  }
+}
+
+export { signUp, login };
