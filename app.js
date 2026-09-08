@@ -4,7 +4,7 @@ import cors from "cors";
 import express from "express";
 import errorHandler from "./middlewares/error-handler.js";
 import authRouter from "./routes/auth-router.js";
-import salesRouter from "./routes/sales-router.js";
+import salesRouter from "./routes/sales-routes.js";
 
 const app = express();
 
