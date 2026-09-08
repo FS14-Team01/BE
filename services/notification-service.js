@@ -1,19 +1,20 @@
-import notificationRepository from '../repositories/notification-repository.js';
+import notificationRepository from "../repositories/notification-repository.js";
 
 const DEFAULT_LIMIT = 20;
 const MAX_LIMIT = 20;
 const CURSOR_PATTERN = /^[1-9]\d*$/;
 const MAX_BIGINT = 9223372036854775807n;
+const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
 // isRead 쿼리 검증
 function parseOptionalBoolean(isReadStr) {
   if (isReadStr === undefined) return undefined;
-  if (isReadStr === 'true') return true;
-  if (isReadStr === 'false') return false;
+  if (isReadStr === "true") return true;
+  if (isReadStr === "false") return false;
 
-  const error = new Error('요청 데이터가 올바르지 않습니다.');
+  const error = new Error("요청 데이터가 올바르지 않습니다.");
   error.status = 400;
-  error.code = 'INVALID_REQUEST';
+  error.code = "INVALID_REQUEST";
 
   throw error;
 }
@@ -25,16 +26,16 @@ function parseLimit(limitStr) {
   const parsedLimit = Number(limitStr);
 
   if (
-    Number.isInteger(parsedLimit) && 
+    Number.isInteger(parsedLimit) &&
     parsedLimit >= 1 &&
     parsedLimit <= MAX_LIMIT
   ) {
     return parsedLimit;
   }
 
-  const error = new Error('요청 데이터가 올바르지 않습니다.');
+  const error = new Error("요청 데이터가 올바르지 않습니다.");
   error.status = 400;
-  error.code = 'INVALID_REQUEST';
+  error.code = "INVALID_REQUEST";
 
   throw error;
 }
@@ -44,8 +45,8 @@ function parseCursor(cursorStr) {
   if (cursorStr === undefined) return undefined;
 
   const isPositiveInteger = CURSOR_PATTERN.test(cursorStr);
-  
-  if (isPositiveInteger) { 
+
+  if (isPositiveInteger) {
     const parsedCursor = BigInt(cursorStr);
 
     if (parsedCursor <= MAX_BIGINT) {
@@ -53,9 +54,9 @@ function parseCursor(cursorStr) {
     }
   }
 
-  const error = new Error('요청 데이터가 올바르지 않습니다.');
+  const error = new Error("요청 데이터가 올바르지 않습니다.");
   error.status = 400;
-  error.code = 'INVALID_REQUEST';
+  error.code = "INVALID_REQUEST";
 
   throw error;
 }
@@ -65,20 +66,30 @@ function stringifyNullableId(id) {
   return id === null ? null : String(id);
 }
 
+// UTC createdAt을 응답용 KST로 변환
+function formatToKst(date) {
+  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
+  const dateString = kstDate.toISOString().slice(0, 19);
+
+  return `${dateString}+09:00`;
+}
+
 // 응답 가공
 function formatNotification(notification) {
   const baseNotification = {
     id: String(notification.id),
     type: notification.type,
-    relatedSaleListingId: stringifyNullableId(notification.relatedSaleListingId),
+    relatedSaleListingId: stringifyNullableId(
+      notification.relatedSaleListingId,
+    ),
     relatedExchangeId: stringifyNullableId(notification.relatedExchangeId),
     relatedPurchaseId: stringifyNullableId(notification.relatedPurchaseId),
     isRead: notification.isRead,
-    createdAt: notification.createdAt,
+    createdAt: formatToKst(notification.createdAt),
   };
 
   switch (notification.type) {
-    case 'CARD_SOLD':
+    case "CARD_SOLD":
       return {
         ...baseNotification,
         userNickname: notification.relatedPurchase.buyer.nickname,
@@ -86,7 +97,7 @@ function formatNotification(notification) {
         cardName: notification.relatedPurchase.saleListing.photoCard.name,
         quantity: notification.relatedPurchase.quantity,
       };
-    case 'CARD_SOLD_OUT':
+    case "CARD_SOLD_OUT":
       return {
         ...baseNotification,
         userNickname: null,
@@ -94,7 +105,7 @@ function formatNotification(notification) {
         cardName: notification.relatedSaleListing.photoCard.name,
         quantity: 0,
       };
-    case 'EXCHANGE_OFFER_RECEIVED': 
+    case "EXCHANGE_OFFER_RECEIVED":
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.requester.nickname,
@@ -102,8 +113,8 @@ function formatNotification(notification) {
         cardName: notification.relatedExchange.offeredCard.name,
         quantity: 1,
       };
-    case 'EXCHANGE_ACCEPTED':
-    case 'EXCHANGE_REJECTED':
+    case "EXCHANGE_ACCEPTED":
+    case "EXCHANGE_REJECTED":
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.saleListing.seller.nickname,
@@ -112,7 +123,7 @@ function formatNotification(notification) {
         quantity: 1,
       };
     default:
-      throw new Error('서버 오류가 발생했습니다'); // 임시
+      throw new Error("서버 오류가 발생했습니다"); // 임시
   }
 }
 
@@ -123,7 +134,12 @@ async function getNotifications(userId, query) {
   const cursor = parseCursor(query.cursor);
 
   // 2. 사용자 알림 조회
-  const notifications = await notificationRepository.getNotifications(userId, isRead, limit, cursor);
+  const notifications = await notificationRepository.getNotifications(
+    userId,
+    isRead,
+    limit,
+    cursor,
+  );
 
   // 3. hasNext, nextCursor 계산
   let nextCursor = null;
@@ -136,8 +152,9 @@ async function getNotifications(userId, query) {
   }
 
   // 4. 타입별 응답 데이터 가공
-  const items = 
-    notifications.map((notification) => formatNotification(notification));
+  const items = notifications.map((notification) =>
+    formatNotification(notification),
+  );
 
   return {
     items,
@@ -149,9 +166,9 @@ async function getNotifications(userId, query) {
 async function markAllAsRead(userId) {
   // 1. 사용자의 읽지 않은 알림을 모두 읽음 상태로 변경
   await notificationRepository.markAllAsRead(userId);
-  
+
   return {
-    message: '모든 알림을 읽음 처리했습니다.',
+    message: "모든 알림을 읽음 처리했습니다.",
   };
 }
 

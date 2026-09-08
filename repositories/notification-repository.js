@@ -1,4 +1,4 @@
-import prisma from '../config/prisma.js';
+import prisma from "../config/prisma.js";
 
 async function getNotifications(userId, isRead, limit, cursor) {
   return prisma.notification.findMany({
@@ -14,7 +14,7 @@ async function getNotifications(userId, isRead, limit, cursor) {
       },
     }),
     orderBy: {
-      id: 'desc',
+      id: "desc",
     },
     select: {
       id: true,
@@ -97,4 +97,4 @@ async function markAllAsRead(userId) {
 export default {
   getNotifications,
   markAllAsRead,
-}
+};

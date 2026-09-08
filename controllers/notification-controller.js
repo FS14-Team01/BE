@@ -1,9 +1,12 @@
-import notificationService from '../services/notification-service.js';
+import notificationService from "../services/notification-service.js";
 
 async function getNotifications(req, res, next) {
   try {
     const userId = req.user.id;
-    const notifications = await notificationService.getNotifications(userId, req.query);
+    const notifications = await notificationService.getNotifications(
+      userId,
+      req.query,
+    );
     return res.status(200).json(notifications);
   } catch (error) {
     next(error);
@@ -23,4 +26,4 @@ async function markAllAsRead(req, res, next) {
 export default {
   getNotifications,
   markAllAsRead,
-}
+};
