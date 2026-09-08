@@ -1,26 +1,32 @@
-import cors from "cors";
 import "dotenv/config";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import express from "express";
+import errorHandler from "./middlewares/error-handler.js";
+import authRouter from "./routes/auth-router.js";
+import salesRouter from "./routes/sales-routes.js";
 import pointRouter from "./routes/point-route.js";
 
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  }),
+);
 app.use(express.json());
+app.use(cookieParser());
 
 // route
+app.use("/auth", authRouter);
+app.use("/sales", salesRouter);
 app.use("/points", pointRouter);
 
-// 테스트용 에러 미들웨어
-app.use((error, req, res, next) => {
-  const status = error.status ?? 500;
-  const code = error.code ?? "INTERNAL_SERVER_ERROR";
-  const message = error.message ?? "서버 오류가 발생했습니다.";
-  return res.status(status).json({
-    code,
-    message,
-  });
-});
+// error middleware
+app.use(errorHandler);
 
-app.listen(process.env.PORT ?? 3001, () => console.log("Server Started"));
+app.listen(process.env.PORT ?? 3001, () => {
+  console.log("Server Started");
+});
