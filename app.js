@@ -1,13 +1,23 @@
-import cors from 'cors';
-import 'dotenv/config';
-import express from 'express';
-import notificationRouter from './routes/notification-route.js';
+import "dotenv/config";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
+import errorHandler from "./middlewares/error-handler.js";
+import authRouter from "./routes/auth-router.js";
+import salesRouter from "./routes/sales-routes.js";
+import notificationRouter from "./routes/notification-route.js";
 
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  }),
+);
 app.use(express.json());
+app.use(cookieParser());
 
 // 테스트용 인증 미들웨어 - 지우기
 app.use((req, res, next) => {
@@ -19,11 +29,13 @@ app.use((req, res, next) => {
 });
 
 // route
-app.use('/notifications', notificationRouter);
+app.use("/auth", authRouter);
+app.use("/sales", salesRouter);
+app.use("/notifications", notificationRouter);
 
-// 테스트용 에러핸들러 - 지우기
-app.use((err, req, res, next) => {
-  return res.status(500).json({ message: err.message });
-})
+// error middleware
+app.use(errorHandler);
 
-app.listen(process.env.PORT ?? 3001, () => console.log('Server Started'));
+app.listen(process.env.PORT ?? 3001, () => {
+  console.log("Server Started");
+});
