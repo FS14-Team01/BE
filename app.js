@@ -4,6 +4,7 @@ import cors from "cors";
 import express from "express";
 import errorHandler from "./middlewares/error-handler.js";
 import authRouter from "./routes/auth-router.js";
+import salesRouter from "./routes/sales-routes.js";
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cookieParser());
 
 // route
 app.use("/auth", authRouter);
+app.use("/sales", salesRouter);
 
 // error middleware
 app.use(errorHandler);
