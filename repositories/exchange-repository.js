@@ -1,17 +1,17 @@
-import prisma from '../config/prisma.js'
+import prisma from "../config/prisma.js";
 
 async function findSaleListingById(saleId) {
   return prisma.saleListing.findUnique({
-    where: { id: BigInt(saleId) },
+    where: { id: saleId },
     select: { id: true, sellerId: true },
-  })
+  });
 }
 
 // 정책 변경으로 PENDING / ACCEPTED / REJECTED / CANCELLED 상태를 구분 없이 함께 조회
 async function findExchangeOffersBySaleId(saleId) {
   return prisma.exchange.findMany({
-    where: { saleListingId: BigInt(saleId) },
-    orderBy: { createdAt: 'asc' },
+    where: { saleListingId: saleId },
+    orderBy: { createdAt: "asc" },
     select: {
       id: true,
       status: true,
@@ -35,7 +35,7 @@ async function findExchangeOffersBySaleId(saleId) {
         },
       },
     },
-  })
+  });
 }
 
-export { findSaleListingById, findExchangeOffersBySaleId }
+export { findSaleListingById, findExchangeOffersBySaleId };
