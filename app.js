@@ -1,21 +1,28 @@
-import cors from 'cors'
 import 'dotenv/config'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
 import express from 'express'
-
-import exchangeRouter from './routes/exchange-routes.js'
+import errorHandler from './middlewares/error-handler.js'
+import authRouter from './routes/auth-router.js'
 
 const app = express()
 
 // middleware
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   }),
 )
 app.use(express.json())
+app.use(cookieParser())
 
 // route
-app.use('/sales', exchangeRouter)
+app.use('/auth', authRouter)
 
-app.listen(process.env.PORT ?? 3001, () => console.log('Server Started'))
+// error middleware
+app.use(errorHandler)
+
+app.listen(process.env.PORT ?? 3001, () => {
+  console.log('Server Started')
+})
