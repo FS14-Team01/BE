@@ -6,6 +6,15 @@ function errorHandler(error, req, res, next) {
     return next(error);
   }
 
+  if (error.type === "entity.parse.failed") {
+    const invalidRequest = ERROR_DEFINITIONS.INVALID_REQUEST;
+
+    return res.status(invalidRequest.statusCode).json({
+      code: invalidRequest.code,
+      message: invalidRequest.message,
+    });
+  }
+
   if (error instanceof AppError) {
     return res.status(error.statusCode).json({
       code: error.code,
