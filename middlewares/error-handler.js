@@ -1,5 +1,6 @@
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { UnauthorizedError } from "express-jwt";
 
 function errorHandler(error, req, res, next) {
   if (res.headersSent) {
@@ -12,6 +13,15 @@ function errorHandler(error, req, res, next) {
     return res.status(invalidRequest.statusCode).json({
       code: invalidRequest.code,
       message: invalidRequest.message,
+    });
+  }
+
+  if (error instanceof UnauthorizedError) {
+    const unauthorized = ERROR_DEFINITIONS.UNAUTHORIZED;
+
+    return res.status(unauthorized.statusCode).json({
+      code: unauthorized.code,
+      message: unauthorized.message,
     });
   }
 
