@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import AppError from "../errors/app-error.js";
 import bcrypt from "bcrypt";
 import {
@@ -53,6 +54,7 @@ async function signUp(input) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
 
+  // bcrypt는 72바이트까지만 해시화하기 때문에 72바이트로 제한
   if (Buffer.byteLength(password, "utf8") > 72) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
@@ -71,12 +73,42 @@ async function signUp(input) {
   // 비밀번호 hash화
   const passwordHash = await bcrypt.hash(password, BCRYPT_SALT_ROUNDS);
 
-  // 유저 생성
-  const createdUser = await createUser({
-    email: normalizedEmail,
-    nickname: normalizedNickname,
-    passwordHash,
-  });
+  // 사용자 생성 중 발생할 수 있는 이메일 및 닉네임 unique 충돌 처리
+  let createdUser;
+
+  try {
+    createdUser = await createUser({
+      email: normalizedEmail,
+      nickname: normalizedNickname,
+      passwordHash,
+    });
+  } catch (error) {
+    const isUniqueConstraintError =
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2002";
+
+    if (isUniqueConstraintError) {
+      const conflictingFields = error.meta?.target;
+
+      const isEmailConflict =
+        Array.isArray(conflictingFields) && conflictingFields.includes("email");
+
+      if (isEmailConflict) {
+        throw new AppError(ERROR_DEFINITIONS.EMAIL_ALREADY_EXISTS);
+      }
+
+      const isNicknameConflict =
+        Array.isArray(conflictingFields) &&
+        conflictingFields.includes("nickname");
+
+      if (isNicknameConflict) {
+        throw new AppError(ERROR_DEFINITIONS.NICKNAME_ALREADY_EXISTS);
+      }
+    }
+
+    // 중복 외의 오류는 에러 Middleware로 전달
+    throw error;
+  }
 
   const accessToken = generateAccessToken(createdUser.id);
   const refreshToken = generateRefreshToken(createdUser.id);
