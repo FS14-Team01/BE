@@ -1,3 +1,6 @@
+import AppError from '../errors/app-error.js'
+import { ERROR_DEFINITIONS } from '../errors/error-definitions.js'
+
 import {
   findSaleListingById,
   findExchangeOffersBySaleId,
@@ -7,11 +10,11 @@ async function getExchangeOffersBySale({ saleId, userId }) {
   const saleListing = await findSaleListingById(saleId)
 
   if (!saleListing) {
-    throw new Error('판매 정보를 찾을 수 없습니다.')
+    throw new AppError(ERROR_DEFINITIONS.SALE_NOT_FOUND)
   }
 
   if (saleListing.sellerId !== BigInt(userId)) {
-    throw new Error('교환 제안 목록을 조회할 권한이 없습니다.')
+    throw new AppError(ERROR_DEFINITIONS.FORBIDDEN)
   }
 
   return findExchangeOffersBySaleId(saleId)
