@@ -1,21 +1,35 @@
-export default function errorHandler(error, req, res, next) {
+import AppError from "../errors/app-error.js";
+import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+
+function errorHandler(error, req, res, next) {
   if (res.headersSent) {
     return next(error);
   }
 
-  const status = error.status ?? 500;
-  const message =
-    status === 500 ? '서버 내부 오류가 발생했습니다.' : error.message;
+  if (error.type === "entity.parse.failed") {
+    const invalidRequest = ERROR_DEFINITIONS.INVALID_REQUEST;
 
-  if (status === 500) {
-    console.error(error);
+    return res.status(invalidRequest.statusCode).json({
+      code: invalidRequest.code,
+      message: invalidRequest.message,
+    });
   }
 
-  const response = { message };
-
-  if (error.code) {
-    response.code = error.code;
+  if (error instanceof AppError) {
+    return res.status(error.statusCode).json({
+      code: error.code,
+      message: error.message,
+    });
   }
 
-  return res.status(status).json(response);
+  console.error(`[${req.method}] ${req.originalUrl}`, error);
+
+  const internalServerError = ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR;
+
+  return res.status(internalServerError.statusCode).json({
+    code: internalServerError.code,
+    message: internalServerError.message,
+  });
 }
+
+export default errorHandler;
