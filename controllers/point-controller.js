@@ -1,4 +1,4 @@
-import pointService from "../services/pointService.js";
+import pointService from "../services/point-service.js";
 
 async function getMyPoint(req, res, next) {
   try {
@@ -23,4 +23,4 @@ async function createRandomPointDraw(req, res, next) {
 export default {
   getMyPoint,
   createRandomPointDraw,
-}
+};

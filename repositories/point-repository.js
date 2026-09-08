@@ -1,4 +1,4 @@
-import prisma from '../config/prisma.js';
+import prisma from "../config/prisma.js";
 
 // 사용자 포인트 조회
 async function findMyPoint(userId) {
@@ -47,7 +47,7 @@ async function incrementUserPoint(tx, userId, amount) {
     },
     select: {
       points: true,
-    }
+    },
   });
 }
 
@@ -64,4 +64,4 @@ export default {
   createRandomPointDraw,
   incrementUserPoint,
   createPointTransaction,
-}
+};
