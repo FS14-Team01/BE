@@ -1,7 +1,16 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../config/prisma.js";
 import pointRepository from "../repositories/point-repository.js";
-import formatToKst from "../utils/date-time.js";
+
+// 응답 내 createdAt KST 형식으로 변환
+const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
+
+function formatToKst(date) {
+  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
+  const dateString = kstDate.toISOString().slice(0, 19);
+
+  return `${dateString}+09:00`;
+}
 
 // 응답 형식 포맷 함수
 function formatRandomPointDrawResponse(
