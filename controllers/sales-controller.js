@@ -1,4 +1,4 @@
-import { getSaleDetailById } from '../services/sales-service.js';
+import { getSaleDetailById } from "../services/sales-service.js";
 
 export async function getSaleDetail(req, res, next) {
   try {
