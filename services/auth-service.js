@@ -156,7 +156,7 @@ async function login(input) {
   // 유저 이메일 존재하는지 검증
   const user = await findUserByEmail(normalizedEmail);
 
-  if (!user || !user.provider == "EMAIL" || !user.passwordHash === "") {
+  if (!user || user.provider !== "EMAIL" || !user.passwordHash) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
   }
 
@@ -165,6 +165,24 @@ async function login(input) {
   if (!isPasswordCorrect) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
   }
+
+  const accessToken = generateAccessToken(user.id);
+  const refreshToken = generateRefreshToken(user.id);
+
+  const responseUser = {
+    id: String(user.id),
+    email: user.email,
+    nickname: user.nickname,
+    points: user.points,
+    provider: user.provider,
+    createdAt: user.createdAt,
+  };
+
+  return {
+    accessToken,
+    refreshToken,
+    user: responseUser,
+  };
 }
 
 export { signUp, login };
