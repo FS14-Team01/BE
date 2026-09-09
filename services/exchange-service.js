@@ -30,7 +30,16 @@ async function getExchangeOffersBySale({ saleId, userId }) {
     throw new AppError(ERROR_DEFINITIONS.FORBIDDEN);
   }
 
-  return findExchangeOffersBySaleId(parsedSaleId);
+  const exchangeOffers = await findExchangeOffersBySaleId(parsedSaleId);
+
+  return exchangeOffers.map((exchangeOffer) => ({
+    ...exchangeOffer,
+    id: exchangeOffer.id.toString(),
+    saleListing: {
+      ...exchangeOffer.saleListing,
+      price: exchangeOffer.saleListing.price.toString(),
+    },
+  }));
 }
 
 export { getExchangeOffersBySale };
