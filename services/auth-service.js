@@ -87,26 +87,25 @@ async function signUp(input) {
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === "P2002";
 
-    if (isUniqueConstraintError) {
-      const conflictingFields = error.meta?.target;
-
-      const isEmailConflict =
-        Array.isArray(conflictingFields) && conflictingFields.includes("email");
-
-      if (isEmailConflict) {
-        throw new AppError(ERROR_DEFINITIONS.EMAIL_ALREADY_EXISTS);
-      }
-
-      const isNicknameConflict =
-        Array.isArray(conflictingFields) &&
-        conflictingFields.includes("nickname");
-
-      if (isNicknameConflict) {
-        throw new AppError(ERROR_DEFINITIONS.NICKNAME_ALREADY_EXISTS);
-      }
+    if (!isUniqueConstraintError) {
+      throw error;
     }
 
-    // 중복 외의 오류는 에러 Middleware로 전달
+    // 사전 중복 검사 이후 동시에 가입 요청이 처리될 수 있으므로
+    // db의 unique 제약 오류가 발생하면 실제 중복 값을 다시 확인
+    const userWithSameEmail = await findUserByEmail(normalizedEmail);
+
+    if (userWithSameEmail !== null) {
+      throw new AppError(ERROR_DEFINITIONS.EMAIL_ALREADY_EXISTS);
+    }
+
+    const userWithSameNickname = await findUserByNickname(normalizedNickname);
+
+    if (userWithSameNickname !== null) {
+      throw new AppError(ERROR_DEFINITIONS.NICKNAME_ALREADY_EXISTS);
+    }
+
+    // 이메일이나 nickname 외의 unique 오류는 그대로 전달
     throw error;
   }
 
