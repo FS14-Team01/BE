@@ -14,8 +14,7 @@ const BCRYPT_SALT_ROUNDS = 10;
 
 const toBigInt = (value) => BigInt(value);
 const toDate = (value) => new Date(value);
-const toNullableBigInt = (value) =>
-  value === null ? null : BigInt(value);
+const toNullableBigInt = (value) => (value === null ? null : BigInt(value));
 const toNullableDate = (value) => (value === null ? null : new Date(value));
 
 async function loadSeedData() {
@@ -55,10 +54,7 @@ async function main() {
     throw new Error("mock 데이터에서 기본 로그인 비밀번호를 찾을 수 없습니다.");
   }
 
-  const passwordHash = await bcrypt.hash(
-    defaultPassword,
-    BCRYPT_SALT_ROUNDS,
-  );
+  const passwordHash = await bcrypt.hash(defaultPassword, BCRYPT_SALT_ROUNDS);
 
   await prisma.$transaction(
     async (tx) => {
@@ -142,12 +138,8 @@ async function main() {
           relatedSaleListingId: toNullableBigInt(
             notification.relatedSaleListingId,
           ),
-          relatedExchangeId: toNullableBigInt(
-            notification.relatedExchangeId,
-          ),
-          relatedPurchaseId: toNullableBigInt(
-            notification.relatedPurchaseId,
-          ),
+          relatedExchangeId: toNullableBigInt(notification.relatedExchangeId),
+          relatedPurchaseId: toNullableBigInt(notification.relatedPurchaseId),
           createdAt: toDate(notification.createdAt),
         })),
       });
