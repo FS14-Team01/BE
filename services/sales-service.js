@@ -1,6 +1,6 @@
-import AppError from '../errors/app-error.js';
-import { ERROR_DEFINITIONS } from '../errors/error-definitions.js';
-import { findSaleDetailById } from '../repositories/sales-repository.js';
+import AppError from "../errors/app-error.js";
+import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { findSaleDetailById } from "../repositories/sales-repository.js";
 
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
