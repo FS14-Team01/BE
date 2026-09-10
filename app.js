@@ -5,6 +5,7 @@ import express from "express";
 import errorHandler from "./middlewares/error-handler.js";
 import authRouter from "./routes/auth-router.js";
 import salesRouter from "./routes/sales-routes.js";
+import userRouter from "./routes/user-router.js";
 import exchangeRouter from "./routes/exchange-router.js";
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(cookieParser());
 // route
 app.use("/auth", authRouter);
 app.use("/sales", salesRouter);
+app.use("/users", userRouter);
 app.use("/exchange-offers", exchangeRouter);
 
 // error middleware

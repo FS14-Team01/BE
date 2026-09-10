@@ -26,4 +26,18 @@ async function createUser({ email, nickname, passwordHash }) {
   });
 }
 
-export { findUserByEmail, findUserByNickname, createUser };
+async function findUserById(userId) {
+  return prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      id: true,
+      email: true,
+      nickname: true,
+      points: true,
+    },
+  });
+}
+
+export { findUserByEmail, findUserByNickname, createUser, findUserById };
