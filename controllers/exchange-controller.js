@@ -3,7 +3,7 @@ import { getExchangeOffersBySale } from "../services/exchange-service.js";
 async function getExchangeOffers(req, res, next) {
   try {
     const { saleId } = req.params;
-    const userId = req.user?.id;
+    const userId = req.auth.userId;
 
     const result = await getExchangeOffersBySale({
       saleId,
