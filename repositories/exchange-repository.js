@@ -38,4 +38,33 @@ async function findExchangeOffersBySaleId(saleId) {
   });
 }
 
-export { findSaleListingById, findExchangeOffersBySaleId };
+async function findExchangeOfferById(exchangeOfferId) {
+  return prisma.exchange.findUnique({
+    where: { id: exchangeOfferId },
+    select: {
+      id: true,
+      status: true,
+      requesterId: true,
+      saleListingId: true,
+    },
+  });
+}
+
+async function rejectExchangeOfferById(exchangeOfferId) {
+  return prisma.exchange.update({
+    where: { id: exchangeOfferId },
+    data: { status: "REJECTED", resolvedAt: new Date() },
+    select: {
+      id: true,
+      status: true,
+      resolvedAt: true,
+    },
+  });
+}
+
+export {
+  findSaleListingById,
+  findExchangeOffersBySaleId,
+  findExchangeOfferById,
+  rejectExchangeOfferById,
+};
