@@ -34,7 +34,7 @@
       "saleListings": 104,
       "purchases": 59,
       "exchanges": 16,
-      "notifications": 174,
+      "notifications": 115,
       "randomPointDraws": 120,
       "pointTransactions": 238
     },
@@ -6014,16 +6014,6 @@
       "isRead": true
     },
     {
-      "id": 3,
-      "userId": 12,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 4,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 4,
-      "createdAt": "2026-08-02T17:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 4,
       "userId": 4,
       "type": "CARD_SOLD",
@@ -6031,16 +6021,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 4,
       "createdAt": "2026-08-02T17:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 5,
-      "userId": 9,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 1,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 1,
-      "createdAt": "2026-08-03T11:02:00.000Z",
       "isRead": true
     },
     {
@@ -6074,16 +6054,6 @@
       "isRead": false
     },
     {
-      "id": 9,
-      "userId": 5,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 2,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 2,
-      "createdAt": "2026-08-04T13:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 10,
       "userId": 11,
       "type": "CARD_SOLD",
@@ -6114,16 +6084,6 @@
       "isRead": false
     },
     {
-      "id": 13,
-      "userId": 16,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 9,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 6,
-      "createdAt": "2026-08-04T15:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 14,
       "userId": 13,
       "type": "CARD_SOLD",
@@ -6141,16 +6101,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 6,
       "createdAt": "2026-08-04T15:05:00.000Z",
-      "isRead": false
-    },
-    {
-      "id": 16,
-      "userId": 6,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 12,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 9,
-      "createdAt": "2026-08-04T16:02:00.000Z",
       "isRead": false
     },
     {
@@ -6174,16 +6124,6 @@
       "isRead": false
     },
     {
-      "id": 19,
-      "userId": 15,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 3,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 3,
-      "createdAt": "2026-08-05T15:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 20,
       "userId": 14,
       "type": "CARD_SOLD",
@@ -6204,16 +6144,6 @@
       "isRead": true
     },
     {
-      "id": 22,
-      "userId": 4,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 10,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 7,
-      "createdAt": "2026-08-05T17:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 23,
       "userId": 14,
       "type": "CARD_SOLD",
@@ -6224,16 +6154,6 @@
       "isRead": false
     },
     {
-      "id": 24,
-      "userId": 11,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 20,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 13,
-      "createdAt": "2026-08-05T20:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 25,
       "userId": 10,
       "type": "CARD_SOLD",
@@ -6241,16 +6161,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 13,
       "createdAt": "2026-08-05T20:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 26,
-      "userId": 4,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 7,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 5,
-      "createdAt": "2026-08-06T11:02:00.000Z",
       "isRead": true
     },
     {
@@ -6274,16 +6184,6 @@
       "isRead": false
     },
     {
-      "id": 29,
-      "userId": 1,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 14,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 10,
-      "createdAt": "2026-08-06T13:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 30,
       "userId": 3,
       "type": "CARD_SOLD",
@@ -6292,16 +6192,6 @@
       "relatedPurchaseId": 10,
       "createdAt": "2026-08-06T13:03:00.000Z",
       "isRead": true
-    },
-    {
-      "id": 31,
-      "userId": 9,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 17,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 11,
-      "createdAt": "2026-08-06T14:02:00.000Z",
-      "isRead": false
     },
     {
       "id": 32,
@@ -6324,16 +6214,6 @@
       "isRead": false
     },
     {
-      "id": 34,
-      "userId": 1,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 24,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 17,
-      "createdAt": "2026-08-06T16:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 35,
       "userId": 13,
       "type": "CARD_SOLD",
@@ -6342,16 +6222,6 @@
       "relatedPurchaseId": 17,
       "createdAt": "2026-08-06T16:03:00.000Z",
       "isRead": true
-    },
-    {
-      "id": 36,
-      "userId": 10,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 21,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 14,
-      "createdAt": "2026-08-07T10:02:00.000Z",
-      "isRead": false
     },
     {
       "id": 37,
@@ -6374,16 +6244,6 @@
       "isRead": false
     },
     {
-      "id": 39,
-      "userId": 3,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 28,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 18,
-      "createdAt": "2026-08-07T12:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 40,
       "userId": 7,
       "type": "CARD_SOLD",
@@ -6402,16 +6262,6 @@
       "relatedPurchaseId": 18,
       "createdAt": "2026-08-07T12:05:00.000Z",
       "isRead": true
-    },
-    {
-      "id": 42,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 11,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 8,
-      "createdAt": "2026-08-07T14:02:00.000Z",
-      "isRead": false
     },
     {
       "id": 43,
@@ -6454,16 +6304,6 @@
       "isRead": true
     },
     {
-      "id": 47,
-      "userId": 6,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 22,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 15,
-      "createdAt": "2026-08-08T12:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 48,
       "userId": 12,
       "type": "CARD_SOLD",
@@ -6484,16 +6324,6 @@
       "isRead": false
     },
     {
-      "id": 50,
-      "userId": 5,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 29,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 19,
-      "createdAt": "2026-08-08T14:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 51,
       "userId": 2,
       "type": "CARD_SOLD",
@@ -6501,16 +6331,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 19,
       "createdAt": "2026-08-08T14:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 52,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 32,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 21,
-      "createdAt": "2026-08-08T15:02:00.000Z",
       "isRead": true
     },
     {
@@ -6524,16 +6344,6 @@
       "isRead": true
     },
     {
-      "id": 54,
-      "userId": 18,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 19,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 12,
-      "createdAt": "2026-08-08T18:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 55,
       "userId": 5,
       "type": "CARD_SOLD",
@@ -6542,16 +6352,6 @@
       "relatedPurchaseId": 12,
       "createdAt": "2026-08-08T18:03:00.000Z",
       "isRead": true
-    },
-    {
-      "id": 56,
-      "userId": 11,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 36,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 25,
-      "createdAt": "2026-08-09T11:02:00.000Z",
-      "isRead": false
     },
     {
       "id": 57,
@@ -6571,16 +6371,6 @@
       "relatedExchangeId": 7,
       "relatedPurchaseId": null,
       "createdAt": "2026-08-09T14:01:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 59,
-      "userId": 16,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 23,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 16,
-      "createdAt": "2026-08-09T14:02:00.000Z",
       "isRead": true
     },
     {
@@ -6604,16 +6394,6 @@
       "isRead": false
     },
     {
-      "id": 62,
-      "userId": 4,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 33,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 22,
-      "createdAt": "2026-08-09T17:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 63,
       "userId": 13,
       "type": "CARD_SOLD",
@@ -6634,16 +6414,6 @@
       "isRead": true
     },
     {
-      "id": 65,
-      "userId": 8,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 40,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 29,
-      "createdAt": "2026-08-09T19:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 66,
       "userId": 7,
       "type": "CARD_SOLD",
@@ -6652,16 +6422,6 @@
       "relatedPurchaseId": 29,
       "createdAt": "2026-08-09T19:03:00.000Z",
       "isRead": false
-    },
-    {
-      "id": 67,
-      "userId": 5,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 37,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 26,
-      "createdAt": "2026-08-10T13:02:00.000Z",
-      "isRead": true
     },
     {
       "id": 68,
@@ -6684,16 +6444,6 @@
       "isRead": true
     },
     {
-      "id": 70,
-      "userId": 19,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 34,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 23,
-      "createdAt": "2026-08-10T19:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 71,
       "userId": 1,
       "type": "CARD_SOLD",
@@ -6701,16 +6451,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 23,
       "createdAt": "2026-08-10T19:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 72,
-      "userId": 14,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 31,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 20,
-      "createdAt": "2026-08-11T13:02:00.000Z",
       "isRead": true
     },
     {
@@ -6724,16 +6464,6 @@
       "isRead": true
     },
     {
-      "id": 74,
-      "userId": 16,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 35,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 24,
-      "createdAt": "2026-08-11T14:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 75,
       "userId": 11,
       "type": "CARD_SOLD",
@@ -6741,16 +6471,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 24,
       "createdAt": "2026-08-11T14:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 76,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 38,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 27,
-      "createdAt": "2026-08-11T15:02:00.000Z",
       "isRead": true
     },
     {
@@ -6774,16 +6494,6 @@
       "isRead": false
     },
     {
-      "id": 79,
-      "userId": 8,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 45,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 31,
-      "createdAt": "2026-08-11T17:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 80,
       "userId": 13,
       "type": "CARD_SOLD",
@@ -6792,16 +6502,6 @@
       "relatedPurchaseId": 31,
       "createdAt": "2026-08-11T17:03:00.000Z",
       "isRead": true
-    },
-    {
-      "id": 81,
-      "userId": 1,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 48,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 33,
-      "createdAt": "2026-08-11T18:02:00.000Z",
-      "isRead": false
     },
     {
       "id": 82,
@@ -6831,16 +6531,6 @@
       "relatedExchangeId": 9,
       "relatedPurchaseId": null,
       "createdAt": "2026-08-12T11:01:00.000Z",
-      "isRead": false
-    },
-    {
-      "id": 85,
-      "userId": 12,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 49,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 34,
-      "createdAt": "2026-08-12T13:02:00.000Z",
       "isRead": false
     },
     {
@@ -6874,16 +6564,6 @@
       "isRead": true
     },
     {
-      "id": 89,
-      "userId": 13,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 39,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 28,
-      "createdAt": "2026-08-12T17:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 90,
       "userId": 20,
       "type": "CARD_SOLD",
@@ -6914,16 +6594,6 @@
       "isRead": true
     },
     {
-      "id": 93,
-      "userId": 14,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 43,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 30,
-      "createdAt": "2026-08-13T13:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 94,
       "userId": 13,
       "type": "CARD_SOLD",
@@ -6941,16 +6611,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 30,
       "createdAt": "2026-08-13T13:05:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 96,
-      "userId": 8,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 46,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 32,
-      "createdAt": "2026-08-13T14:02:00.000Z",
       "isRead": true
     },
     {
@@ -6974,16 +6634,6 @@
       "isRead": true
     },
     {
-      "id": 99,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 50,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 35,
-      "createdAt": "2026-08-13T15:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 100,
       "userId": 17,
       "type": "CARD_SOLD",
@@ -7004,16 +6654,6 @@
       "isRead": false
     },
     {
-      "id": 102,
-      "userId": 19,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 53,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 37,
-      "createdAt": "2026-08-13T16:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 103,
       "userId": 8,
       "type": "CARD_SOLD",
@@ -7021,16 +6661,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 37,
       "createdAt": "2026-08-13T16:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 104,
-      "userId": 9,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 60,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 40,
-      "createdAt": "2026-08-13T18:02:00.000Z",
       "isRead": true
     },
     {
@@ -7064,16 +6694,6 @@
       "isRead": true
     },
     {
-      "id": 108,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 51,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 36,
-      "createdAt": "2026-08-15T12:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 109,
       "userId": 10,
       "type": "CARD_SOLD",
@@ -7104,16 +6724,6 @@
       "isRead": true
     },
     {
-      "id": 112,
-      "userId": 8,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 58,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 39,
-      "createdAt": "2026-08-15T14:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 113,
       "userId": 2,
       "type": "CARD_SOLD",
@@ -7122,16 +6732,6 @@
       "relatedPurchaseId": 39,
       "createdAt": "2026-08-15T14:03:00.000Z",
       "isRead": false
-    },
-    {
-      "id": 114,
-      "userId": 2,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 65,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 42,
-      "createdAt": "2026-08-15T16:02:00.000Z",
-      "isRead": true
     },
     {
       "id": 115,
@@ -7151,16 +6751,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 42,
       "createdAt": "2026-08-15T16:05:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 117,
-      "userId": 2,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 55,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 38,
-      "createdAt": "2026-08-15T20:02:00.000Z",
       "isRead": true
     },
     {
@@ -7184,16 +6774,6 @@
       "isRead": false
     },
     {
-      "id": 120,
-      "userId": 11,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 72,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 46,
-      "createdAt": "2026-08-16T13:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 121,
       "userId": 7,
       "type": "CARD_SOLD",
@@ -7211,16 +6791,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 46,
       "createdAt": "2026-08-16T13:05:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 123,
-      "userId": 14,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 69,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 44,
-      "createdAt": "2026-08-16T19:02:00.000Z",
       "isRead": true
     },
     {
@@ -7244,16 +6814,6 @@
       "isRead": false
     },
     {
-      "id": 126,
-      "userId": 7,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 63,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 41,
-      "createdAt": "2026-08-17T12:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 127,
       "userId": 6,
       "type": "CARD_SOLD",
@@ -7272,16 +6832,6 @@
       "relatedPurchaseId": null,
       "createdAt": "2026-08-17T14:01:00.000Z",
       "isRead": false
-    },
-    {
-      "id": 129,
-      "userId": 14,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 80,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 47,
-      "createdAt": "2026-08-17T17:02:00.000Z",
-      "isRead": true
     },
     {
       "id": 130,
@@ -7334,16 +6884,6 @@
       "isRead": true
     },
     {
-      "id": 135,
-      "userId": 14,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 84,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 49,
-      "createdAt": "2026-08-18T13:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 136,
       "userId": 6,
       "type": "CARD_SOLD",
@@ -7364,16 +6904,6 @@
       "isRead": true
     },
     {
-      "id": 138,
-      "userId": 16,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 67,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 43,
-      "createdAt": "2026-08-18T15:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 139,
       "userId": 7,
       "type": "CARD_SOLD",
@@ -7381,16 +6911,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 43,
       "createdAt": "2026-08-18T15:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 140,
-      "userId": 6,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 71,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 45,
-      "createdAt": "2026-08-19T11:02:00.000Z",
       "isRead": true
     },
     {
@@ -7424,16 +6944,6 @@
       "isRead": true
     },
     {
-      "id": 144,
-      "userId": 17,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 85,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 50,
-      "createdAt": "2026-08-19T15:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 145,
       "userId": 2,
       "type": "CARD_SOLD",
@@ -7451,16 +6961,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 50,
       "createdAt": "2026-08-19T15:05:00.000Z",
-      "isRead": false
-    },
-    {
-      "id": 147,
-      "userId": 13,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 88,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 52,
-      "createdAt": "2026-08-19T16:02:00.000Z",
       "isRead": false
     },
     {
@@ -7494,16 +6994,6 @@
       "isRead": false
     },
     {
-      "id": 151,
-      "userId": 19,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 92,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 55,
-      "createdAt": "2026-08-20T12:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 152,
       "userId": 15,
       "type": "CARD_SOLD",
@@ -7534,16 +7024,6 @@
       "isRead": true
     },
     {
-      "id": 155,
-      "userId": 3,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 89,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 53,
-      "createdAt": "2026-08-20T18:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 156,
       "userId": 20,
       "type": "CARD_SOLD",
@@ -7551,16 +7031,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 53,
       "createdAt": "2026-08-20T18:03:00.000Z",
-      "isRead": true
-    },
-    {
-      "id": 157,
-      "userId": 19,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 93,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 56,
-      "createdAt": "2026-08-21T14:02:00.000Z",
       "isRead": true
     },
     {
@@ -7584,16 +7054,6 @@
       "isRead": true
     },
     {
-      "id": 160,
-      "userId": 2,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 96,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 57,
-      "createdAt": "2026-08-21T15:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 161,
       "userId": 10,
       "type": "CARD_SOLD",
@@ -7611,16 +7071,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 57,
       "createdAt": "2026-08-21T15:05:00.000Z",
-      "isRead": false
-    },
-    {
-      "id": 163,
-      "userId": 9,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 83,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 48,
-      "createdAt": "2026-08-21T18:02:00.000Z",
       "isRead": false
     },
     {
@@ -7644,16 +7094,6 @@
       "isRead": true
     },
     {
-      "id": 166,
-      "userId": 10,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 90,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 54,
-      "createdAt": "2026-08-21T20:02:00.000Z",
-      "isRead": true
-    },
-    {
       "id": 167,
       "userId": 20,
       "type": "CARD_SOLD",
@@ -7662,16 +7102,6 @@
       "relatedPurchaseId": 54,
       "createdAt": "2026-08-21T20:03:00.000Z",
       "isRead": false
-    },
-    {
-      "id": 168,
-      "userId": 18,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 87,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 51,
-      "createdAt": "2026-08-22T14:02:00.000Z",
-      "isRead": true
     },
     {
       "id": 169,
@@ -7694,16 +7124,6 @@
       "isRead": true
     },
     {
-      "id": 171,
-      "userId": 1,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 98,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 58,
-      "createdAt": "2026-08-23T12:02:00.000Z",
-      "isRead": false
-    },
-    {
       "id": 172,
       "userId": 15,
       "type": "CARD_SOLD",
@@ -7711,16 +7131,6 @@
       "relatedExchangeId": null,
       "relatedPurchaseId": 58,
       "createdAt": "2026-08-23T12:03:00.000Z",
-      "isRead": false
-    },
-    {
-      "id": 173,
-      "userId": 20,
-      "type": "CARD_PURCHASED",
-      "relatedSaleListingId": 99,
-      "relatedExchangeId": null,
-      "relatedPurchaseId": 59,
-      "createdAt": "2026-08-24T14:02:00.000Z",
       "isRead": false
     },
     {

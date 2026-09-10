@@ -8,6 +8,9 @@ import { expressjwt } from "express-jwt";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 
+const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
+const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
+
 const verifyAccessToken = [
   expressjwt({
     secret: process.env.JWT_SECRET,
@@ -20,9 +23,14 @@ const verifyAccessToken = [
 function validateAccessTokenPayload(req, res, next) {
   const userId = req.auth?.userId;
   const isInvalidUserId =
-    typeof userId !== "string" || userId.trim().length === 0;
+    typeof userId !== "string" || !POSITIVE_INTEGER_PATTERN.test(userId);
 
   if (isInvalidUserId) {
+    return next(new AppError(ERROR_DEFINITIONS.UNAUTHORIZED));
+  }
+
+  const parsedUserId = BigInt(userId);
+  if (parsedUserId > MAX_DATABASE_BIGINT) {
     return next(new AppError(ERROR_DEFINITIONS.UNAUTHORIZED));
   }
 
