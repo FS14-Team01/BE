@@ -123,20 +123,15 @@ const ERROR_DEFINITIONS = {
   },
 
   // 교환
-  EXCHANGE_CARD_NOT_OWNED: {
+  EXCHANGE_CARD_QUANTITY_INSUFFICIENT: {
     statusCode: 409,
-    code: "EXCHANGE_CARD_NOT_OWNED",
-    message: "교환에 사용할 포토카드를 보유하고 있지 않습니다.",
+    code: "EXCHANGE_CARD_QUANTITY_INSUFFICIENT",
+    message: "교환에 사용할 포토카드 수량이 부족합니다.",
   },
-  EXCHANGE_CARD_ALREADY_OFFERED: {
+  EXCHANGE_CARD_QUANTITY_EXCEEDED: {
     statusCode: 409,
-    code: "EXCHANGE_CARD_ALREADY_OFFERED",
-    message: "해당 포토카드는 이미 다른 교환 제안에 사용 중입니다.",
-  },
-  EXCHANGE_OFFER_FORBIDDEN: {
-    statusCode: 403,
-    code: "EXCHANGE_OFFER_FORBIDDEN",
-    message: "해당 교환 제안에 대한 권한이 없습니다.",
+    code: "EXCHANGE_CARD_QUANTITY_EXCEEDED",
+    message: "교환 제안 가능한 포토카드 수량을 초과했습니다.",
   },
   EXCHANGE_OFFER_NOT_FOUND: {
     statusCode: 404,
