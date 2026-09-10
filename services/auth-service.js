@@ -128,8 +128,7 @@ async function signUp(input) {
   };
 }
 
-// 로그인
-// 회원가입과 동일한 검증 진행
+// 로그인 입력값 검증
 async function login(input) {
   if (
     input === null ||
@@ -143,6 +142,12 @@ async function login(input) {
   const { email, password } = input;
   if (typeof email !== "string" || typeof password !== "string") {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const isPasswordTooLong =
+    password.length > 64 || Buffer.byteLength(password, "utf-8") > 72;
+  if (isPasswordTooLong) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
   }
 
   const normalizedEmail = email.trim().toLowerCase();

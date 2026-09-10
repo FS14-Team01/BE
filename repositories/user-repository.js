@@ -31,6 +31,12 @@ async function findUserById(userId) {
     where: {
       id: userId,
     },
+    select: {
+      id: true,
+      email: true,
+      nickname: true,
+      points: true,
+    },
   });
 }
 

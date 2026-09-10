@@ -11,7 +11,7 @@ async function signUp(req, res) {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: REFRESH_TOKEN_COOKIE_MAX_AGE_MS,
     path: "/auth",
   });
@@ -25,7 +25,7 @@ async function login(req, res) {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: REFRESH_TOKEN_COOKIE_MAX_AGE_MS,
     path: "/auth",
   });

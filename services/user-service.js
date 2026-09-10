@@ -16,8 +16,6 @@ async function getMyInfo(userId) {
     email: user.email,
     nickname: user.nickname,
     points: user.points,
-    provider: user.provider,
-    createdAt: user.createdAt,
   };
 
   return responseUser;
