@@ -19,15 +19,6 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// 테스트용 인증 미들웨어 - 지우기
-app.use((req, res, next) => {
-  req.user = {
-    id: 11,
-  };
-
-  next();
-});
-
 // route
 app.use("/auth", authRouter);
 app.use("/sales", salesRouter);

@@ -1,6 +1,6 @@
 import prisma from "../config/prisma.js";
 
-async function getNotifications(userId, isRead, limit, cursor) {
+async function findByUserId(userId, isRead, limit, cursor) {
   return prisma.notification.findMany({
     where: {
       userId,
@@ -13,9 +13,7 @@ async function getNotifications(userId, isRead, limit, cursor) {
         id: cursor,
       },
     }),
-    orderBy: {
-      id: "desc",
-    },
+    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
     select: {
       id: true,
       type: true,
@@ -82,7 +80,7 @@ async function getNotifications(userId, isRead, limit, cursor) {
   });
 }
 
-async function markAllAsRead(userId) {
+async function updateAllAsRead(userId) {
   await prisma.notification.updateMany({
     where: {
       userId,
@@ -94,7 +92,4 @@ async function markAllAsRead(userId) {
   });
 }
 
-export default {
-  getNotifications,
-  markAllAsRead,
-};
+export { findByUserId, updateAllAsRead };

@@ -1,4 +1,9 @@
-import notificationRepository from "../repositories/notification-repository.js";
+import AppError from "../errors/app-error.js";
+import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import {
+  findByUserId,
+  updateAllAsRead,
+} from "../repositories/notification-repository.js";
 
 const DEFAULT_LIMIT = 20;
 const MAX_LIMIT = 20;
@@ -12,11 +17,7 @@ function parseOptionalBoolean(isReadStr) {
   if (isReadStr === "true") return true;
   if (isReadStr === "false") return false;
 
-  const error = new Error("요청 데이터가 올바르지 않습니다.");
-  error.status = 400;
-  error.code = "INVALID_REQUEST";
-
-  throw error;
+  throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
 }
 
 // limit 쿼리 검증
@@ -24,7 +25,6 @@ function parseLimit(limitStr) {
   if (limitStr === undefined) return DEFAULT_LIMIT;
 
   const parsedLimit = Number(limitStr);
-
   if (
     Number.isInteger(parsedLimit) &&
     parsedLimit >= 1 &&
@@ -33,11 +33,7 @@ function parseLimit(limitStr) {
     return parsedLimit;
   }
 
-  const error = new Error("요청 데이터가 올바르지 않습니다.");
-  error.status = 400;
-  error.code = "INVALID_REQUEST";
-
-  throw error;
+  throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
 }
 
 // cursor 쿼리 검증
@@ -45,20 +41,14 @@ function parseCursor(cursorStr) {
   if (cursorStr === undefined) return undefined;
 
   const isPositiveInteger = CURSOR_PATTERN.test(cursorStr);
-
   if (isPositiveInteger) {
     const parsedCursor = BigInt(cursorStr);
-
     if (parsedCursor <= MAX_BIGINT) {
       return parsedCursor;
     }
   }
 
-  const error = new Error("요청 데이터가 올바르지 않습니다.");
-  error.status = 400;
-  error.code = "INVALID_REQUEST";
-
-  throw error;
+  throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
 }
 
 // BigInt ID를 응답용 문자열로 변환
@@ -123,23 +113,18 @@ function formatNotification(notification) {
         quantity: 1,
       };
     default:
-      throw new Error("서버 오류가 발생했습니다"); // 임시
+      throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
   }
 }
 
-async function getNotifications(userId, query) {
+async function getUserNotifications(userId, query) {
   // 1. query 검증
   const isRead = parseOptionalBoolean(query.isRead);
   const limit = parseLimit(query.limit);
   const cursor = parseCursor(query.cursor);
 
   // 2. 사용자 알림 조회
-  const notifications = await notificationRepository.getNotifications(
-    userId,
-    isRead,
-    limit,
-    cursor,
-  );
+  const notifications = await findByUserId(userId, isRead, limit, cursor);
 
   // 3. hasNext, nextCursor 계산
   let nextCursor = null;
@@ -163,16 +148,13 @@ async function getNotifications(userId, query) {
   };
 }
 
-async function markAllAsRead(userId) {
+async function markNotificationsAsRead(userId) {
   // 1. 사용자의 읽지 않은 알림을 모두 읽음 상태로 변경
-  await notificationRepository.markAllAsRead(userId);
+  await updateAllAsRead(userId);
 
   return {
     message: "모든 알림을 읽음 처리했습니다.",
   };
 }
 
-export default {
-  getNotifications,
-  markAllAsRead,
-};
+export { getUserNotifications, markNotificationsAsRead };

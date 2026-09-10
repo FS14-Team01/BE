@@ -1,12 +1,12 @@
-import notificationService from "../services/notification-service.js";
+import {
+  getUserNotifications,
+  markNotificationsAsRead,
+} from "../services/notification-service.js";
 
 async function getNotifications(req, res, next) {
   try {
-    const userId = req.user.id;
-    const notifications = await notificationService.getNotifications(
-      userId,
-      req.query,
-    );
+    const userId = BigInt(req.auth.userId);
+    const notifications = await getUserNotifications(userId, req.query);
     return res.status(200).json(notifications);
   } catch (error) {
     next(error);
@@ -15,8 +15,8 @@ async function getNotifications(req, res, next) {
 
 async function markAllAsRead(req, res, next) {
   try {
-    const userId = req.user.id;
-    const result = await notificationService.markAllAsRead(userId);
+    const userId = BigInt(req.auth.userId);
+    const result = await markNotificationsAsRead(userId);
     return res.status(200).json(result);
   } catch (error) {
     next(error);
