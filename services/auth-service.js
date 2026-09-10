@@ -128,4 +128,66 @@ async function signUp(input) {
   };
 }
 
-export { signUp };
+// 로그인 입력값 검증
+async function login(input) {
+  if (
+    input === null ||
+    input === undefined ||
+    typeof input !== "object" ||
+    Array.isArray(input)
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const { email, password } = input;
+  if (typeof email !== "string" || typeof password !== "string") {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const isPasswordTooLong =
+    password.length > 64 || Buffer.byteLength(password, "utf-8") > 72;
+  if (isPasswordTooLong) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
+  }
+
+  const normalizedEmail = email.trim().toLowerCase();
+  if (normalizedEmail.length < 1 || normalizedEmail.length > 254) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+  if (EMAIL_PATTERN.test(normalizedEmail) === false) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  // 유저 이메일 존재하는지 검증
+  const user = await findUserByEmail(normalizedEmail);
+
+  if (!user || user.provider !== "EMAIL" || !user.passwordHash) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
+  }
+
+  const isPasswordCorrect = await bcrypt.compare(password, user.passwordHash);
+
+  if (!isPasswordCorrect) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_CREDENTIALS);
+  }
+
+  const accessToken = generateAccessToken(user.id);
+  const refreshToken = generateRefreshToken(user.id);
+
+  const responseUser = {
+    id: String(user.id),
+    email: user.email,
+    nickname: user.nickname,
+    points: user.points,
+    provider: user.provider,
+    createdAt: user.createdAt,
+  };
+
+  return {
+    accessToken,
+    refreshToken,
+    user: responseUser,
+  };
+}
+
+export { signUp, login };
