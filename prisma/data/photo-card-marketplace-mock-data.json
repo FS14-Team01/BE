@@ -780,13 +780,13 @@
     {
       "id": 51,
       "creatorId": 10,
-      "name": "에레브 - 기본 세트 #20",
-      "imageUrl": "https://assets.tcgdex.net/en/base/base1/20/high.webp",
-      "grade": "SUPER_RARE",
+      "name": "잉어킹 - M-P 프로모 #040/M-P",
+      "imageUrl": "https://skt-pokemon.co.kr/customer/images/pokemon/card_magikarp.png",
+      "grade": "RARE",
       "category": "POKEMON",
-      "description": "번개 타입 포켓몬, HP 70, 기본 포켓몬. 기술: 전기쇼크(10), 번개펀치(30+).",
+      "description": "물 타입 포켓몬, HP 30, 기본 포켓몬. 기술: 힘차게 튀어오르기(10×, 뒷면이 나올 때까지 동전을 던져 앞면이 나온 수 × 10데미지).",
       "totalSupply": 3,
-      "createdAt": "2026-07-11T09:00:00.000Z"
+      "createdAt": "2026-09-09T09:00:00.000Z"
     },
     {
       "id": 52,
