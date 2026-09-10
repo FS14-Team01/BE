@@ -1,26 +1,26 @@
-import pointService from "../services/point-service.js";
+import {
+  createRandomPointDraw,
+  getUserPointsStatus,
+} from "../services/point-service.js";
 
-async function getMyPoint(req, res, next) {
+async function getMyPoints(req, res, next) {
   try {
-    const userId = req.user.id;
-    const data = await pointService.getMyPoint(userId);
+    const userId = BigInt(req.auth.userId);
+    const data = await getUserPointsStatus(userId);
     return res.status(200).json(data);
   } catch (error) {
     next(error);
   }
 }
 
-async function createRandomPointDraw(req, res, next) {
+async function drawRandomPoint(req, res, next) {
   try {
-    const userId = req.user.id;
-    const data = await pointService.createRandomPointDraw(userId);
+    const userId = BigInt(req.auth.userId);
+    const data = await createRandomPointDraw(userId);
     return res.status(201).json(data);
   } catch (error) {
     next(error);
   }
 }
 
-export default {
-  getMyPoint,
-  createRandomPointDraw,
-};
+export { getMyPoints, drawRandomPoint };

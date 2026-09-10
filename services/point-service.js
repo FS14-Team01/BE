@@ -1,6 +1,14 @@
 import { Prisma } from "@prisma/client";
 import prisma from "../config/prisma.js";
-import pointRepository from "../repositories/point-repository.js";
+import {
+  createPointTransaction,
+  createRandomPointDrawRecord,
+  findPointByUserId,
+  findRandomPointDrawByPeriod,
+  incrementUserPoints,
+} from "../repositories/point-repository.js";
+import AppError from "../errors/app-error.js";
+import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 
 // 응답 내 createdAt KST 형식으로 변환
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
@@ -85,16 +93,16 @@ function drawRandomPoint(list) {
   }
 }
 
-async function getMyPoint(userId) {
+async function getUserPointsStatus(userId) {
   // 1. 사용자의 포인트 조회
-  const userPoint = await pointRepository.findMyPoint(userId);
+  const userPoint = await findPointByUserId(userId);
 
   // 2.  현재 KST 날짜와 시간대 계산
   const { drawDate, hour } = getKstDate();
   const period = getPeriod(hour);
 
   // 3. RandomPointDraw 기록 조회
-  const existingDraw = await pointRepository.findRandomPointDraw(
+  const existingDraw = await findRandomPointDrawByPeriod(
     userId,
     drawDate,
     period,
@@ -116,7 +124,7 @@ async function createRandomPointDraw(userId) {
   const period = getPeriod(hour);
 
   // 2. RandomPointDraw 기록 조회
-  const existingDraw = await pointRepository.findRandomPointDraw(
+  const existingDraw = await findRandomPointDrawByPeriod(
     userId,
     drawDate,
     period,
@@ -124,12 +132,7 @@ async function createRandomPointDraw(userId) {
 
   // 3. 이미 기록이 있으면 409에러 반환
   if (existingDraw) {
-    const error = new Error(
-      "현재 시간대의 랜덤 포인트 기회를 이미 사용했습니다.",
-    );
-    error.status = 409;
-    error.code = "RANDOM_BOX_ALREADY_USED";
-    throw error;
+    throw new AppError(ERROR_DEFINITIONS.RANDOM_BOX_ALREADY_USED);
   }
 
   // 4. 랜덤 포인트(amount) 생성
@@ -151,23 +154,16 @@ async function createRandomPointDraw(userId) {
   try {
     // 6. 트랙잭션
     const result = await prisma.$transaction(async (tx) => {
-      const newRandomPointDraw = await pointRepository.createRandomPointDraw(
-        tx,
-        {
-          userId,
-          drawDate,
-          period,
-          amount,
-        },
-      );
-
-      const updatedUser = await pointRepository.incrementUserPoint(
-        tx,
+      const newRandomPointDraw = await createRandomPointDrawRecord(tx, {
         userId,
+        drawDate,
+        period,
         amount,
-      );
+      });
 
-      await pointRepository.createPointTransaction(tx, {
+      const updatedUser = await incrementUserPoints(tx, userId, amount);
+
+      await createPointTransaction(tx, {
         userId,
         amount,
         type: "RANDOM_BOX",
@@ -191,12 +187,7 @@ async function createRandomPointDraw(userId) {
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === "P2002"
     ) {
-      const alreadyUsedError = new Error(
-        "현재 시간대의 랜덤 포인트 기회를 이미 사용했습니다.",
-      );
-      alreadyUsedError.status = 409;
-      alreadyUsedError.code = "RANDOM_BOX_ALREADY_USED";
-      throw alreadyUsedError;
+      throw new AppError(ERROR_DEFINITIONS.RANDOM_BOX_ALREADY_USED);
     } else {
       // 그 외 오류
       throw error;
@@ -204,7 +195,4 @@ async function createRandomPointDraw(userId) {
   }
 }
 
-export default {
-  getMyPoint,
-  createRandomPointDraw,
-};
+export { createRandomPointDraw, getUserPointsStatus };

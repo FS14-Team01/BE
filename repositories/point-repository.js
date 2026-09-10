@@ -1,7 +1,7 @@
 import prisma from "../config/prisma.js";
 
 // 사용자 포인트 조회
-async function findMyPoint(userId) {
+async function findPointByUserId(userId) {
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
@@ -15,7 +15,7 @@ async function findMyPoint(userId) {
 }
 
 // RandomPointDraw 조회
-async function findRandomPointDraw(userId, date, period) {
+async function findRandomPointDrawByPeriod(userId, date, period) {
   return await prisma.randomPointDraw.findUnique({
     where: {
       userId_drawDate_period: {
@@ -28,14 +28,14 @@ async function findRandomPointDraw(userId, date, period) {
 }
 
 // RandomPointDraw 생성
-async function createRandomPointDraw(tx, data) {
+async function createRandomPointDrawRecord(tx, data) {
   return await tx.randomPointDraw.create({
     data,
   });
 }
 
 // User point 증가
-async function incrementUserPoint(tx, userId, amount) {
+async function incrementUserPoints(tx, userId, amount) {
   return await tx.user.update({
     where: {
       id: userId,
@@ -58,10 +58,10 @@ async function createPointTransaction(tx, data) {
   });
 }
 
-export default {
-  findMyPoint,
-  findRandomPointDraw,
-  createRandomPointDraw,
-  incrementUserPoint,
+export {
   createPointTransaction,
+  createRandomPointDrawRecord,
+  findPointByUserId,
+  findRandomPointDrawByPeriod,
+  incrementUserPoints,
 };
