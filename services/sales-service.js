@@ -155,7 +155,7 @@ export async function getSaleDetailById(saleId, userId) {
 
   const sale = await findSaleDetailById(parsedSaleId);
 
-  if (!sale) {
+  if (!sale || sale.status === "CANCELLED") {
     throw new AppError(ERROR_DEFINITIONS.SALE_NOT_FOUND);
   }
 
