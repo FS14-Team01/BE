@@ -4,7 +4,7 @@ import {
   cancelPendingExchangeOffers,
   createExchangeRejectedNotifications,
   findPendingExchangeOffers,
-} from "../repositories/sale-stop-repository.js";
+} from "../repositories/sales-stop-repository.js";
 import {
   findSaleDetailById,
   findSaleForManagementById,
@@ -169,7 +169,6 @@ export async function getSaleDetailById(saleId, userId) {
   return {
     id: sale.id.toString(),
     isOwner,
-    ownedQuantity: isOwner ? ownedQuantity : null,
     maxQuantity: isOwner ? maxQuantity : null,
     initialQuantity: sale.initialQuantity,
     remainingQuantity: sale.remainingQuantity,
