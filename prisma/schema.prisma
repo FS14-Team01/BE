@@ -103,6 +103,7 @@ model Exchange {
   saleListingId BigInt
   requesterId   BigInt
   offeredCardId BigInt
+  offeredDescription String?
   status        ExchangeStatus @default(PENDING)
   createdAt     DateTime       @default(now())
   resolvedAt    DateTime?
