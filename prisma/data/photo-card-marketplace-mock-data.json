@@ -5847,6 +5847,7 @@
       "saleListingId": 1,
       "requesterId": 9,
       "offeredCardId": 17,
+      "offeredDescription": "배드바츠마루 카드로 시나모롤 카드와 교환을 제안합니다.",
       "status": "ACCEPTED",
       "createdAt": "2026-08-02T11:00:00.000Z",
       "resolvedAt": "2026-08-02T17:00:00.000Z"
@@ -5856,6 +5857,7 @@
       "saleListingId": 3,
       "requesterId": 1,
       "offeredCardId": 14,
+      "offeredDescription": "리틀트윈스타 카드로 마이멜로디 카드와 교환하고 싶습니다.",
       "status": "PENDING",
       "createdAt": "2026-08-03T14:00:00.000Z",
       "resolvedAt": null
@@ -5865,6 +5867,7 @@
       "saleListingId": 4,
       "requesterId": 1,
       "offeredCardId": 14,
+      "offeredDescription": "리틀트윈스타 카드로 교환을 제안드립니다. 카드 상태를 확인해 주세요.",
       "status": "REJECTED",
       "createdAt": "2026-08-04T15:00:00.000Z",
       "resolvedAt": "2026-08-04T21:00:00.000Z"
@@ -5874,6 +5877,7 @@
       "saleListingId": 5,
       "requesterId": 1,
       "offeredCardId": 14,
+      "offeredDescription": "리틀트윈스타 카드와 포차코 카드의 교환을 제안합니다.",
       "status": "CANCELLED",
       "createdAt": "2026-08-05T16:00:00.000Z",
       "resolvedAt": "2026-08-05T22:00:00.000Z"
@@ -5883,6 +5887,7 @@
       "saleListingId": 26,
       "requesterId": 13,
       "offeredCardId": 21,
+      "offeredDescription": "초코캣 카드로 피치공주 (#003) 카드와 교환하고 싶습니다.",
       "status": "ACCEPTED",
       "createdAt": "2026-08-07T11:00:00.000Z",
       "resolvedAt": "2026-08-07T17:00:00.000Z"
