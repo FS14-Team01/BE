@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:3001
+
+### 마이갤러리 테스트용 로그인 - 200
+# @name galleryLogin
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "mock-user-14@example.com",
+  "password": "Mock1234!"
+}
+
+### 마이갤러리 보유 포토카드 목록 - 200
+GET {{baseUrl}}/users/me/ownerships?limit=12
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 검색 및 필터 - 200
+GET {{baseUrl}}/users/me/ownerships?keyword=시로키&grade=LEGENDARY&category=DIGIMON&limit=12
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 첫 페이지 - 200
+# @name galleryFirstPage
+GET {{baseUrl}}/users/me/ownerships?limit=1
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 다음 페이지 - 200
+# 위의 galleryFirstPage 요청을 먼저 실행해야 합니다.
+GET {{baseUrl}}/users/me/ownerships?limit=1&cursor={{galleryFirstPage.response.body.$.nextCursor}}
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 잘못된 limit - 400
+GET {{baseUrl}}/users/me/ownerships?limit=13
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 잘못된 등급 - 400
+GET {{baseUrl}}/users/me/ownerships?grade=INVALID_GRADE
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 잘못된 cursor - 400
+GET {{baseUrl}}/users/me/ownerships?cursor=invalid-id
+Accept: application/json
+Authorization: Bearer {{galleryLogin.response.body.$.accessToken}}
+
+### 마이갤러리 인증 없음 - 401
+GET {{baseUrl}}/users/me/ownerships
+Accept: application/json
