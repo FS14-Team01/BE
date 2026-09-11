@@ -6,6 +6,7 @@ import errorHandler from "./middlewares/error-handler.js";
 import authRouter from "./routes/auth-router.js";
 import salesRouter from "./routes/sales-routes.js";
 import userRouter from "./routes/user-router.js";
+import notificationRouter from "./routes/notification-route.js";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use("/auth", authRouter);
 app.use("/sales", salesRouter);
 app.use("/users", userRouter);
+app.use("/notifications", notificationRouter);
 
 // error middleware
 app.use(errorHandler);
