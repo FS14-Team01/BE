@@ -42,4 +42,15 @@ async function refreshAccessToken(req, res) {
   return res.status(200).json({ accessToken });
 }
 
-export { signUp, login, refreshAccessToken };
+function logout(req, res) {
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/auth",
+  });
+
+  return res.status(200).json({ message: "로그아웃되었습니다." });
+}
+
+export { signUp, login, refreshAccessToken, logout };
