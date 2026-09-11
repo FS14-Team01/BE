@@ -1,4 +1,5 @@
 import {
+  acceptExchangeOffer,
   getExchangeOffersBySale,
   rejectExchangeOffer,
 } from "../services/exchange-service.js";
@@ -30,6 +31,12 @@ async function updateExchangeOfferStatus(req, res, next) {
 
     if (status === "REJECTED") {
       const result = await rejectExchangeOffer({ exchangeOfferId, userId });
+
+      return res.status(200).json(result);
+    }
+
+    if (status === "ACCEPTED") {
+      const result = await acceptExchangeOffer({ exchangeOfferId, userId });
 
       return res.status(200).json(result);
     }

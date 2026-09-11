@@ -1,3 +1,4 @@
+import prisma from "../config/prisma.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 import {
@@ -5,6 +6,12 @@ import {
   findExchangeOffersBySaleId,
   findExchangeOfferById,
   rejectExchangeOfferById,
+  findOwnershipByOwnerAndCard,
+  decreaseOwnershipQuantity,
+  increaseOwnershipQuantity,
+  decreaseSaleListingQuantity,
+  acceptExchangeOfferById,
+  rejectOtherPendingExchangeOffersBySaleId,
 } from "../repositories/exchange-repository.js";
 
 // sales-service.js 기준에 맞춤
@@ -55,13 +62,13 @@ async function rejectExchangeOffer({ exchangeOfferId, userId }) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
 
-  const offeredExchange = await findExchangeOfferById(parsedExchangeOfferId);
+  const exchangeOffer = await findExchangeOfferById(parsedExchangeOfferId);
 
-  if (!offeredExchange) {
+  if (!exchangeOffer) {
     throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
   }
 
-  const saleListing = await findSaleListingById(offeredExchange.saleListingId);
+  const saleListing = await findSaleListingById(exchangeOffer.saleListingId);
 
   // DB 무결성이 깨진 비정상 상황 방어
   if (!saleListing) {
@@ -75,16 +82,126 @@ async function rejectExchangeOffer({ exchangeOfferId, userId }) {
     throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
   }
 
-  if (offeredExchange.status !== "PENDING") {
+  if (exchangeOffer.status !== "PENDING") {
     throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
   }
 
-  const rejectedExchange = await rejectExchangeOfferById(offeredExchange.id);
+  const rejectedExchangeOffer = await rejectExchangeOfferById(exchangeOffer.id);
 
   return {
-    ...rejectedExchange,
-    id: rejectedExchange.id.toString(),
+    ...rejectedExchangeOffer,
+    id: rejectedExchangeOffer.id.toString(),
   };
 }
 
-export { getExchangeOffersBySale, rejectExchangeOffer };
+async function acceptExchangeOffer({ exchangeOfferId, userId }) {
+  // exchangeOfferId 형식 검증
+  if (!POSITIVE_INTEGER_PATTERN.test(exchangeOfferId)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedExchangeOfferId = BigInt(exchangeOfferId);
+
+  if (parsedExchangeOfferId > MAX_DATABASE_BIGINT) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedUserId = BigInt(userId);
+
+  // 교환 제안 조회
+  const acceptedExchangeOffer = await prisma.$transaction(async (tx) => {
+    const exchangeOffer = await findExchangeOfferById(
+      parsedExchangeOfferId,
+      tx,
+    );
+
+    if (!exchangeOffer) {
+      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+    }
+
+    // 판매 중인 카드 조회
+    const saleListing = await findSaleListingById(
+      exchangeOffer.saleListingId,
+      tx,
+    );
+
+    if (!saleListing) {
+      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+    }
+
+    // 판매자 권한 검증
+    if (parsedUserId !== saleListing.sellerId) {
+      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+    }
+
+    // 교환 제안 상태 검증
+    if (exchangeOffer.status !== "PENDING") {
+      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
+    }
+
+    if (saleListing.status === "SOLD_OUT") {
+      throw new AppError(ERROR_DEFINITIONS.SALE_SOLD_OUT);
+    }
+
+    if (saleListing.status === "CANCELLED") {
+      throw new AppError(ERROR_DEFINITIONS.SALE_CANCELLED);
+    }
+
+    // 판매 수량 검증
+    if (saleListing.remainingQuantity < 1) {
+      throw new AppError(ERROR_DEFINITIONS.INSUFFICIENT_SALE_QUANTITY);
+    }
+
+    // 교환 승인 시점 기준으로 제안 카드 보유 수량 검증
+    const requesterOwnership = await findOwnershipByOwnerAndCard(
+      exchangeOffer.requesterId,
+      exchangeOffer.offeredCardId,
+      tx,
+    );
+
+    if (!requesterOwnership || requesterOwnership.quantity < 1) {
+      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_INSUFFICIENT);
+    }
+
+    // 실제 수량 이동
+    await decreaseOwnershipQuantity(requesterOwnership, tx);
+
+    await increaseOwnershipQuantity(
+      saleListing.sellerId,
+      exchangeOffer.offeredCardId,
+      tx,
+    );
+
+    await decreaseSaleListingQuantity(saleListing, tx);
+
+    await increaseOwnershipQuantity(
+      exchangeOffer.requesterId,
+      saleListing.photoCardId,
+      tx,
+    );
+
+    // 교환 제안을 승인 상태로 변경
+    const acceptedExchangeOffer = await acceptExchangeOfferById(
+      exchangeOffer.id,
+      tx,
+    );
+
+    // 교환 제안 승인으로 판매 카드가 SOLD OUT이 되면 나머지 대기 중인 교환 제안을 거절 상태로 변경
+    if (saleListing.remainingQuantity === 1) {
+      await rejectOtherPendingExchangeOffersBySaleId(
+        saleListing.id,
+        exchangeOffer.id,
+        tx,
+      );
+    }
+
+    return acceptedExchangeOffer;
+  });
+
+  return {
+    ...acceptedExchangeOffer,
+    id: acceptedExchangeOffer.id.toString(),
+  };
+}
+
+export { getExchangeOffersBySale, rejectExchangeOffer, acceptExchangeOffer };
