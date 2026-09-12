@@ -9,10 +9,13 @@ async function getExchangeOffers(req, res, next) {
   try {
     const { saleId } = req.params;
     const userId = req.auth.userId;
+    const { cursor, limit } = req.query;
 
     const result = await getExchangeOffersBySale({
       saleId,
       userId,
+      cursor,
+      limit,
     });
 
     return res.status(200).json(result);

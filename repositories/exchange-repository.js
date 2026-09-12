@@ -14,10 +14,15 @@ async function findSaleListingById(saleId, db = prisma) {
 }
 
 // 정책 변경으로 PENDING / ACCEPTED / REJECTED / CANCELLED 상태를 구분 없이 함께 조회
-async function findExchangeOffersBySaleId(saleId) {
+async function findExchangeOffersBySaleId(saleId, { cursor, take }) {
   return prisma.exchange.findMany({
     where: { saleListingId: saleId },
-    orderBy: { createdAt: "asc" },
+    take,
+    ...(cursor && {
+      cursor: { id: cursor },
+      skip: 1,
+    }),
+    orderBy: [{ createdAt: "asc" }, { id: "asc" }],
     select: {
       id: true,
       status: true,

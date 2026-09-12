@@ -18,7 +18,11 @@ import {
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
 
-async function getExchangeOffersBySale({ saleId, userId }) {
+// 공통 페이지네이션 정책
+const DEFAULT_LIMIT = 12;
+const MAX_LIMIT = 12;
+
+async function getExchangeOffersBySale({ saleId, userId, cursor, limit }) {
   if (!POSITIVE_INTEGER_PATTERN.test(saleId)) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
@@ -27,6 +31,30 @@ async function getExchangeOffersBySale({ saleId, userId }) {
 
   if (parsedSaleId > MAX_DATABASE_BIGINT) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedLimit = limit === undefined ? DEFAULT_LIMIT : Number(limit);
+
+  if (
+    !Number.isInteger(parsedLimit) ||
+    parsedLimit < 1 ||
+    parsedLimit > MAX_LIMIT
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  let parsedCursor;
+
+  if (cursor !== undefined) {
+    if (!POSITIVE_INTEGER_PATTERN.test(cursor)) {
+      throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+    }
+
+    parsedCursor = BigInt(cursor);
+
+    if (parsedCursor > MAX_DATABASE_BIGINT) {
+      throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+    }
   }
 
   const saleListing = await findSaleListingById(parsedSaleId);
@@ -39,9 +67,17 @@ async function getExchangeOffersBySale({ saleId, userId }) {
     throw new AppError(ERROR_DEFINITIONS.FORBIDDEN);
   }
 
-  const exchangeOffers = await findExchangeOffersBySaleId(parsedSaleId);
+  const exchangeOffers = await findExchangeOffersBySaleId(parsedSaleId, {
+    cursor: parsedCursor,
+    take: parsedLimit + 1,
+  });
 
-  return exchangeOffers.map((exchangeOffer) => ({
+  const hasNextPage = exchangeOffers.length > parsedLimit;
+  const currentPage = hasNextPage
+    ? exchangeOffers.slice(0, parsedLimit)
+    : exchangeOffers;
+
+  const items = currentPage.map((exchangeOffer) => ({
     ...exchangeOffer,
     id: exchangeOffer.id.toString(),
     saleListing: {
@@ -49,6 +85,11 @@ async function getExchangeOffersBySale({ saleId, userId }) {
       price: exchangeOffer.saleListing.price.toString(),
     },
   }));
+
+  return {
+    items,
+    nextCursor: hasNextPage ? items[items.length - 1].id : null,
+  };
 }
 
 async function rejectExchangeOffer({ exchangeOfferId, userId }) {
