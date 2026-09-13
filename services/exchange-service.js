@@ -132,7 +132,6 @@ async function rejectExchangeOffer({ exchangeOfferId, userId }) {
   return {
     ...rejectedExchangeOffer,
     id: rejectedExchangeOffer.id.toString(),
-    saleListingId: rejectedExchangeOffer.saleListingId.toString(),
   };
 }
 

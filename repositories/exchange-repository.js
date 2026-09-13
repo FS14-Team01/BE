@@ -71,7 +71,6 @@ async function rejectExchangeOfferById(exchangeOfferId) {
     },
     select: {
       id: true,
-      saleListingId: true,
       status: true,
       resolvedAt: true,
     },
