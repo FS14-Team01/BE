@@ -64,7 +64,7 @@ async function getExchangeOffersBySale({ saleId, userId, cursor, limit }) {
   }
 
   if (saleListing.sellerId !== BigInt(userId)) {
-    throw new AppError(ERROR_DEFINITIONS.FORBIDDEN);
+    throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
   }
 
   const exchangeOffers = await findExchangeOffersBySaleId(parsedSaleId, {
@@ -80,15 +80,12 @@ async function getExchangeOffersBySale({ saleId, userId, cursor, limit }) {
   const items = currentPage.map((exchangeOffer) => ({
     ...exchangeOffer,
     id: exchangeOffer.id.toString(),
-    saleListing: {
-      ...exchangeOffer.saleListing,
-      price: exchangeOffer.saleListing.price.toString(),
-    },
   }));
 
   return {
     items,
     nextCursor: hasNextPage ? items[items.length - 1].id : null,
+    hasNext: hasNextPage,
   };
 }
 

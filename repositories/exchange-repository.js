@@ -26,6 +26,7 @@ async function findExchangeOffersBySaleId(saleId, { cursor, take }) {
     select: {
       id: true,
       status: true,
+      offeredDescription: true,
       requester: {
         select: {
           nickname: true,
@@ -37,7 +38,6 @@ async function findExchangeOffersBySaleId(saleId, { cursor, take }) {
           imageUrl: true,
           grade: true,
           category: true,
-          description: true,
         },
       },
       saleListing: {
