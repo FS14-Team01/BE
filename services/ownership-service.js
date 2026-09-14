@@ -136,7 +136,7 @@ async function getMyOwnerships(userId, query) {
   const summary = summaryRows.reduce(
     (result, ownership) => {
       result.totalQuantity += ownership.quantity;
-      result.gradeQuantities[ownership.photoCard.grade] += ownership.quantity;
+      result.gradeQuantities[ownership.grade] = ownership.quantity;
 
       return result;
     },

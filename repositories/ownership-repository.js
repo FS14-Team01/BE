@@ -48,20 +48,18 @@ async function findOwnershipsByOwnerId({
 }
 
 async function findOwnershipSummaryByOwnerId(ownerId) {
-  return prisma.ownership.findMany({
-    where: {
-      ownerId,
-      quantity: { gt: 0 },
-    },
-    select: {
-      quantity: true,
-      photoCard: {
-        select: {
-          grade: true,
-        },
-      },
-    },
-  });
+  return prisma.$queryRaw`
+    SELECT
+      pc.grade,
+      SUM(o.quantity)::int AS quantity
+    FROM "Ownership" AS o
+    INNER JOIN "PhotoCard" AS pc
+      ON pc.id = o."photoCardId"
+    WHERE
+      o."ownerId" = ${ownerId}
+      AND o.quantity > 0
+    GROUP BY pc.grade
+  `;
 }
 
 export { findOwnershipsByOwnerId, findOwnershipSummaryByOwnerId };
