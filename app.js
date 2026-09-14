@@ -6,6 +6,7 @@ import errorHandler from "./middlewares/error-handler.js";
 import authRouter from "./routes/auth-router.js";
 import salesRouter from "./routes/sales-routes.js";
 import userRouter from "./routes/user-router.js";
+import exchangeRouter from "./routes/exchange-router.js";
 import pointRouter from "./routes/point-route.js";
 import notificationRouter from "./routes/notification-route.js";
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use("/auth", authRouter);
 app.use("/sales", salesRouter);
 app.use("/users", userRouter);
+app.use("/exchange-offers", exchangeRouter);
 app.use("/points", pointRouter);
 app.use("/notifications", notificationRouter);
 
