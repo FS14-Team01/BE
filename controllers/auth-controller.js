@@ -1,6 +1,7 @@
 import {
   signUp as signUpService,
   login as loginService,
+  refreshAccessToken as refreshAccessTokenService,
 } from "../services/auth-service.js";
 
 const REFRESH_TOKEN_COOKIE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
@@ -33,4 +34,23 @@ async function login(req, res) {
   return res.status(200).json({ accessToken, user });
 }
 
-export { signUp, login };
+async function refreshAccessToken(req, res) {
+  const refreshToken = req.cookies?.refreshToken;
+
+  const { accessToken } = await refreshAccessTokenService(refreshToken);
+
+  return res.status(200).json({ accessToken });
+}
+
+function logout(req, res) {
+  res.clearCookie("refreshToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/auth",
+  });
+
+  return res.status(200).json({ message: "로그아웃되었습니다." });
+}
+
+export { signUp, login, refreshAccessToken, logout };

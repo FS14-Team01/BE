@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import { Prisma } from "@prisma/client";
 import AppError from "../errors/app-error.js";
 import bcrypt from "bcrypt";
@@ -5,13 +6,20 @@ import {
   findUserByEmail,
   findUserByNickname,
   createUser,
+  findUserById,
 } from "../repositories/user-repository.js";
-import { generateAccessToken, generateRefreshToken } from "../lib/token.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+  verifyRefreshToken,
+} from "../lib/token.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NICKNAME_PATTERN = /^[가-힣a-zA-Z0-9_]+$/;
 const BCRYPT_SALT_ROUNDS = 10;
+const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
+const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
 
 async function signUp(input) {
   // 전달된 값이 null이거나, 전달되지 않았거나, 객체가 아니거나, 배열이라면 거부
@@ -190,4 +198,43 @@ async function login(input) {
   };
 }
 
-export { signUp, login };
+// Refresh Access Token
+async function refreshAccessToken(refreshToken) {
+  if (typeof refreshToken !== "string" || refreshToken.length === 0) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REFRESH_TOKEN);
+  }
+
+  let payload;
+
+  try {
+    payload = verifyRefreshToken(refreshToken);
+  } catch (error) {
+    if (error instanceof jwt.TokenExpiredError) {
+      throw new AppError(ERROR_DEFINITIONS.REFRESH_TOKEN_EXPIRED);
+    }
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REFRESH_TOKEN);
+  }
+
+  const userId = payload?.userId;
+  const isInvalidUserId =
+    typeof userId !== "string" || !POSITIVE_INTEGER_PATTERN.test(userId);
+
+  if (isInvalidUserId) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REFRESH_TOKEN);
+  }
+
+  const parsedUserId = BigInt(userId);
+  if (parsedUserId > MAX_DATABASE_BIGINT) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REFRESH_TOKEN);
+  }
+
+  const user = await findUserById(parsedUserId);
+  if (user === null) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REFRESH_TOKEN);
+  }
+
+  const accessToken = generateAccessToken(user.id);
+  return { accessToken };
+}
+
+export { signUp, login, refreshAccessToken };
