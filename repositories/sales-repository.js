@@ -76,6 +76,41 @@ export function findSellerOwnership(database, sellerId, photoCardId) {
   });
 }
 
+export function decreaseSellerOwnershipQuantity(
+  database,
+  sellerId,
+  photoCardId,
+  currentQuantity,
+  quantity,
+) {
+  const where = {
+    ownerId_photoCardId: {
+      ownerId: sellerId,
+      photoCardId,
+    },
+  };
+
+  if (currentQuantity === quantity) {
+    return database.ownership.delete({ where });
+  }
+
+  return database.ownership.update({
+    where,
+    data: {
+      quantity: {
+        decrement: quantity,
+      },
+    },
+  });
+}
+
+export function createSaleListing(database, saleData) {
+  return database.saleListing.create({
+    data: saleData,
+    select: SALE_MANAGEMENT_SELECT,
+  });
+}
+
 export function findSellerOwnershipByIds(sellerId, photoCardId) {
   return findSellerOwnership(prisma, sellerId, photoCardId);
 }
