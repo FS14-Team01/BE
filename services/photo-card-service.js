@@ -56,6 +56,9 @@ export async function createPhotoCardService(
   data,
   imageFile
 ) {
+  // JWT에서 전달된 문자열 userId를 Prisma BigInt 타입에 맞게 변환
+  const parsedUserId = BigInt(userId);
+
   const {
     name,
     grade,
@@ -80,14 +83,20 @@ export async function createPhotoCardService(
     );
   }
 
-  // 발행 수량 검사
+  // 발행 수량 형식 및 최소값 검사
   if (
     !Number.isInteger(parsedTotalSupply) ||
-    parsedTotalSupply < 1 ||
-    parsedTotalSupply > 10
+    parsedTotalSupply < 1
   ) {
     throw new AppError(
       ERROR_DEFINITIONS.INVALID_PHOTO_CARD_SUPPLY
+    );
+  }
+
+  // 최대 발행 수량 검사
+  if (parsedTotalSupply > 10) {
+    throw new AppError(
+      ERROR_DEFINITIONS.PHOTO_CARD_ISSUE_LIMIT_EXCEEDED
     );
   }
 
@@ -109,7 +118,7 @@ export async function createPhotoCardService(
   const startOfWeek = getStartOfWeekKST();
 
   const createdCount = await countCreatedPhotoCards(
-    userId,
+    parsedUserId,
     startOfWeek
   );
 
@@ -140,16 +149,15 @@ export async function createPhotoCardService(
   const imageUrl = uploadResult.secure_url;
 
   // 포토카드 + 소유권 생성
-  const result =
-    await createPhotoCardWithOwnership({
-      userId,
-      name,
-      imageUrl,
-      grade,
-      category,
-      description,
-      totalSupply: parsedTotalSupply,
-    });
+  const result = await createPhotoCardWithOwnership({
+    userId: parsedUserId,
+    name,
+    imageUrl,
+    grade,
+    category,
+    description,
+    totalSupply: parsedTotalSupply,
+  });
 
   // Prisma BigInt → JSON 응답용 문자열 변환
   return {
