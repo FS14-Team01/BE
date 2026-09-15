@@ -80,6 +80,10 @@ function formatNotification(notification) {
 
   switch (notification.type) {
     case "CARD_SOLD":
+      if (!notification.relatedPurchase) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedPurchase.buyer.nickname,
@@ -88,6 +92,10 @@ function formatNotification(notification) {
         quantity: notification.relatedPurchase.quantity,
       };
     case "CARD_SOLD_OUT":
+      if (!notification.relatedSaleListing) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: null,
@@ -96,6 +104,10 @@ function formatNotification(notification) {
         quantity: 0,
       };
     case "EXCHANGE_OFFER_RECEIVED":
+      if (!notification.relatedExchange) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.requester.nickname,
@@ -105,6 +117,10 @@ function formatNotification(notification) {
       };
     case "EXCHANGE_ACCEPTED":
     case "EXCHANGE_REJECTED":
+      if (!notification.relatedExchange) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.saleListing.seller.nickname,
