@@ -79,9 +79,21 @@ export async function createPhotoCardService(
     );
   }
 
-  // 필수값 검사
+  // 카드 이름이 문자열인지, 공백만 입력됐는지 검사
   if (
-    !name ||
+    typeof name !== "string" ||
+    !name.trim()
+  ) {
+    throw new AppError(
+      ERROR_DEFINITIONS.INVALID_REQUEST
+    );
+  }
+
+  // 앞뒤 공백 제거한 이름 사용
+  const trimmedName = name.trim();
+
+  // 나머지 필수값 검사
+  if (
     !grade ||
     !category ||
     !totalSupply
@@ -116,7 +128,9 @@ export async function createPhotoCardService(
   }
 
   // 카테고리 검사
-  if (!ALLOWED_CATEGORIES.includes(category)) {
+  if (
+    !ALLOWED_CATEGORIES.includes(category)
+  ) {
     throw new AppError(
       ERROR_DEFINITIONS.INVALID_REQUEST
     );
@@ -133,7 +147,8 @@ export async function createPhotoCardService(
 
   if (createdCount >= 3) {
     throw new AppError(
-      ERROR_DEFINITIONS.PHOTO_CARD_CREATION_LIMIT_EXCEEDED
+      ERROR_DEFINITIONS
+        .PHOTO_CARD_CREATION_LIMIT_EXCEEDED
     );
   }
 
@@ -155,7 +170,9 @@ export async function createPhotoCardService(
     }
   );
 
-  const imageUrl = uploadResult.secure_url;
+  const imageUrl =
+    uploadResult.secure_url;
+
   const imagePublicId =
     uploadResult.public_id;
 
@@ -166,7 +183,7 @@ export async function createPhotoCardService(
     result =
       await createPhotoCardWithOwnership({
         userId: parsedUserId,
-        name,
+        name: trimmedName,
         imageUrl,
         grade,
         category,
