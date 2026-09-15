@@ -1,9 +1,20 @@
 import {
   createSaleListing,
   getSaleDetailById,
+  getSaleList,
   stopSaleById,
   updateSaleById,
 } from "../services/sales-service.js";
+
+export async function getSales(req, res, next) {
+  try {
+    const saleList = await getSaleList(req.query);
+
+    return res.status(200).json(saleList);
+  } catch (error) {
+    return next(error);
+  }
+}
 
 export async function createSale(req, res, next) {
   try {
