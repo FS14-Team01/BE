@@ -187,8 +187,7 @@ export function findSales({
 }) {
   return prisma.saleListing.findMany({
     where: {
-      // 취소된 판매는 목록에 노출하지 않는다
-      ...(status ? { status } : { status: { in: ["ON_SALE", "SOLD_OUT"] } }),
+      ...(status && { status }),
       photoCard: {
         ...(keyword && {
           name: {
