@@ -33,7 +33,8 @@ function getStartOfWeekKST() {
   const day = kstNow.getUTCDay();
 
   // 이번 주 월요일까지 빼야 하는 날짜
-  const diffToMonday = day === 0 ? 6 : day - 1;
+  const diffToMonday =
+    day === 0 ? 6 : day - 1;
 
   const startOfWeek = new Date(kstNow);
 
@@ -47,7 +48,8 @@ function getStartOfWeekKST() {
 
   // 실제 UTC Date로 변환
   return new Date(
-    startOfWeek.getTime() - 9 * 60 * 60 * 1000
+    startOfWeek.getTime() -
+      9 * 60 * 60 * 1000
   );
 }
 
@@ -56,7 +58,7 @@ export async function createPhotoCardService(
   data,
   imageFile
 ) {
-  // JWT에서 전달된 문자열 userId를 Prisma BigInt 타입에 맞게 변환
+  // JWT 문자열 userId → Prisma BigInt
   const parsedUserId = BigInt(userId);
 
   const {
@@ -67,7 +69,8 @@ export async function createPhotoCardService(
     totalSupply,
   } = data;
 
-  const parsedTotalSupply = Number(totalSupply);
+  const parsedTotalSupply =
+    Number(totalSupply);
 
   // 이미지 필수
   if (!imageFile) {
@@ -77,7 +80,12 @@ export async function createPhotoCardService(
   }
 
   // 필수값 검사
-  if (!name || !grade || !category || !totalSupply) {
+  if (
+    !name ||
+    !grade ||
+    !category ||
+    !totalSupply
+  ) {
     throw new AppError(
       ERROR_DEFINITIONS.INVALID_REQUEST
     );
@@ -117,10 +125,11 @@ export async function createPhotoCardService(
   // 이번 주 생성 횟수 확인
   const startOfWeek = getStartOfWeekKST();
 
-  const createdCount = await countCreatedPhotoCards(
-    parsedUserId,
-    startOfWeek
-  );
+  const createdCount =
+    await countCreatedPhotoCards(
+      parsedUserId,
+      startOfWeek
+    );
 
   if (createdCount >= 3) {
     throw new AppError(
@@ -147,31 +156,59 @@ export async function createPhotoCardService(
   );
 
   const imageUrl = uploadResult.secure_url;
+  const imagePublicId =
+    uploadResult.public_id;
 
-  // 포토카드 + 소유권 생성
-  const result = await createPhotoCardWithOwnership({
-    userId: parsedUserId,
-    name,
-    imageUrl,
-    grade,
-    category,
-    description,
-    totalSupply: parsedTotalSupply,
-  });
+  let result;
+
+  try {
+    // 포토카드 + 최초 소유권 생성
+    result =
+      await createPhotoCardWithOwnership({
+        userId: parsedUserId,
+        name,
+        imageUrl,
+        grade,
+        category,
+        description,
+        totalSupply:
+          parsedTotalSupply,
+      });
+  } catch (error) {
+    try {
+      // DB 저장 실패 시 Cloudinary 이미지 정리
+      if (imagePublicId) {
+        await cloudinary.uploader.destroy(
+          imagePublicId
+        );
+      }
+    } catch (cleanupError) {
+      // 정리 실패가 원래 DB 오류를 덮지 않도록 로그만 남김
+      console.error(
+        "Cloudinary 이미지 정리 실패:",
+        cleanupError
+      );
+    }
+
+    throw error;
+  }
 
   // Prisma BigInt → JSON 응답용 문자열 변환
   return {
     photoCard: {
       ...result.photoCard,
       id: result.photoCard.id.toString(),
-      creatorId: result.photoCard.creatorId.toString(),
+      creatorId:
+        result.photoCard.creatorId.toString(),
     },
 
     ownership: {
       ...result.ownership,
       id: result.ownership.id.toString(),
-      ownerId: result.ownership.ownerId.toString(),
-      photoCardId: result.ownership.photoCardId.toString(),
+      ownerId:
+        result.ownership.ownerId.toString(),
+      photoCardId:
+        result.ownership.photoCardId.toString(),
     },
   };
 }
