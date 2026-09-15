@@ -97,6 +97,10 @@ async function getUserPointsStatus(userId) {
   // 1. 사용자의 포인트 조회
   const userPoint = await findPointByUserId(userId);
 
+  if (userPoint === null) {
+    throw new AppError(ERROR_DEFINITIONS.UNAUTHORIZED);
+  }
+
   // 2.  현재 KST 날짜와 시간대 계산
   const { drawDate, hour } = getKstDate();
   const period = getPeriod(hour);
@@ -153,27 +157,32 @@ async function createRandomPointDraw(userId) {
 
   try {
     // 6. 트랙잭션
-    const result = await prisma.$transaction(async (tx) => {
-      const newRandomPointDraw = await createRandomPointDrawRecord(tx, {
-        userId,
-        drawDate,
-        period,
-        amount,
-      });
+    const result = await prisma.$transaction(
+      async (tx) => {
+        const newRandomPointDraw = await createRandomPointDrawRecord(tx, {
+          userId,
+          drawDate,
+          period,
+          amount,
+        });
 
-      const updatedUser = await incrementUserPoints(tx, userId, amount);
+        const updatedUser = await incrementUserPoints(tx, userId, amount);
 
-      await createPointTransaction(tx, {
-        userId,
-        amount,
-        type: "RANDOM_BOX",
-      });
+        await createPointTransaction(tx, {
+          userId,
+          amount,
+          type: "RANDOM_BOX",
+        });
 
-      return {
-        randomPointDraw: newRandomPointDraw,
-        points: updatedUser.points,
-      };
-    });
+        return {
+          randomPointDraw: newRandomPointDraw,
+          points: updatedUser.points,
+        };
+      },
+      {
+        isolationLevel: "Serializable",
+      },
+    );
 
     // 7. 성공 시 응답 반환
     return formatRandomPointDrawResponse(
