@@ -62,8 +62,8 @@ async function findExchangeOfferById(exchangeOfferId, db = prisma) {
   });
 }
 
-async function rejectExchangeOfferById(exchangeOfferId) {
-  return prisma.exchange.update({
+async function rejectExchangeOfferById(exchangeOfferId, db = prisma) {
+  return db.exchange.update({
     where: { id: exchangeOfferId },
     data: {
       status: "REJECTED",
@@ -73,6 +73,20 @@ async function rejectExchangeOfferById(exchangeOfferId) {
       id: true,
       status: true,
       resolvedAt: true,
+    },
+  });
+}
+
+async function createExchangeRejectedNotification(
+  userId,
+  exchangeOfferId,
+  db = prisma,
+) {
+  return db.notification.create({
+    data: {
+      userId,
+      type: "EXCHANGE_REJECTED",
+      relatedExchangeId: exchangeOfferId,
     },
   });
 }
@@ -142,6 +156,38 @@ async function acceptExchangeOfferById(exchangeOfferId, db = prisma) {
   });
 }
 
+async function createExchangeAcceptedNotification(
+  userId,
+  exchangeOfferId,
+  db = prisma,
+) {
+  return db.notification.create({
+    data: {
+      userId,
+      type: "EXCHANGE_ACCEPTED",
+      relatedExchangeId: exchangeOfferId,
+    },
+  });
+}
+
+async function findOtherPendingExchangeOffersBySaleId(
+  saleListingId,
+  acceptedExchangeOfferId,
+  db = prisma,
+) {
+  return db.exchange.findMany({
+    where: {
+      saleListingId,
+      status: "PENDING",
+      id: { not: acceptedExchangeOfferId },
+    },
+    select: {
+      id: true,
+      requesterId: true,
+    },
+  });
+}
+
 async function rejectOtherPendingExchangeOffersBySaleId(
   saleListingId,
   acceptedExchangeOfferId,
@@ -165,10 +211,13 @@ export {
   findExchangeOffersBySaleId,
   findExchangeOfferById,
   rejectExchangeOfferById,
+  createExchangeRejectedNotification,
   findOwnershipByOwnerAndCard,
   decreaseOwnershipQuantity,
   increaseOwnershipQuantity,
   decreaseSaleListingQuantity,
   acceptExchangeOfferById,
+  createExchangeAcceptedNotification,
+  findOtherPendingExchangeOffersBySaleId,
   rejectOtherPendingExchangeOffersBySaleId,
 };
