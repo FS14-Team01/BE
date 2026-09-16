@@ -167,7 +167,7 @@ async function getMyOwnerships(userId, query) {
 
         // 포토카드 최초 생성자
         creator: {
-          nickname: ownership.photoCard.creator.nickname,
+          creatorNickname: ownership.photoCard.creator.nickname
         },
       },
     })),
