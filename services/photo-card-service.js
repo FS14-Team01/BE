@@ -56,6 +56,40 @@ function getStartOfWeekKST() {
   );
 }
 
+function getNextResetAtKST(startOfWeek) {
+  return new Date(
+    startOfWeek.getTime() +
+    7 * 24 * 60 * 60 * 1000
+  );
+}
+
+export async function getPhotoCardCreationStatus(userId) {
+  const parsedUserId = BigInt(userId);
+
+  const startOfWeek = getStartOfWeekKST();
+
+  const weeklyCreatedCount =
+    await countCreatedPhotoCards(
+      parsedUserId,
+      startOfWeek
+    );
+
+  const remainingCount = Math.max(
+    WEEKLY_CREATION_LIMIT - weeklyCreatedCount,
+    0
+  );
+
+  const resetsAt = getNextResetAtKST(startOfWeek);
+
+  return {
+    weeklyCreatedCount,
+    weeklyLimit: WEEKLY_CREATION_LIMIT,
+    remainingCount,
+    canCreate: remainingCount > 0,
+    resetsAt: formatToKst(resetsAt),
+  };
+}
+
 export async function createPhotoCardService(
   userId,
   data,
@@ -77,7 +111,7 @@ export async function createPhotoCardService(
   // 이미지 필수
   if (!imageFile) {
     throw new AppError(
-      ERROR_DEFINITIONS.INVALID_REQUEST
+      ERROR_DEFINITIONS.IMAGE_REQUIRED
     );
   }
 

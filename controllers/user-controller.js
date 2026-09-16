@@ -2,6 +2,7 @@ import {
   getMyOwnerships as getMyOwnershipsService,
 } from "../services/ownership-service.js";
 import { getMyInfo as getMyInfoService } from "../services/user-service.js";
+import { getPhotoCardCreationStatus } from "../services/photo-card-service.js";
 import {
   getSalesBySellerId,
   getSaleSummaryBySellerId,
@@ -12,6 +13,18 @@ export async function getMyInfo(req, res, next) {
     const user = await getMyInfoService(req.auth.userId);
 
     return res.status(200).json(user);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+export async function getMyPhotoCardCreation(req, res, next) {
+  try {
+    const status = await getPhotoCardCreationStatus(
+      req.auth.userId
+    );
+
+    return res.status(200).json(status);
   } catch (error) {
     return next(error);
   }
