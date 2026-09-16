@@ -11,7 +11,7 @@ async function findPointByUserId(userId) {
     },
   });
 
-  return user.points;
+  return user?.points ?? null;
 }
 
 // RandomPointDraw 조회
