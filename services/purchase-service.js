@@ -19,6 +19,7 @@ import { formatToKst } from "../utils/kst-time.js";
 
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
+const MAX_DATABASE_INT = 2_147_483_647;
 
 function parseDatabaseId(value, errorDefinition) {
   if (typeof value !== "string" || !POSITIVE_INTEGER_PATTERN.test(value)) {
@@ -41,7 +42,11 @@ function parseQuantity(body) {
 
   const { quantity } = body;
 
-  if (!Number.isInteger(quantity) || quantity < 1) {
+  if (
+    !Number.isSafeInteger(quantity) ||
+    quantity < 1 ||
+    quantity > MAX_DATABASE_INT
+  ) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_PURCHASE_QUANTITY);
   }
 
