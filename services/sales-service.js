@@ -9,6 +9,7 @@ import {
   createSaleListing as createSaleListingRecord,
   decreaseSellerOwnershipQuantity,
   findSaleDetailById,
+  findSales,
   findSaleForManagementById,
   findSellerOwnership,
   findSellerOwnershipByIds,
@@ -43,6 +44,21 @@ const CARD_CATEGORIES = new Set([
   "HELLO_KITTY",
   "DIGIMON",
 ]);
+const DEFAULT_LIMIT = 12;
+const MAX_LIMIT = 12;
+const DEFAULT_SORT = "recent";
+const SALE_LIST_QUERY_FIELDS = new Set([
+  "keyword",
+  "grade",
+  "category",
+  "status",
+  "sort",
+  "cursor",
+  "limit",
+]);
+const SALE_LIST_STATUSES = new Set(["ON_SALE", "SOLD_OUT"]);
+const SALE_LIST_SORTS = new Set(["recent", "priceAsc", "priceDesc"]);
+
 function parseDatabaseId(id, errorDefinition) {
   if (typeof id !== "string" || !POSITIVE_INTEGER_PATTERN.test(id)) {
     throw new AppError(errorDefinition);
@@ -439,5 +455,113 @@ export async function stopSaleById(saleId, userId) {
     remainingQuantity: stoppedSale.remainingQuantity,
     status: stoppedSale.status,
     updatedAt: stoppedSale.updatedAt,
+  };
+}
+
+function parseCursor(cursor) {
+  if (cursor === undefined) {
+    return undefined;
+  }
+
+  if (typeof cursor !== "string" || !POSITIVE_INTEGER_PATTERN.test(cursor)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedCursor = BigInt(cursor);
+
+  if (parsedCursor > MAX_DATABASE_BIGINT) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  return parsedCursor;
+}
+
+function parseLimit(limit) {
+  if (limit === undefined) {
+    return DEFAULT_LIMIT;
+  }
+
+  if (typeof limit !== "string" || !POSITIVE_INTEGER_PATTERN.test(limit)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedLimit = Number(limit);
+
+  if (parsedLimit > MAX_LIMIT) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  return parsedLimit;
+}
+
+function validateSaleListQuery(query) {
+  if (
+    !query ||
+    typeof query !== "object" ||
+    Array.isArray(query) ||
+    Object.keys(query).some((field) => !SALE_LIST_QUERY_FIELDS.has(field))
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.keyword !== undefined && typeof query.keyword !== "string") {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.grade !== undefined && !CARD_GRADES.has(query.grade)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.category !== undefined && !CARD_CATEGORIES.has(query.category)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.status !== undefined && !SALE_LIST_STATUSES.has(query.status)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.sort !== undefined && !SALE_LIST_SORTS.has(query.sort)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  return {
+    keyword: query.keyword?.trim() || undefined,
+    grade: query.grade,
+    category: query.category,
+    status: query.status,
+    sort: query.sort ?? DEFAULT_SORT,
+    cursor: parseCursor(query.cursor),
+    limit: parseLimit(query.limit),
+  };
+}
+
+export async function getSaleList(query) {
+  const filters = validateSaleListQuery(query);
+  const sales = await findSales(filters);
+  const hasNext = sales.length > filters.limit;
+  const pageItems = hasNext ? sales.slice(0, filters.limit) : sales;
+
+  return {
+    items: pageItems.map((sale) => ({
+      id: sale.id.toString(),
+      initialQuantity: sale.initialQuantity,
+      remainingQuantity: sale.remainingQuantity,
+      price: sale.price,
+      desiredGrade: sale.desiredGrade,
+      desiredCategory: sale.desiredCategory,
+      desiredDescription: sale.desiredDescription,
+      status: sale.status,
+      createdAt: sale.createdAt,
+      updatedAt: sale.updatedAt,
+      photoCard: {
+        id: sale.photoCard.id.toString(),
+        name: sale.photoCard.name,
+        imageUrl: sale.photoCard.imageUrl,
+        grade: sale.photoCard.grade,
+        category: sale.photoCard.category,
+      },
+    })),
+    nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,
+    hasNext,
   };
 }
