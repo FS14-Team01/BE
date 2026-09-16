@@ -82,17 +82,26 @@ export function findSalesBySellerId({
   });
 }
 
-export function findSaleSummaryBySellerId(sellerId) {
+export function findSaleSummaryBySellerId(sellerId, keyword) {
   return prisma.saleListing.findMany({
     where: {
       sellerId,
       status: { in: ["ON_SALE", "SOLD_OUT"] },
+      ...(keyword && {
+        photoCard: {
+          name: {
+            contains: keyword,
+            mode: "insensitive",
+          },
+        },
+      }),
     },
     select: {
-      initialQuantity: true,
+      status: true,
       photoCard: {
         select: {
           grade: true,
+          category: true,
         },
       },
     },
@@ -251,5 +260,70 @@ export function updateSaleListing(database, saleId, updateData) {
     where: { id: saleId },
     data: updateData,
     select: SALE_MANAGEMENT_SELECT,
+  });
+}
+
+const SALE_LIST_ORDER_BY = {
+  recent: [{ createdAt: "desc" }, { id: "desc" }],
+  priceAsc: [{ price: "asc" }, { id: "desc" }],
+  priceDesc: [{ price: "desc" }, { id: "desc" }],
+};
+
+export function findSales({
+  keyword,
+  grade,
+  category,
+  status,
+  sort,
+  cursor,
+  limit,
+}) {
+  return prisma.saleListing.findMany({
+    where: {
+      // 판매 내리기(CANCELLED)한 판매글은 목록에 노출하지 않는다
+      status: status ?? { in: ["ON_SALE", "SOLD_OUT"] },
+      photoCard: {
+        ...(keyword && {
+          name: {
+            contains: keyword,
+            mode: "insensitive",
+          },
+        }),
+        ...(grade && { grade }),
+        ...(category && { category }),
+      },
+    },
+    take: limit + 1,
+    ...(cursor && {
+      skip: 1,
+      cursor: { id: cursor },
+    }),
+    orderBy: SALE_LIST_ORDER_BY[sort],
+    select: {
+      id: true,
+      initialQuantity: true,
+      remainingQuantity: true,
+      price: true,
+      desiredGrade: true,
+      desiredCategory: true,
+      desiredDescription: true,
+      status: true,
+      createdAt: true,
+      updatedAt: true,
+      photoCard: {
+        select: {
+          id: true,
+          name: true,
+          imageUrl: true,
+          grade: true,
+          category: true,
+          creator: {
+            select: {
+              nickname: true,
+            },
+          },
+        },
+      },
+    },
   });
 }

@@ -3,6 +3,7 @@ import {
 } from "../services/ownership-service.js";
 import { getMyInfo as getMyInfoService } from "../services/user-service.js";
 import { getOwnershipFilterSummary } from "../services/ownership-filter-summary-service.js";
+import { getPhotoCardCreationStatus } from "../services/photo-card-service.js";
 import {
   getSalesBySellerId,
   getSaleSummaryBySellerId,
@@ -13,6 +14,18 @@ export async function getMyInfo(req, res, next) {
     const user = await getMyInfoService(req.auth.userId);
 
     return res.status(200).json(user);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+export async function getMyPhotoCardCreation(req, res, next) {
+  try {
+    const status = await getPhotoCardCreationStatus(
+      req.auth.userId
+    );
+
+    return res.status(200).json(status);
   } catch (error) {
     return next(error);
   }
@@ -52,7 +65,7 @@ export async function getMyOwnershipFilterSummary(req, res, next) {
 
 export async function getMySalesSummary(req, res, next) {
   try {
-    const summary = await getSaleSummaryBySellerId(req.auth.userId);
+    const summary = await getSaleSummaryBySellerId(req.auth.userId, req.query);
 
     return res.status(200).json(summary);
   } catch (error) {

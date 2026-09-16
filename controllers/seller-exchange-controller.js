@@ -2,8 +2,8 @@ import {
   acceptExchangeOffer,
   getExchangeOffersBySale,
   rejectExchangeOffer,
-} from "../services/exchange-service.js";
-import { validateExchangeStatus } from "../validator/exchange-validator.js";
+} from "../services/seller-exchange-service.js";
+import { validateExchangeStatus } from "../validator/seller-exchange-validator.js";
 
 async function getExchangeOffers(req, res, next) {
   try {
