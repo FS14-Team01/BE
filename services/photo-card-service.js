@@ -56,9 +56,7 @@ function getStartOfWeekKST() {
   );
 }
 
-function getNextResetAtKST() {
-  const startOfWeek = getStartOfWeekKST();
-
+function getNextResetAtKST(startOfWeek) {
   return new Date(
     startOfWeek.getTime() +
     7 * 24 * 60 * 60 * 1000
@@ -81,7 +79,7 @@ export async function getPhotoCardCreationStatus(userId) {
     0
   );
 
-  const resetsAt = getNextResetAtKST();
+  const resetsAt = getNextResetAtKST(startOfWeek);
 
   return {
     weeklyCreatedCount,
