@@ -164,6 +164,11 @@ async function getMyOwnerships(userId, query) {
         imageUrl: ownership.photoCard.imageUrl,
         grade: ownership.photoCard.grade,
         category: ownership.photoCard.category,
+
+        // 포토카드 최초 생성자
+        creator: {
+          nickname: ownership.photoCard.creator.nickname,
+        },
       },
     })),
     nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,

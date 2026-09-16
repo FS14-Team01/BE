@@ -1,10 +1,16 @@
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 import cloudinary from "../config/cloudinary.js";
+
 import {
   countCreatedPhotoCards,
   createPhotoCardWithOwnership,
 } from "../repositories/photo-card-repository.js";
+
+import {
+  formatToKst,
+  getKstNow,
+} from "../utils/kst-time.js";
 
 const ALLOWED_GRADES = [
   "COMMON",
@@ -20,14 +26,12 @@ const ALLOWED_CATEGORIES = [
   "DIGIMON",
 ];
 
-function getStartOfWeekKST() {
-  // 현재 시간
-  const now = new Date();
+const WEEKLY_CREATION_LIMIT = 3;
+const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
-  // KST(UTC+9) 기준으로 변환
-  const kstNow = new Date(
-    now.getTime() + 9 * 60 * 60 * 1000
-  );
+function getStartOfWeekKST() {
+  // 공통 시간 유틸에서 KST 기준 현재 시간 가져오기
+  const kstNow = getKstNow();
 
   // 일: 0 ~ 토: 6
   const day = kstNow.getUTCDay();
@@ -43,13 +47,12 @@ function getStartOfWeekKST() {
     startOfWeek.getUTCDate() - diffToMonday
   );
 
-  // 월요일 00:00
+  // KST 기준 월요일 00:00
   startOfWeek.setUTCHours(0, 0, 0, 0);
 
-  // 실제 UTC Date로 변환
+  // DB의 실제 UTC DateTime과 비교할 수 있도록 복원
   return new Date(
-    startOfWeek.getTime() -
-      9 * 60 * 60 * 1000
+    startOfWeek.getTime() - KST_OFFSET_MS
   );
 }
 
@@ -69,8 +72,7 @@ export async function createPhotoCardService(
     totalSupply,
   } = data;
 
-  const parsedTotalSupply =
-    Number(totalSupply);
+  const parsedTotalSupply = Number(totalSupply);
 
   // 이미지 필수
   if (!imageFile) {
@@ -145,7 +147,7 @@ export async function createPhotoCardService(
       startOfWeek
     );
 
-  if (createdCount >= 3) {
+  if (createdCount >= WEEKLY_CREATION_LIMIT) {
     throw new AppError(
       ERROR_DEFINITIONS
         .PHOTO_CARD_CREATION_LIMIT_EXCEEDED
@@ -170,27 +172,22 @@ export async function createPhotoCardService(
     }
   );
 
-  const imageUrl =
-    uploadResult.secure_url;
-
-  const imagePublicId =
-    uploadResult.public_id;
+  const imageUrl = uploadResult.secure_url;
+  const imagePublicId = uploadResult.public_id;
 
   let result;
 
   try {
     // 포토카드 + 최초 소유권 생성
-    result =
-      await createPhotoCardWithOwnership({
-        userId: parsedUserId,
-        name: trimmedName,
-        imageUrl,
-        grade,
-        category,
-        description,
-        totalSupply:
-          parsedTotalSupply,
-      });
+    result = await createPhotoCardWithOwnership({
+      userId: parsedUserId,
+      name: trimmedName,
+      imageUrl,
+      grade,
+      category,
+      description,
+      totalSupply: parsedTotalSupply,
+    });
   } catch (error) {
     try {
       // DB 저장 실패 시 Cloudinary 이미지 정리
@@ -211,21 +208,49 @@ export async function createPhotoCardService(
   }
 
   // Prisma BigInt → JSON 응답용 문자열 변환
-  return {
-    photoCard: {
-      ...result.photoCard,
-      id: result.photoCard.id.toString(),
-      creatorId:
-        result.photoCard.creatorId.toString(),
-    },
+  const photoCard = {
+    ...result.photoCard,
+    id: result.photoCard.id.toString(),
+    creatorId:
+      result.photoCard.creatorId.toString(),
+  };
 
-    ownership: {
-      ...result.ownership,
-      id: result.ownership.id.toString(),
-      ownerId:
-        result.ownership.ownerId.toString(),
-      photoCardId:
-        result.ownership.photoCardId.toString(),
-    },
+  const ownership = {
+    ...result.ownership,
+    id: result.ownership.id.toString(),
+    ownerId:
+      result.ownership.ownerId.toString(),
+    photoCardId:
+      result.ownership.photoCardId.toString(),
+  };
+
+  // API 응답 DateTime은 KST 형식으로 통일
+  if (result.photoCard.createdAt) {
+    photoCard.createdAt = formatToKst(
+      result.photoCard.createdAt
+    );
+  }
+
+  if (result.photoCard.updatedAt) {
+    photoCard.updatedAt = formatToKst(
+      result.photoCard.updatedAt
+    );
+  }
+
+  if (result.ownership.createdAt) {
+    ownership.createdAt = formatToKst(
+      result.ownership.createdAt
+    );
+  }
+
+  if (result.ownership.updatedAt) {
+    ownership.updatedAt = formatToKst(
+      result.ownership.updatedAt
+    );
+  }
+
+  return {
+    photoCard,
+    ownership,
   };
 }
