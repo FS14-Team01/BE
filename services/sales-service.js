@@ -1,5 +1,6 @@
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { formatToKst } from "../utils/kst-time.js";
 import {
   cancelPendingExchangeOffers,
   createExchangeRejectedNotifications,
@@ -147,8 +148,8 @@ function serializeCreatedSale(sale) {
     desiredCategory: sale.desiredCategory,
     desiredDescription: sale.desiredDescription,
     status: sale.status,
-    createdAt: sale.createdAt,
-    updatedAt: sale.updatedAt,
+    createdAt: formatToKst(sale.createdAt),
+    updatedAt: formatToKst(sale.updatedAt),
   };
 }
 
@@ -259,8 +260,8 @@ function serializeSaleListItem(sale) {
     price: sale.price,
     status: sale.status,
     hasPendingExchange: sale.exchanges.length > 0,
-    createdAt: sale.createdAt,
-    updatedAt: sale.updatedAt,
+    createdAt: formatToKst(sale.createdAt),
+    updatedAt: formatToKst(sale.updatedAt),
     photoCard: {
       id: sale.photoCard.id.toString(),
       name: sale.photoCard.name,
@@ -402,8 +403,8 @@ function serializeManagedSale(sale) {
     desiredCategory: sale.desiredCategory,
     desiredDescription: sale.desiredDescription,
     status: sale.status,
-    createdAt: sale.createdAt,
-    updatedAt: sale.updatedAt,
+    createdAt: formatToKst(sale.createdAt),
+    updatedAt: formatToKst(sale.updatedAt),
   };
 }
 
@@ -438,8 +439,8 @@ export async function getSaleDetailById(saleId, userId) {
     desiredCategory: sale.desiredCategory,
     desiredDescription: sale.desiredDescription,
     status: sale.status,
-    createdAt: sale.createdAt,
-    updatedAt: sale.updatedAt,
+    createdAt: formatToKst(sale.createdAt),
+    updatedAt: formatToKst(sale.updatedAt),
     seller: {
       id: sale.seller.id.toString(),
       nickname: sale.seller.nickname,
@@ -567,6 +568,6 @@ export async function stopSaleById(saleId, userId) {
     id: stoppedSale.id.toString(),
     remainingQuantity: stoppedSale.remainingQuantity,
     status: stoppedSale.status,
-    updatedAt: stoppedSale.updatedAt,
+    updatedAt: formatToKst(stoppedSale.updatedAt),
   };
 }
