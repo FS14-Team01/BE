@@ -6,11 +6,13 @@ import {
   createSellerNotifications,
   decreaseRemainingQuantity,
   decreaseUserPoints,
+  findPendingExchangeOffersBySaleId,
   findSaleForPurchaseById,
   findUserPoints,
   increaseBuyerOwnership,
   increaseUserPoints,
   markSaleAsSoldOut,
+  rejectPendingExchangeOffers,
   runPurchaseTransaction,
 } from "../repositories/purchase-repository.js";
 
@@ -128,7 +130,7 @@ async function purchaseSaleById(saleIdParam, buyerIdFromToken, body) {
       await increaseUserPoints(tx, sale.sellerId, totalPrice);
 
       await createPointTransactions(tx, [
-        { userId: buyerId, type: "PURCHASE", amount: totalPrice },
+        { userId: buyerId, type: "PURCHASE", amount: -totalPrice },
         { userId: sale.sellerId, type: "SALE", amount: totalPrice },
       ]);
     }
@@ -165,6 +167,21 @@ async function purchaseSaleById(saleIdParam, buyerIdFromToken, body) {
         type: "CARD_SOLD_OUT",
         relatedSaleListingId: saleId,
       });
+
+      // 품절된 판매글에는 더 이상 교환이 성사될 수 없어 대기 중인 제시를 함께 종료한다
+      const pendingOffers = await findPendingExchangeOffersBySaleId(tx, saleId);
+
+      if (pendingOffers.length > 0) {
+        await rejectPendingExchangeOffers(tx, saleId, new Date());
+
+        for (const offer of pendingOffers) {
+          notifications.push({
+            userId: offer.requesterId,
+            type: "EXCHANGE_REJECTED",
+            relatedExchangeId: offer.id,
+          });
+        }
+      }
     }
 
     await createSellerNotifications(tx, notifications);

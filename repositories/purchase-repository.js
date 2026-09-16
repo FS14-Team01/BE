@@ -112,3 +112,17 @@ export function createPointTransactions(database, transactions) {
 export function createSellerNotifications(database, notifications) {
   return database.notification.createMany({ data: notifications });
 }
+
+export function findPendingExchangeOffersBySaleId(database, saleId) {
+  return database.exchange.findMany({
+    where: { saleListingId: saleId, status: "PENDING" },
+    select: { id: true, requesterId: true },
+  });
+}
+
+export function rejectPendingExchangeOffers(database, saleId, resolvedAt) {
+  return database.exchange.updateMany({
+    where: { saleListingId: saleId, status: "PENDING" },
+    data: { status: "REJECTED", resolvedAt },
+  });
+}
