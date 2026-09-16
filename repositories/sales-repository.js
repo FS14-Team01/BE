@@ -15,6 +15,90 @@ const SALE_MANAGEMENT_SELECT = {
   updatedAt: true,
 };
 
+const SALE_LIST_SELECT = {
+  id: true,
+  initialQuantity: true,
+  remainingQuantity: true,
+  price: true,
+  status: true,
+  createdAt: true,
+  updatedAt: true,
+  exchanges: {
+    where: {
+      status: "PENDING",
+    },
+    select: {
+      id: true,
+    },
+    take: 1,
+  },
+  photoCard: {
+    select: {
+      id: true,
+      name: true,
+      imageUrl: true,
+      grade: true,
+      category: true,
+      creator: {
+        select: {
+          nickname: true,
+        },
+      },
+    },
+  },
+};
+
+export function findSalesBySellerId({
+  sellerId,
+  keyword,
+  grade,
+  category,
+  status,
+  cursor,
+  limit,
+}) {
+  return prisma.saleListing.findMany({
+    where: {
+      sellerId,
+      status: status ?? { in: ["ON_SALE", "SOLD_OUT"] },
+      photoCard: {
+        ...(keyword && {
+          name: {
+            contains: keyword,
+            mode: "insensitive",
+          },
+        }),
+        ...(grade && { grade }),
+        ...(category && { category }),
+      },
+    },
+    take: limit + 1,
+    ...(cursor && {
+      skip: 1,
+      cursor: { id: cursor },
+    }),
+    orderBy: [{ createdAt: "desc" }, { id: "desc" }],
+    select: SALE_LIST_SELECT,
+  });
+}
+
+export function findSaleSummaryBySellerId(sellerId) {
+  return prisma.saleListing.findMany({
+    where: {
+      sellerId,
+      status: { in: ["ON_SALE", "SOLD_OUT"] },
+    },
+    select: {
+      initialQuantity: true,
+      photoCard: {
+        select: {
+          grade: true,
+        },
+      },
+    },
+  });
+}
+
 export function findSaleDetailById(saleId) {
   return prisma.saleListing.findUnique({
     where: {

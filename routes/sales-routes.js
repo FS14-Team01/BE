@@ -8,11 +8,17 @@ import {
   updateSale,
 } from "../controllers/sales-controller.js";
 import verifyAccessToken from "../middlewares/auth.js";
+import { postExchangeOffer } from "../controllers/create-exchange-controller.js";
 
 const salesRouter = Router();
 
 salesRouter.get("/", getSales);
 salesRouter.post("/", verifyAccessToken, createSale);
+salesRouter.post(
+  "/:saleId/exchange-offers",
+  verifyAccessToken,
+  postExchangeOffer,
+);
 salesRouter.get(
   "/:saleId/exchange-offers",
   verifyAccessToken,
