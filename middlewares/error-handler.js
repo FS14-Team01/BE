@@ -19,11 +19,12 @@ function errorHandler(error, req, res, next) {
 
   if (error instanceof multer.MulterError) {
     if (error.code === "LIMIT_FILE_SIZE") {
-      const invalidRequest = ERROR_DEFINITIONS.INVALID_REQUEST;
+      const imageSizeExceeded =
+        ERROR_DEFINITIONS.IMAGE_SIZE_EXCEEDED;
 
-      return res.status(invalidRequest.statusCode).json({
-        code: invalidRequest.code,
-        message: invalidRequest.message,
+      return res.status(imageSizeExceeded.statusCode).json({
+        code: imageSizeExceeded.code,
+        message: imageSizeExceeded.message,
       });
     }
   }

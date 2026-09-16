@@ -69,6 +69,21 @@ const ERROR_DEFINITIONS = {
     code: "PHOTO_CARD_NOT_FOUND",
     message: "포토카드를 찾을 수 없습니다.",
   },
+  IMAGE_REQUIRED: {
+  statusCode: 400,
+  code: "IMAGE_REQUIRED",
+  message: "포토카드 이미지는 필수입니다.",
+},
+INVALID_IMAGE_TYPE: {
+  statusCode: 400,
+  code: "INVALID_IMAGE_TYPE",
+  message: "지원하지 않는 이미지 형식입니다.",
+},
+IMAGE_SIZE_EXCEEDED: {
+  statusCode: 400,
+  code: "IMAGE_SIZE_EXCEEDED",
+  message: "이미지 파일은 최대 5MB까지 업로드할 수 있습니다.",
+},
 
   // 판매
   INVALID_SALE_QUANTITY: {
