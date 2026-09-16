@@ -61,7 +61,7 @@ const CARD_CATEGORIES = new Set([
 const DEFAULT_LIMIT = 12;
 const MAX_LIMIT = 12;
 const DEFAULT_SORT = "recent";
-const SALE_LIST_QUERY_FIELDS = new Set([
+const MARKET_SALE_LIST_QUERY_FIELDS = new Set([
   "keyword",
   "grade",
   "category",
@@ -70,7 +70,6 @@ const SALE_LIST_QUERY_FIELDS = new Set([
   "cursor",
   "limit",
 ]);
-const SALE_LIST_STATUSES = new Set(["ON_SALE", "SOLD_OUT"]);
 const SALE_LIST_SORTS = new Set(["recent", "priceAsc", "priceDesc"]);
 
 function parseDatabaseId(id, errorDefinition) {
@@ -624,12 +623,12 @@ function parseLimit(limit) {
   return parsedLimit;
 }
 
-function validateSaleListQuery(query) {
+function validateMarketSaleListQuery(query) {
   if (
     !query ||
     typeof query !== "object" ||
     Array.isArray(query) ||
-    Object.keys(query).some((field) => !SALE_LIST_QUERY_FIELDS.has(field))
+    Object.keys(query).some((field) => !MARKET_SALE_LIST_QUERY_FIELDS.has(field))
   ) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
@@ -666,7 +665,7 @@ function validateSaleListQuery(query) {
 }
 
 export async function getSaleList(query) {
-  const filters = validateSaleListQuery(query);
+  const filters = validateMarketSaleListQuery(query);
   const sales = await findSales(filters);
   const hasNext = sales.length > filters.limit;
   const pageItems = hasNext ? sales.slice(0, filters.limit) : sales;
@@ -681,14 +680,15 @@ export async function getSaleList(query) {
       desiredCategory: sale.desiredCategory,
       desiredDescription: sale.desiredDescription,
       status: sale.status,
-      createdAt: sale.createdAt,
-      updatedAt: sale.updatedAt,
+      createdAt: formatToKst(sale.createdAt),
+      updatedAt: formatToKst(sale.updatedAt),
       photoCard: {
         id: sale.photoCard.id.toString(),
         name: sale.photoCard.name,
         imageUrl: sale.photoCard.imageUrl,
         grade: sale.photoCard.grade,
         category: sale.photoCard.category,
+        creatorNickname: sale.photoCard.creator.nickname,
       },
     })),
     nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,

@@ -308,6 +308,11 @@ export function findSales({
           imageUrl: true,
           grade: true,
           category: true,
+          creator: {
+            select: {
+              nickname: true,
+            },
+          },
         },
       },
     },
