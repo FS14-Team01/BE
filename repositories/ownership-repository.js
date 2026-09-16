@@ -41,6 +41,13 @@ async function findOwnershipsByOwnerId({
           imageUrl: true,
           grade: true,
           category: true,
+
+          // 포토카드 최초 생성자
+          creator: {
+            select: {
+              nickname: true,
+            },
+          },
         },
       },
     },
