@@ -15,6 +15,7 @@ import {
   rejectPendingExchangeOffers,
   runPurchaseTransaction,
 } from "../repositories/purchase-repository.js";
+import { formatToKst } from "../utils/kst-time.js";
 
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
@@ -73,7 +74,7 @@ function serializePurchase(purchase) {
     quantity: purchase.quantity,
     pricePerCard: purchase.pricePerCard,
     totalPrice: purchase.totalPrice,
-    createdAt: purchase.createdAt,
+    createdAt: formatToKst(purchase.createdAt),
   };
 }
 
@@ -83,8 +84,8 @@ function serializeOwnership(ownership) {
     ownerId: ownership.ownerId.toString(),
     photoCardId: ownership.photoCardId.toString(),
     quantity: ownership.quantity,
-    createdAt: ownership.createdAt,
-    updatedAt: ownership.updatedAt,
+    createdAt: formatToKst(ownership.createdAt),
+    updatedAt: formatToKst(ownership.updatedAt),
   };
 }
 
