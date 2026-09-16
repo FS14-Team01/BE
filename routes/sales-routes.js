@@ -4,6 +4,7 @@ import { purchaseSale } from "../controllers/purchase-controller.js";
 import {
   createSale,
   getSaleDetail,
+  getSales,
   stopSale,
   updateSale,
 } from "../controllers/sales-controller.js";
@@ -12,6 +13,7 @@ import { postExchangeOffer } from "../controllers/create-exchange-controller.js"
 
 const salesRouter = Router();
 
+salesRouter.get("/", getSales);
 salesRouter.post("/", verifyAccessToken, createSale);
 salesRouter.post(
   "/:saleId/exchange-offers",
