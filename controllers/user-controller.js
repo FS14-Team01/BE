@@ -42,7 +42,7 @@ export async function getMySales(req, res, next) {
 
 export async function getMySalesSummary(req, res, next) {
   try {
-    const summary = await getSaleSummaryBySellerId(req.auth.userId);
+    const summary = await getSaleSummaryBySellerId(req.auth.userId, req.query);
 
     return res.status(200).json(summary);
   } catch (error) {

@@ -82,17 +82,26 @@ export function findSalesBySellerId({
   });
 }
 
-export function findSaleSummaryBySellerId(sellerId) {
+export function findSaleSummaryBySellerId(sellerId, keyword) {
   return prisma.saleListing.findMany({
     where: {
       sellerId,
       status: { in: ["ON_SALE", "SOLD_OUT"] },
+      ...(keyword && {
+        photoCard: {
+          name: {
+            contains: keyword,
+            mode: "insensitive",
+          },
+        },
+      }),
     },
     select: {
-      initialQuantity: true,
+      status: true,
       photoCard: {
         select: {
           grade: true,
+          category: true,
         },
       },
     },
