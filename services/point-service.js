@@ -9,16 +9,7 @@ import {
 } from "../repositories/point-repository.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
-
-// 응답 내 createdAt KST 형식으로 변환
-const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
-
-function formatToKst(date) {
-  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
-  const dateString = kstDate.toISOString().slice(0, 19);
-
-  return `${dateString}+09:00`;
-}
+import { formatToKst, getKstNow } from "../utils/kst-time.js";
 
 // 응답 형식 포맷 함수
 function formatRandomPointDrawResponse(
@@ -42,8 +33,7 @@ function formatRandomPointDrawResponse(
 
 // 서버 시간을 KST로 계산
 function getKstDate() {
-  const utcDate = new Date();
-  const kstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000);
+  const kstDate = getKstNow();
   const dateString = kstDate.toISOString().slice(0, 10);
 
   return {
