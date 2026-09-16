@@ -9,6 +9,7 @@ import userRouter from "./routes/user-router.js";
 import exchangeRouter from "./routes/exchange-router.js";
 import pointRouter from "./routes/point-route.js";
 import notificationRouter from "./routes/notification-route.js";
+import photoCardRouter from "./routes/photo-card-router.js";
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use("/users", userRouter);
 app.use("/exchange-offers", exchangeRouter);
 app.use("/points", pointRouter);
 app.use("/notifications", notificationRouter);
+app.use("/photo-cards", photoCardRouter);
 
 // error middleware
 app.use(errorHandler);

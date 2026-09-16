@@ -6,11 +6,14 @@ import {
   findExchangeOffersBySaleId,
   findExchangeOfferById,
   rejectExchangeOfferById,
+  createExchangeRejectedNotification,
   findOwnershipByOwnerAndCard,
   decreaseOwnershipQuantity,
   increaseOwnershipQuantity,
   decreaseSaleListingQuantity,
   acceptExchangeOfferById,
+  createExchangeAcceptedNotification,
+  findOtherPendingExchangeOffersBySaleId,
   rejectOtherPendingExchangeOffersBySaleId,
 } from "../repositories/exchange-repository.js";
 
@@ -99,32 +102,55 @@ async function rejectExchangeOffer({ exchangeOfferId, userId }) {
   if (parsedExchangeOfferId > MAX_DATABASE_BIGINT) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
-
-  const exchangeOffer = await findExchangeOfferById(parsedExchangeOfferId);
-
-  if (!exchangeOffer) {
-    throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-  }
-
-  const saleListing = await findSaleListingById(exchangeOffer.saleListingId);
-
-  // DB 무결성이 깨진 비정상 상황 방어
-  if (!saleListing) {
-    throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-  }
-
   // userId 유효성 검증은 인증 미들웨어에서 공통 처리
   const parsedUserId = BigInt(userId);
 
-  if (parsedUserId !== saleListing.sellerId) {
-    throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-  }
+  const rejectedExchangeOffer = await prisma.$transaction(
+    async (tx) => {
+      const exchangeOffer = await findExchangeOfferById(
+        parsedExchangeOfferId,
+        tx,
+      );
 
-  if (exchangeOffer.status !== "PENDING") {
-    throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
-  }
+      if (!exchangeOffer) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
 
-  const rejectedExchangeOffer = await rejectExchangeOfferById(exchangeOffer.id);
+      const saleListing = await findSaleListingById(
+        exchangeOffer.saleListingId,
+        tx,
+      );
+
+      // DB 무결성이 깨진 비정상 상황 방어
+      if (!saleListing) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
+
+      if (parsedUserId !== saleListing.sellerId) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
+
+      if (exchangeOffer.status !== "PENDING") {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
+      }
+
+      const rejectedExchangeOffer = await rejectExchangeOfferById(
+        exchangeOffer.id,
+        tx,
+      );
+
+      await createExchangeRejectedNotification(
+        exchangeOffer.requesterId,
+        exchangeOffer.id,
+        tx,
+      );
+
+      return rejectedExchangeOffer;
+    },
+    {
+      isolationLevel: "Serializable",
+    },
+  );
 
   return {
     ...rejectedExchangeOffer,
@@ -144,97 +170,129 @@ async function acceptExchangeOffer({ exchangeOfferId, userId }) {
     throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
   }
 
+  // userId 유효성 검증은 인증 미들웨어에서 공통 처리
   const parsedUserId = BigInt(userId);
 
-  // 교환 제안 조회
-  const acceptedExchangeOffer = await prisma.$transaction(async (tx) => {
-    const exchangeOffer = await findExchangeOfferById(
-      parsedExchangeOfferId,
-      tx,
-    );
+  const acceptedExchangeOffer = await prisma.$transaction(
+    async (tx) => {
+      // 교환 제안 조회
+      const exchangeOffer = await findExchangeOfferById(
+        parsedExchangeOfferId,
+        tx,
+      );
 
-    if (!exchangeOffer) {
-      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-    }
+      if (!exchangeOffer) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
 
-    // 판매 중인 카드 조회
-    const saleListing = await findSaleListingById(
-      exchangeOffer.saleListingId,
-      tx,
-    );
+      // 판매 중인 카드 조회
+      const saleListing = await findSaleListingById(
+        exchangeOffer.saleListingId,
+        tx,
+      );
 
-    if (!saleListing) {
-      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-    }
+      if (!saleListing) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
 
-    // 판매자 권한 검증
-    if (parsedUserId !== saleListing.sellerId) {
-      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
-    }
+      // 판매자 권한 검증
+      if (parsedUserId !== saleListing.sellerId) {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_NOT_FOUND);
+      }
 
-    // 교환 제안 상태 검증
-    if (exchangeOffer.status !== "PENDING") {
-      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
-    }
+      // 교환 제안 상태 검증
+      if (exchangeOffer.status !== "PENDING") {
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_PROCESSED);
+      }
 
-    if (saleListing.status === "SOLD_OUT") {
-      throw new AppError(ERROR_DEFINITIONS.SALE_SOLD_OUT);
-    }
+      if (saleListing.status === "SOLD_OUT") {
+        throw new AppError(ERROR_DEFINITIONS.SALE_SOLD_OUT);
+      }
 
-    if (saleListing.status === "CANCELLED") {
-      throw new AppError(ERROR_DEFINITIONS.SALE_CANCELLED);
-    }
+      if (saleListing.status === "CANCELLED") {
+        throw new AppError(ERROR_DEFINITIONS.SALE_CANCELLED);
+      }
 
-    // 판매 수량 검증
-    if (saleListing.remainingQuantity < 1) {
-      throw new AppError(ERROR_DEFINITIONS.INSUFFICIENT_SALE_QUANTITY);
-    }
+      // 판매 수량 검증
+      if (saleListing.remainingQuantity < 1) {
+        throw new AppError(ERROR_DEFINITIONS.INSUFFICIENT_SALE_QUANTITY);
+      }
 
-    // 교환 승인 시점 기준으로 제안 카드 보유 수량 검증
-    const requesterOwnership = await findOwnershipByOwnerAndCard(
-      exchangeOffer.requesterId,
-      exchangeOffer.offeredCardId,
-      tx,
-    );
+      // 교환 승인 시점 기준으로 제안 카드 보유 수량 검증
+      const requesterOwnership = await findOwnershipByOwnerAndCard(
+        exchangeOffer.requesterId,
+        exchangeOffer.offeredCardId,
+        tx,
+      );
 
-    if (!requesterOwnership || requesterOwnership.quantity < 1) {
-      throw new AppError(ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_INSUFFICIENT);
-    }
+      if (!requesterOwnership || requesterOwnership.quantity < 1) {
+        throw new AppError(
+          ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_INSUFFICIENT,
+        );
+      }
 
-    // 실제 수량 이동
-    await decreaseOwnershipQuantity(requesterOwnership, tx);
+      // 실제 수량 이동
+      await decreaseOwnershipQuantity(requesterOwnership, tx);
 
-    await increaseOwnershipQuantity(
-      saleListing.sellerId,
-      exchangeOffer.offeredCardId,
-      tx,
-    );
+      await increaseOwnershipQuantity(
+        saleListing.sellerId,
+        exchangeOffer.offeredCardId,
+        tx,
+      );
 
-    await decreaseSaleListingQuantity(saleListing, tx);
+      await decreaseSaleListingQuantity(saleListing, tx);
 
-    await increaseOwnershipQuantity(
-      exchangeOffer.requesterId,
-      saleListing.photoCardId,
-      tx,
-    );
+      await increaseOwnershipQuantity(
+        exchangeOffer.requesterId,
+        saleListing.photoCardId,
+        tx,
+      );
 
-    // 교환 제안을 승인 상태로 변경
-    const acceptedExchangeOffer = await acceptExchangeOfferById(
-      exchangeOffer.id,
-      tx,
-    );
-
-    // 교환 제안 승인으로 판매 카드가 SOLD OUT이 되면 나머지 대기 중인 교환 제안을 거절 상태로 변경
-    if (saleListing.remainingQuantity === 1) {
-      await rejectOtherPendingExchangeOffersBySaleId(
-        saleListing.id,
+      // 교환 제안을 승인 상태로 변경
+      const acceptedExchangeOffer = await acceptExchangeOfferById(
         exchangeOffer.id,
         tx,
       );
-    }
 
-    return acceptedExchangeOffer;
-  });
+      // 교환 요청자에게 승인 알림 생성
+      await createExchangeAcceptedNotification(
+        exchangeOffer.requesterId,
+        exchangeOffer.id,
+        tx,
+      );
+
+      // 교환 승인으로 판매 카드가 SOLD_OUT이 되면 나머지 PENDING 교환 제안을 거절 상태로 변경
+      // 교환 승인으로 품절되는 경우는 판매자 본인의 승인 행위로 발생한 결과이므로
+      // 판매자에게 CARD_SOLD_OUT 알림은 별도로 생성하지 않고 승인 성공 Toast로 결과를 안내
+      if (saleListing.remainingQuantity === 1) {
+        const rejectedExchangeOffers =
+          await findOtherPendingExchangeOffersBySaleId(
+            saleListing.id,
+            exchangeOffer.id,
+            tx,
+          );
+
+        await rejectOtherPendingExchangeOffersBySaleId(
+          saleListing.id,
+          exchangeOffer.id,
+          tx,
+        );
+
+        for (const rejectedExchangeOffer of rejectedExchangeOffers) {
+          await createExchangeRejectedNotification(
+            rejectedExchangeOffer.requesterId,
+            rejectedExchangeOffer.id,
+            tx,
+          );
+        }
+      }
+
+      return acceptedExchangeOffer;
+    },
+    {
+      isolationLevel: "Serializable",
+    },
+  );
 
   return {
     ...acceptedExchangeOffer,

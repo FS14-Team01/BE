@@ -1,6 +1,7 @@
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
 import { UnauthorizedError } from "express-jwt";
+import multer from "multer";
 
 function errorHandler(error, req, res, next) {
   if (res.headersSent) {
@@ -14,6 +15,17 @@ function errorHandler(error, req, res, next) {
       code: invalidRequest.code,
       message: invalidRequest.message,
     });
+  }
+
+  if (error instanceof multer.MulterError) {
+    if (error.code === "LIMIT_FILE_SIZE") {
+      const invalidRequest = ERROR_DEFINITIONS.INVALID_REQUEST;
+
+      return res.status(invalidRequest.statusCode).json({
+        code: invalidRequest.code,
+        message: invalidRequest.message,
+      });
+    }
   }
 
   if (error instanceof UnauthorizedError) {
