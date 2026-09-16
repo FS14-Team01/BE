@@ -10,6 +10,8 @@ import {
   decreaseSellerOwnershipQuantity,
   findSaleDetailById,
   findSaleForManagementById,
+  findSaleSummaryBySellerId,
+  findSalesBySellerId,
   findSellerOwnership,
   findSellerOwnershipByIds,
   returnSellerOwnershipQuantity,
@@ -21,6 +23,17 @@ import {
 const POSITIVE_INTEGER_PATTERN = /^[1-9]\d*$/;
 const MAX_DATABASE_BIGINT = 9_223_372_036_854_775_807n;
 const MAX_SALE_PRICE = 1000;
+const DEFAULT_SALE_LIST_LIMIT = 12;
+const MAX_SALE_LIST_LIMIT = 12;
+const SALE_LIST_QUERY_FIELDS = new Set([
+  "keyword",
+  "grade",
+  "category",
+  "status",
+  "cursor",
+  "limit",
+]);
+const SALE_LIST_STATUSES = new Set(["ON_SALE", "SOLD_OUT"]);
 const CREATE_FIELDS = new Set([
   "photoCardId",
   "quantity",
@@ -178,6 +191,122 @@ export async function createSaleListing(userId, createData) {
   });
 
   return serializeCreatedSale(sale);
+}
+
+function parseSaleListLimit(limit) {
+  if (limit === undefined) {
+    return DEFAULT_SALE_LIST_LIMIT;
+  }
+
+  if (typeof limit !== "string" || !POSITIVE_INTEGER_PATTERN.test(limit)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const parsedLimit = Number(limit);
+
+  if (parsedLimit > MAX_SALE_LIST_LIMIT) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  return parsedLimit;
+}
+
+function validateSaleListQuery(query) {
+  if (
+    !query ||
+    typeof query !== "object" ||
+    Array.isArray(query) ||
+    Object.keys(query).some((field) => !SALE_LIST_QUERY_FIELDS.has(field))
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.keyword !== undefined && typeof query.keyword !== "string") {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.grade !== undefined && !CARD_GRADES.has(query.grade)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.category !== undefined && !CARD_CATEGORIES.has(query.category)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  if (query.status !== undefined && !SALE_LIST_STATUSES.has(query.status)) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  return {
+    keyword: query.keyword?.trim() || undefined,
+    grade: query.grade,
+    category: query.category,
+    status: query.status,
+    cursor:
+      query.cursor === undefined
+        ? undefined
+        : parseDatabaseId(query.cursor, ERROR_DEFINITIONS.INVALID_REQUEST),
+    limit: parseSaleListLimit(query.limit),
+  };
+}
+
+function serializeSaleListItem(sale) {
+  return {
+    id: sale.id.toString(),
+    photoCardId: sale.photoCard.id.toString(),
+    initialQuantity: sale.initialQuantity,
+    remainingQuantity: sale.remainingQuantity,
+    price: sale.price,
+    status: sale.status,
+    hasPendingExchange: sale.exchanges.length > 0,
+    createdAt: sale.createdAt,
+    updatedAt: sale.updatedAt,
+    photoCard: {
+      id: sale.photoCard.id.toString(),
+      name: sale.photoCard.name,
+      imageUrl: sale.photoCard.imageUrl,
+      grade: sale.photoCard.grade,
+      category: sale.photoCard.category,
+      creatorNickname: sale.photoCard.creator.nickname,
+    },
+  };
+}
+
+export async function getSalesBySellerId(userId, query) {
+  const sellerId = parseDatabaseId(userId, ERROR_DEFINITIONS.UNAUTHORIZED);
+  const filters = validateSaleListQuery(query);
+  const sales = await findSalesBySellerId({ sellerId, ...filters });
+  const hasNext = sales.length > filters.limit;
+  const pageItems = hasNext ? sales.slice(0, filters.limit) : sales;
+
+  return {
+    items: pageItems.map(serializeSaleListItem),
+    nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,
+    hasNext,
+  };
+}
+
+export async function getSaleSummaryBySellerId(userId) {
+  const sellerId = parseDatabaseId(userId, ERROR_DEFINITIONS.UNAUTHORIZED);
+  const summaryRows = await findSaleSummaryBySellerId(sellerId);
+
+  return summaryRows.reduce(
+    (summary, sale) => {
+      summary.totalQuantity += sale.initialQuantity;
+      summary.gradeQuantities[sale.photoCard.grade] += sale.initialQuantity;
+
+      return summary;
+    },
+    {
+      totalQuantity: 0,
+      gradeQuantities: {
+        COMMON: 0,
+        RARE: 0,
+        SUPER_RARE: 0,
+        LEGENDARY: 0,
+      },
+    },
+  );
 }
 
 function validateUpdateData(updateData) {
