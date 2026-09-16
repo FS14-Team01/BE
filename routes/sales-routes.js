@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getExchangeOffers } from "../controllers/exchange-controller.js";
+import { getExchangeOffers } from "../controllers/seller-exchange-controller.js";
 import {
   createSale,
   getSaleDetail,
