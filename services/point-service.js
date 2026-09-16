@@ -9,16 +9,7 @@ import {
 } from "../repositories/point-repository.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
-
-// 응답 내 createdAt KST 형식으로 변환
-const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
-
-function formatToKst(date) {
-  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
-  const dateString = kstDate.toISOString().slice(0, 19);
-
-  return `${dateString}+09:00`;
-}
+import { formatToKst, getKstNow } from "../utils/kst-time.js";
 
 // 응답 형식 포맷 함수
 function formatRandomPointDrawResponse(
@@ -42,8 +33,7 @@ function formatRandomPointDrawResponse(
 
 // 서버 시간을 KST로 계산
 function getKstDate() {
-  const utcDate = new Date();
-  const kstDate = new Date(utcDate.getTime() + 9 * 60 * 60 * 1000);
+  const kstDate = getKstNow();
   const dateString = kstDate.toISOString().slice(0, 10);
 
   return {
@@ -96,6 +86,10 @@ function drawRandomPoint(list) {
 async function getUserPointsStatus(userId) {
   // 1. 사용자의 포인트 조회
   const userPoint = await findPointByUserId(userId);
+
+  if (userPoint === null) {
+    throw new AppError(ERROR_DEFINITIONS.UNAUTHORIZED);
+  }
 
   // 2.  현재 KST 날짜와 시간대 계산
   const { drawDate, hour } = getKstDate();
@@ -153,27 +147,32 @@ async function createRandomPointDraw(userId) {
 
   try {
     // 6. 트랙잭션
-    const result = await prisma.$transaction(async (tx) => {
-      const newRandomPointDraw = await createRandomPointDrawRecord(tx, {
-        userId,
-        drawDate,
-        period,
-        amount,
-      });
+    const result = await prisma.$transaction(
+      async (tx) => {
+        const newRandomPointDraw = await createRandomPointDrawRecord(tx, {
+          userId,
+          drawDate,
+          period,
+          amount,
+        });
 
-      const updatedUser = await incrementUserPoints(tx, userId, amount);
+        const updatedUser = await incrementUserPoints(tx, userId, amount);
 
-      await createPointTransaction(tx, {
-        userId,
-        amount,
-        type: "RANDOM_BOX",
-      });
+        await createPointTransaction(tx, {
+          userId,
+          amount,
+          type: "RANDOM_BOX",
+        });
 
-      return {
-        randomPointDraw: newRandomPointDraw,
-        points: updatedUser.points,
-      };
-    });
+        return {
+          randomPointDraw: newRandomPointDraw,
+          points: updatedUser.points,
+        };
+      },
+      {
+        isolationLevel: "Serializable",
+      },
+    );
 
     // 7. 성공 시 응답 반환
     return formatRandomPointDrawResponse(
