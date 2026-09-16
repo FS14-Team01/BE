@@ -4,12 +4,12 @@ import {
   findByUserId,
   updateAllAsRead,
 } from "../repositories/notification-repository.js";
+import { formatToKst } from "../utils/kst-time.js";
 
 const DEFAULT_LIMIT = 20;
 const MAX_LIMIT = 20;
 const CURSOR_PATTERN = /^[1-9]\d*$/;
 const MAX_BIGINT = 9223372036854775807n;
-const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
 // isRead 쿼리 검증
 function parseOptionalBoolean(isReadStr) {
@@ -54,14 +54,6 @@ function parseCursor(cursorStr) {
 // BigInt ID를 응답용 문자열로 변환
 function stringifyNullableId(id) {
   return id === null ? null : String(id);
-}
-
-// UTC createdAt을 응답용 KST로 변환
-function formatToKst(date) {
-  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
-  const dateString = kstDate.toISOString().slice(0, 19);
-
-  return `${dateString}+09:00`;
 }
 
 // 응답 가공
