@@ -4,12 +4,12 @@ import {
   findByUserId,
   updateAllAsRead,
 } from "../repositories/notification-repository.js";
+import { formatToKst } from "../utils/kst-time.js";
 
 const DEFAULT_LIMIT = 20;
 const MAX_LIMIT = 20;
 const CURSOR_PATTERN = /^[1-9]\d*$/;
 const MAX_BIGINT = 9223372036854775807n;
-const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
 // isRead 쿼리 검증
 function parseOptionalBoolean(isReadStr) {
@@ -56,14 +56,6 @@ function stringifyNullableId(id) {
   return id === null ? null : String(id);
 }
 
-// UTC createdAt을 응답용 KST로 변환
-function formatToKst(date) {
-  const kstDate = new Date(date.getTime() + KST_OFFSET_MS);
-  const dateString = kstDate.toISOString().slice(0, 19);
-
-  return `${dateString}+09:00`;
-}
-
 // 응답 가공
 function formatNotification(notification) {
   const baseNotification = {
@@ -80,6 +72,10 @@ function formatNotification(notification) {
 
   switch (notification.type) {
     case "CARD_SOLD":
+      if (!notification.relatedPurchase) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedPurchase.buyer.nickname,
@@ -88,6 +84,10 @@ function formatNotification(notification) {
         quantity: notification.relatedPurchase.quantity,
       };
     case "CARD_SOLD_OUT":
+      if (!notification.relatedSaleListing) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: null,
@@ -96,6 +96,10 @@ function formatNotification(notification) {
         quantity: 0,
       };
     case "EXCHANGE_OFFER_RECEIVED":
+      if (!notification.relatedExchange) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.requester.nickname,
@@ -105,6 +109,10 @@ function formatNotification(notification) {
       };
     case "EXCHANGE_ACCEPTED":
     case "EXCHANGE_REJECTED":
+      if (!notification.relatedExchange) {
+        throw new AppError(ERROR_DEFINITIONS.INTERNAL_SERVER_ERROR);
+      }
+
       return {
         ...baseNotification,
         userNickname: notification.relatedExchange.saleListing.seller.nickname,
