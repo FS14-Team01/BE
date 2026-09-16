@@ -164,6 +164,7 @@ async function getMyOwnerships(userId, query) {
         imageUrl: ownership.photoCard.imageUrl,
         grade: ownership.photoCard.grade,
         category: ownership.photoCard.category,
+        creatorNickname: ownership.photoCard.creator.nickname
       },
     })),
     nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,
