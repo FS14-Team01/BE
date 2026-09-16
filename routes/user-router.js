@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getMyInfo,
   getMyOwnerships,
+  getMyOwnershipFilterSummary,
   getMySales,
   getMySalesSummary,
 } from "../controllers/user-controller.js";
@@ -12,6 +13,7 @@ const userRouter = Router();
 
 userRouter.get("/me", verifyAccessToken, getMyInfo);
 userRouter.get("/me/ownerships", verifyAccessToken, getMyOwnerships);
+userRouter.get("/me/ownerships/summary", verifyAccessToken, getMyOwnershipFilterSummary);
 userRouter.get("/me/sales", verifyAccessToken, getMySales);
 userRouter.get("/me/sales/summary", verifyAccessToken, getMySalesSummary);
 userRouter.get(

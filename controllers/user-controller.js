@@ -2,6 +2,7 @@ import {
   getMyOwnerships as getMyOwnershipsService,
 } from "../services/ownership-service.js";
 import { getMyInfo as getMyInfoService } from "../services/user-service.js";
+import { getOwnershipFilterSummary } from "../services/ownership-filter-summary-service.js";
 import {
   getSalesBySellerId,
   getSaleSummaryBySellerId,
@@ -35,6 +36,15 @@ export async function getMySales(req, res, next) {
     const sales = await getSalesBySellerId(req.auth.userId, req.query);
 
     return res.status(200).json(sales);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+export async function getMyOwnershipFilterSummary(req, res, next) {
+  try {
+    const summary = await getOwnershipFilterSummary(req.auth.userId, req.query);
+    return res.status(200).json(summary);
   } catch (error) {
     return next(error);
   }
