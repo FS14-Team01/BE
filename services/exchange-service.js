@@ -1,6 +1,7 @@
 import prisma from "../config/prisma.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { formatToKst } from "../utils/kst-time.js";
 import {
   findSaleListingById,
   findExchangeOffersBySaleId,
@@ -155,6 +156,7 @@ async function rejectExchangeOffer({ exchangeOfferId, userId }) {
   return {
     ...rejectedExchangeOffer,
     id: rejectedExchangeOffer.id.toString(),
+    resolvedAt: formatToKst(rejectedExchangeOffer.resolvedAt),
   };
 }
 
@@ -297,6 +299,7 @@ async function acceptExchangeOffer({ exchangeOfferId, userId }) {
   return {
     ...acceptedExchangeOffer,
     id: acceptedExchangeOffer.id.toString(),
+    resolvedAt: formatToKst(acceptedExchangeOffer.resolvedAt),
   };
 }
 
