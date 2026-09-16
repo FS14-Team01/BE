@@ -287,24 +287,47 @@ export async function getSalesBySellerId(userId, query) {
   };
 }
 
-export async function getSaleSummaryBySellerId(userId) {
+export async function getSaleSummaryBySellerId(userId, query = {}) {
   const sellerId = parseDatabaseId(userId, ERROR_DEFINITIONS.UNAUTHORIZED);
-  const summaryRows = await findSaleSummaryBySellerId(sellerId);
+  if (
+    !query ||
+    typeof query !== "object" ||
+    Array.isArray(query) ||
+    Object.keys(query).some((field) => field !== "keyword") ||
+    (query.keyword !== undefined && typeof query.keyword !== "string")
+  ) {
+    throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
+  }
+
+  const keyword = query.keyword?.trim() || undefined;
+  const summaryRows = await findSaleSummaryBySellerId(sellerId, keyword);
 
   return summaryRows.reduce(
     (summary, sale) => {
-      summary.totalQuantity += sale.initialQuantity;
-      summary.gradeQuantities[sale.photoCard.grade] += sale.initialQuantity;
+      summary.totalCount += 1;
+      summary.gradeCounts[sale.photoCard.grade] += 1;
+      summary.categoryCounts[sale.photoCard.category] += 1;
+      summary.statusCounts[sale.status] += 1;
 
       return summary;
     },
     {
-      totalQuantity: 0,
-      gradeQuantities: {
+      totalCount: 0,
+      gradeCounts: {
         COMMON: 0,
         RARE: 0,
         SUPER_RARE: 0,
         LEGENDARY: 0,
+      },
+      categoryCounts: {
+        POKEMON: 0,
+        SUPER_MARIO: 0,
+        HELLO_KITTY: 0,
+        DIGIMON: 0,
+      },
+      statusCounts: {
+        ON_SALE: 0,
+        SOLD_OUT: 0,
       },
     },
   );
