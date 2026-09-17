@@ -233,6 +233,19 @@ async function acceptExchangeOffer({ exchangeOfferId, userId }) {
         );
       }
 
+      // 판매자의 판매 카드 보유 수량 검증
+      const sellerOwnership = await findOwnershipByOwnerAndCard(
+        saleListing.sellerId,
+        saleListing.photoCardId,
+        tx,
+      );
+
+      if (!sellerOwnership || sellerOwnership.quantity < 1) {
+        throw new AppError(
+          ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_INSUFFICIENT,
+        );
+      }
+
       // 실제 수량 이동
       await decreaseOwnershipQuantity(requesterOwnership, tx);
 
@@ -241,6 +254,8 @@ async function acceptExchangeOffer({ exchangeOfferId, userId }) {
         exchangeOffer.offeredCardId,
         tx,
       );
+
+      await decreaseOwnershipQuantity(sellerOwnership, tx);
 
       await decreaseSaleListingQuantity(saleListing, tx);
 
