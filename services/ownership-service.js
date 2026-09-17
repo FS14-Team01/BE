@@ -5,6 +5,7 @@ import {
   findOwnershipSummaryByOwnerId,
 } from "../repositories/ownership-repository.js";
 import { findUserById } from "../repositories/user-repository.js";
+import { formatToKst } from "../utils/kst-time.js";
 
 const DEFAULT_LIMIT = 12;
 const MAX_LIMIT = 12;
@@ -156,8 +157,8 @@ async function getMyOwnerships(userId, query) {
     items: pageItems.map((ownership) => ({
       id: ownership.id.toString(),
       quantity: ownership.quantity,
-      createdAt: ownership.createdAt,
-      updatedAt: ownership.updatedAt,
+      createdAt: formatToKst(ownership.createdAt),
+      updatedAt: formatToKst(ownership.updatedAt),
       photoCard: {
         id: ownership.photoCard.id.toString(),
         name: ownership.photoCard.name,
