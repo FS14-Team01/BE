@@ -1,3 +1,13 @@
+export function findPendingOfferForSale(
+  { requesterId, offeredCardId, saleListingId },
+  db,
+) {
+  return db.exchange.findFirst({
+    where: { requesterId, offeredCardId, saleListingId, status: "PENDING" },
+    select: { id: true },
+  });
+}
+
 export function countPendingOffers(requesterId, offeredCardId, db) {
   // 다른 판매글에 보낸 제안도 같은 보유 카드의 수량에 포함한다.
   return db.exchange.count({

@@ -8,6 +8,7 @@ import {
 } from "../repositories/exchange-repository.js";
 import {
   countPendingOffers,
+  findPendingOfferForSale,
   insertExchangeOfferWithNotification,
 } from "../repositories/create-exchange-repository.js";
 
@@ -52,6 +53,23 @@ export async function createExchangeOffer({ saleId, userId, body }) {
           ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_INSUFFICIENT,
         );
       }
+
+      // 같은 요청자는 한 판매글에 같은 카드로 대기 중인 제안을 하나만 등록한다.
+      const pendingOffer = await findPendingOfferForSale(
+        {
+          requesterId,
+          offeredCardId: input.offeredCardId,
+          saleListingId: input.saleListingId,
+        },
+        tx,
+      );
+      if (pendingOffer) {
+        throw new AppError({
+          ...ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_EXCEEDED,
+          message: "같은 카드로 교환 요청을 1개만 등록할 수 있습니다.",
+        });
+      }
+
       const pendingCount = await countPendingOffers(
         requesterId,
         input.offeredCardId,
