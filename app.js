@@ -32,15 +32,15 @@ app.use("/points", pointRouter);
 app.use("/notifications", notificationRouter);
 app.use("/photo-cards", photoCardRouter);
 
-// error middleware
-app.use(errorHandler);
-
 // 배포 health check
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "ok",
   });
 });
+
+// error middleware
+app.use(errorHandler);
 
 app.listen(process.env.PORT ?? 3001, () => {
   console.log("Server Started");
