@@ -14,6 +14,7 @@ import {
   verifyRefreshToken,
 } from "../lib/token.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { formatToKst } from "../utils/kst-time.js";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const NICKNAME_PATTERN = /^[가-힣a-zA-Z0-9_]+$/;
@@ -126,7 +127,7 @@ async function signUp(input) {
     nickname: createdUser.nickname,
     points: createdUser.points,
     provider: createdUser.provider,
-    createdAt: createdUser.createdAt,
+    createdAt: formatToKst(createdUser.createdAt),
   };
 
   return {
@@ -188,7 +189,7 @@ async function login(input) {
     nickname: user.nickname,
     points: user.points,
     provider: user.provider,
-    createdAt: user.createdAt,
+    createdAt: formatToKst(user.createdAt),
   };
 
   return {
