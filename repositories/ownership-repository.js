@@ -58,6 +58,7 @@ async function findOwnershipSummaryByOwnerId(ownerId) {
   return prisma.$queryRaw`
     SELECT
       pc.grade,
+      pc.category,
       SUM(o.quantity)::int AS quantity
     FROM "Ownership" AS o
     INNER JOIN "PhotoCard" AS pc
@@ -65,7 +66,7 @@ async function findOwnershipSummaryByOwnerId(ownerId) {
     WHERE
       o."ownerId" = ${ownerId}
       AND o.quantity > 0
-    GROUP BY pc.grade
+    GROUP BY pc.grade, pc.category
   `;
 }
 
