@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { getSalesSummary } from "../controllers/market-summary-controller.js";
 import { getExchangeOffers } from "../controllers/seller-exchange-controller.js";
 import { purchaseSale } from "../controllers/purchase-controller.js";
 import {
@@ -14,6 +15,7 @@ import { postExchangeOffer } from "../controllers/create-exchange-controller.js"
 const salesRouter = Router();
 
 salesRouter.get("/", getSales);
+salesRouter.get("/summary", getSalesSummary);
 salesRouter.post("/", verifyAccessToken, createSale);
 salesRouter.post(
   "/:saleId/exchange-offers",
