@@ -33,16 +33,22 @@ export async function getOwnershipFilterSummary(userId, query = {}) {
   );
 
   return rows.reduce(
-    (summary, { photoCard }) => {
+    (summary, { photoCard, quantity }) => {
       summary.totalCount += 1;
       summary.gradeCounts[photoCard.grade] += 1;
       summary.categoryCounts[photoCard.category] += 1;
+      summary.totalQuantity += quantity;
+      summary.gradeQuantities[photoCard.grade] += quantity;
+      summary.categoryQuantities[photoCard.category] += quantity;
       return summary;
     },
     {
       totalCount: 0,
       gradeCounts: { COMMON: 0, RARE: 0, SUPER_RARE: 0, LEGENDARY: 0 },
       categoryCounts: { POKEMON: 0, SUPER_MARIO: 0, HELLO_KITTY: 0, DIGIMON: 0 },
+      totalQuantity: 0,
+      gradeQuantities: { COMMON: 0, RARE: 0, SUPER_RARE: 0, LEGENDARY: 0 },
+      categoryQuantities: { POKEMON: 0, SUPER_MARIO: 0, HELLO_KITTY: 0, DIGIMON: 0 },
     },
   );
 }

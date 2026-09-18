@@ -13,6 +13,7 @@ export function findOwnershipTypesByOwnerId(ownerId, keyword) {
       }),
     },
     select: {
+      quantity: true,
       photoCard: { select: { grade: true, category: true } },
     },
   });
