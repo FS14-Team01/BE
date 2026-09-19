@@ -15,7 +15,7 @@ export async function getMyExchangeOffers(userId, query) {
   if (!(await findUserById(requesterId))) {
     throw new AppError(ERROR_DEFINITIONS.UNAUTHORIZED);
   }
-  // 연동 테스트 확장: 생략하면 전체 보낸 목록, 지정하면 해당 판매글의 본인 제안만 조회한다.
+  // 선택 Query인 saleId를 지정하면 해당 판매글로 제한하고, 생략하면 본인의 전체 제안을 조회한다.
   const where = {
     requesterId,
     ...(saleId !== undefined ? { saleListingId: saleId } : {}),
