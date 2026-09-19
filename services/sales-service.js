@@ -705,13 +705,16 @@ export async function getSaleList(query) {
       status: sale.status,
       createdAt: formatToKst(sale.createdAt),
       updatedAt: formatToKst(sale.updatedAt),
+      seller: {
+        id: sale.seller.id.toString(),
+        nickname: sale.seller.nickname,
+      },
       photoCard: {
         id: sale.photoCard.id.toString(),
         name: sale.photoCard.name,
         imageUrl: sale.photoCard.imageUrl,
         grade: sale.photoCard.grade,
         category: sale.photoCard.category,
-        creatorNickname: sale.photoCard.creator.nickname,
       },
     })),
     nextCursor: hasNext ? pageItems.at(-1).id.toString() : null,
