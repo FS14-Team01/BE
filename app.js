@@ -32,6 +32,13 @@ app.use("/points", pointRouter);
 app.use("/notifications", notificationRouter);
 app.use("/photo-cards", photoCardRouter);
 
+// 배포 health check
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+  });
+});
+
 // error middleware
 app.use(errorHandler);
 
