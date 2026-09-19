@@ -137,7 +137,8 @@ async function getMyOwnerships(userId, query) {
   const summary = summaryRows.reduce(
     (result, ownership) => {
       result.totalQuantity += ownership.quantity;
-      result.gradeQuantities[ownership.grade] = ownership.quantity;
+      result.gradeQuantities[ownership.grade] += ownership.quantity;
+      result.categoryQuantities[ownership.category] += ownership.quantity;
 
       return result;
     },
@@ -148,6 +149,12 @@ async function getMyOwnerships(userId, query) {
         RARE: 0,
         SUPER_RARE: 0,
         LEGENDARY: 0,
+      },
+      categoryQuantities: {
+        POKEMON: 0,
+        SUPER_MARIO: 0,
+        HELLO_KITTY: 0,
+        DIGIMON: 0,
       },
     },
   );
