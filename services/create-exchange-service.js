@@ -1,6 +1,7 @@
 import prisma from "../config/prisma.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { formatToKst } from "../utils/kst-time.js";
 import { validateCreateExchangeOffer } from "../validator/create-exchange-validator.js";
 import {
   findOwnershipByOwnerAndCard,
@@ -31,16 +32,10 @@ export async function createExchangeOffer({ saleId, userId, body }) {
         throw new AppError(ERROR_DEFINITIONS.INVALID_REQUEST);
       }
       if (sale.status === "CANCELLED") {
-        throw new AppError({
-          ...ERROR_DEFINITIONS.SALE_CANCELLED,
-          message: "취소된 판매에는 교환을 제안할 수 없습니다.",
-        });
+        throw new AppError(ERROR_DEFINITIONS.SALE_CANCELLED);
       }
       if (sale.status === "SOLD_OUT" || sale.remainingQuantity < 1) {
-        throw new AppError({
-          ...ERROR_DEFINITIONS.SALE_SOLD_OUT,
-          message: "품절된 판매에는 교환을 제안할 수 없습니다.",
-        });
+        throw new AppError(ERROR_DEFINITIONS.SALE_SOLD_OUT);
       }
 
       const ownership = await findOwnershipByOwnerAndCard(
@@ -64,10 +59,7 @@ export async function createExchangeOffer({ saleId, userId, body }) {
         tx,
       );
       if (pendingOffer) {
-        throw new AppError({
-          ...ERROR_DEFINITIONS.EXCHANGE_CARD_QUANTITY_EXCEEDED,
-          message: "같은 카드로 교환 요청을 1개만 등록할 수 있습니다.",
-        });
+        throw new AppError(ERROR_DEFINITIONS.EXCHANGE_OFFER_ALREADY_EXISTS);
       }
 
       const pendingCount = await countPendingOffers(
@@ -95,5 +87,6 @@ export async function createExchangeOffer({ saleId, userId, body }) {
     saleListingId: offer.saleListingId.toString(),
     requesterId: offer.requesterId.toString(),
     offeredCardId: offer.offeredCardId.toString(),
+    createdAt: formatToKst(offer.createdAt),
   };
 }

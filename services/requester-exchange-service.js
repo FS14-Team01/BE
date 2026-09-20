@@ -1,6 +1,7 @@
 import prisma from "../config/prisma.js";
 import AppError from "../errors/app-error.js";
 import { ERROR_DEFINITIONS } from "../errors/error-definitions.js";
+import { formatToKst } from "../utils/kst-time.js";
 import { findUserById } from "../repositories/user-repository.js";
 import {
   parseExchangeId,
@@ -14,7 +15,7 @@ export async function getMyExchangeOffers(userId, query) {
   if (!(await findUserById(requesterId))) {
     throw new AppError(ERROR_DEFINITIONS.UNAUTHORIZED);
   }
-  // 연동 테스트 확장: 생략하면 전체 보낸 목록, 지정하면 해당 판매글의 본인 제안만 조회한다.
+  // 선택 Query인 saleId를 지정하면 해당 판매글로 제한하고, 생략하면 본인의 전체 제안을 조회한다.
   const where = {
     requesterId,
     ...(saleId !== undefined ? { saleListingId: saleId } : {}),
@@ -81,7 +82,11 @@ export async function cancelMyExchangeOffer({ exchangeOfferId, userId, body }) {
       }
 
       // 등록 시 재고를 차감하지 않으므로 취소 시 수량/포인트도 변경하지 않는다.
-      return { id: id.toString(), status: "CANCELLED", resolvedAt };
+      return {
+        id: id.toString(),
+        status: "CANCELLED",
+        resolvedAt: formatToKst(resolvedAt),
+      };
     },
     { isolationLevel: "Serializable" },
   );

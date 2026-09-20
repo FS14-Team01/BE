@@ -310,6 +310,12 @@ export function findSales({
       status: true,
       createdAt: true,
       updatedAt: true,
+      seller: {
+        select: {
+          id: true,
+          nickname: true,
+        },
+      },
       photoCard: {
         select: {
           id: true,
@@ -317,11 +323,6 @@ export function findSales({
           imageUrl: true,
           grade: true,
           category: true,
-          creator: {
-            select: {
-              nickname: true,
-            },
-          },
         },
       },
     },

@@ -1,73 +1,85 @@
 # 백엔드 배포 가이드
 
-## 구성
+## 배포 환경
 
-- 플랫폼: Render Web Service
-- 데이터베이스: PostgreSQL
+- 서버: Render Web Service
+- 데이터베이스: Render PostgreSQL
 - 이미지 저장소: Cloudinary
-- 테스트 브랜치: `deploy-test`
-- 운영 브랜치: `main` 예정
+- 배포 브랜치: `main`
 
-## Render 설정
+## Web Service 설정
 
 | 항목 | 값 |
 | --- | --- |
-| Runtime | `Node` |
-| Root directory | 비워둠 |
-| Build command | `npm ci --include=dev && npx prisma generate && npx prisma migrate deploy` |
-| Start command | `npm start` |
+| Language | `Node` |
+| Branch | `main` |
+| Region | PostgreSQL과 동일한 지역 |
+| Root Directory | 비워두기 |
+| Build Command | `npm ci --include=dev && npx prisma generate && npx prisma migrate deploy` |
+| Start Command | `npm start` |
 | Health Check Path | `/health` |
 
-현재 Public Git Repository 방식은 자동 배포를 지원하지 않으므로 push 후 **Manual Deploy → Deploy latest commit**을 실행한다.
-
-## 환경 변수
-
-Render의 **Environment**에 등록한다.
+## 환경변수
 
 | 변수 | 설명 |
 | --- | --- |
-| `NODE_ENV` | 배포 환경에서는 `production` |
-| `DATABASE_URL` | PostgreSQL 연결 주소 |
-| `JWT_SECRET` | 액세스 토큰 서명 키 |
-| `JWT_REFRESH_SECRET` | 리프레시 토큰 서명 키 |
-| `ACCESS_TOKEN_EXPIRES_IN` | 액세스 토큰 만료 시간 |
-| `REFRESH_TOKEN_EXPIRES_IN` | 리프레시 토큰 만료 시간 |
-| `FRONTEND_URL` | Netlify Origin. 끝에 `/`를 붙이지 않는다. |
+| `DATABASE_URL` | Render PostgreSQL Internal Database URL |
+| `NODE_ENV` | `production` |
+| `JWT_SECRET` | Access Token 서명 키 |
+| `JWT_REFRESH_SECRET` | Refresh Token 서명 키 |
+| `ACCESS_TOKEN_EXPIRES_IN` | Access Token 유효기간 |
+| `REFRESH_TOKEN_EXPIRES_IN` | Refresh Token 유효기간 |
+| `FRONTEND_URL` | 요청을 허용할 Netlify 주소 |
 | `CLOUDINARY_CLOUD_NAME` | Cloudinary Cloud Name |
 | `CLOUDINARY_API_KEY` | Cloudinary API Key |
 | `CLOUDINARY_API_SECRET` | Cloudinary API Secret |
 
-실제 DB URL과 Secret은 `.env.example`이나 Git에 올리지 않는다. `PORT`는 Render가 자동으로 제공한다.
+`FRONTEND_URL` 마지막에는 `/`를 붙이지 않는다. `PORT`는 Render가 자동으로 제공하므로 등록하지 않는다.
 
-## 배포 절차
+## 최초 배포
 
-1. 배포할 커밋을 `deploy-test`에 push한다.
-2. Render에서 최신 커밋을 수동 배포한다.
-3. Deploy Logs에서 migration과 서버 실행을 확인한다.
-4. `GET /health`가 `200`과 `{ "status": "ok" }`를 반환하는지 확인한다.
+1. Render PostgreSQL을 생성한다.
+2. GitHub 백엔드 저장소로 Web Service를 생성한다.
+3. Web Service 설정과 환경변수를 입력한다.
+4. `Deploy web service`를 실행한다.
+5. 배포 로그와 `/health` 응답을 확인한다.
 
-## 데이터베이스
+백엔드 배포 후 발급된 Render 주소를 Netlify에 등록하고 프론트엔드를 다시 배포한다.
 
-- 배포 시 `prisma migrate deploy`로 기존 migration을 적용한다.
-- `prisma migrate dev`는 배포 환경에서 사용하지 않는다.
-- seed는 기존 데이터를 삭제하므로 Build/Start Command에 상시 포함하지 않는다.
+## 재배포
 
-## 확인 항목
+Public Git Repository 방식은 자동 배포를 지원하지 않는다.
 
-- Health Check
-- 회원가입과 로그인
-- PostgreSQL 데이터 저장
-- 포토카드 생성
-- Cloudinary 이미지 업로드
+1. `develop` 브랜치를 `main`에 병합한다.
+2. `Manual Deploy → Deploy latest commit`을 실행한다.
+3. 배포 로그와 `/health` 응답을 확인한다.
 
-## 트러블슈팅
+## 시드 데이터
 
-- CORS 오류가 나면 `FRONTEND_URL`과 실제 Netlify Origin이 정확히 같은지 확인한다.
-- 배포 실패 시 Render Deploy Logs의 첫 번째 오류부터 확인한다.
+시드는 새로운 빈 데이터베이스에 최초 한 번만 실행한다. 일회성 시드가 필요한 경우 Build Command를 아래와 같이 임시 변경한다.
 
-## 정식 배포 예정
+```bash
+npm ci --include=dev && npx prisma generate && npx prisma migrate deploy && NODE_ENV=development node prisma/seed.js
+```
 
-- `main` 브랜치 운영 배포
-- 장기 사용 가능한 PostgreSQL로 전환
-- GitHub Actions CI 및 자동 배포
-- 모니터링
+시드 완료 후 Build Command를 즉시 원래대로 되돌린다. 시드 스크립트는 기존 데이터를 삭제하므로 운영 데이터가 있는 환경에서는 실행하지 않는다.
+
+## 배포 확인
+
+`https://<service>.onrender.com/health`에서 아래 응답을 확인한다.
+
+```json
+{
+  "status": "ok"
+}
+```
+
+이후 회원가입, 로그인, 포토카드 생성, 이미지 업로드 등 핵심 기능을 확인한다.
+
+## 주의사항
+
+- 환경변수와 비밀키를 Git에 올리지 않는다.
+- 운영 환경에서는 `prisma migrate dev`를 사용하지 않는다.
+- 시드 명령을 기본 Build Command에 포함하지 않는다.
+- 무료 Web Service의 첫 요청은 응답이 늦을 수 있다.
+- 무료 PostgreSQL의 만료일을 확인한다.

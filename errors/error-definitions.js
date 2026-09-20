@@ -148,6 +148,11 @@ IMAGE_SIZE_EXCEEDED: {
     code: "EXCHANGE_CARD_QUANTITY_EXCEEDED",
     message: "교환 제안 가능한 포토카드 수량을 초과했습니다.",
   },
+  EXCHANGE_OFFER_ALREADY_EXISTS: {
+    statusCode: 409,
+    code: "EXCHANGE_OFFER_ALREADY_EXISTS",
+    message: "같은 카드로 교환 요청을 1개만 등록할 수 있습니다.",
+  },
   EXCHANGE_OFFER_NOT_FOUND: {
     statusCode: 404,
     code: "EXCHANGE_OFFER_NOT_FOUND",
